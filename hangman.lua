@@ -1,2 +1,2 @@
 print("Enter the phrase")
-phrase = io.read("*")
+local phrase = io.read("*")
