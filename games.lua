@@ -6,9 +6,9 @@ local selection = io.read()
 
 term.clear()
 
-if selection=1 then
+if selection == 1 then
     shell.run("pastebin run 6BcdRV75")
-elseif selection=2 then
+elseif selection == 2 then
     shell.run("wget run https://github.com/LDDestroier/CC/raw/master/ldris.lua")
 else
     print("Error: Invalid selection")
