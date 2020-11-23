@@ -9,9 +9,9 @@ local phrase = read("*") --The phrase P1 enters
 local phraseGuessed = false
 local guessedLetters = {}
 
---TODO: Lua doesn't have a split function. Find a way to break string into a table to its characters
 local phraseList = split(phrase, '%s') --Break phrase into list of characters
 
+--TODO: Fix this. Can't use 'in' in if statement
 if phraseList in validLetters then
     print(table.concat(phraseList))
 else
