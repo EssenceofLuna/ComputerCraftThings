@@ -7,7 +7,7 @@ local phrase = read("*") --The phrase P1 enters
 local phraseGuessed = false
 local guessedLetters = {}
 
-local phraseList = split(phrase) --Break phrase into list of characters
+local phraseList = split(phrase, '') --Break phrase into list of characters
 print(phraseList)
 
 -- while phraseGuessed = false do
