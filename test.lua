@@ -1,4 +1,4 @@
-require 'ComputerCraftThings/library'
+require '/ComputerCraftThings/library'
 
 term.clear()
 
