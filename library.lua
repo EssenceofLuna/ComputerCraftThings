@@ -6,6 +6,7 @@ function whitneyIsABitch(loopAmount)
     end
 end
 
+--Split string into characters
 function split (inputstr, sep)
     if sep == nil then
             sep = "%s"

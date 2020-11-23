@@ -10,7 +10,7 @@ local phraseGuessed = false
 local guessedLetters = {}
 
 --TODO: Lua doesn't have a split function. Find a way to break string into a table to its characters
-local phraseList = split(phrase, '') --Break phrase into list of characters
+local phraseList = split(phrase, '%s') --Break phrase into list of characters
 print(phraseList)
 
 -- while phraseGuessed = false do
