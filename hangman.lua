@@ -12,6 +12,7 @@ local guessedLetters = {}
 local phraseList = split(phrase, '%s') --Break phrase into list of characters
 
 --TODO: Fix this. Can't use 'in' in if statement
+--Checks if phrase is valid by comparing phraseList and validLetters
 if phraseList in validLetters then
     print(table.concat(phraseList))
 else
