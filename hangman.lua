@@ -11,8 +11,14 @@ local guessedLetters = {}
 
 --TODO: Lua doesn't have a split function. Find a way to break string into a table to its characters
 local phraseList = split(phrase, '%s') --Break phrase into list of characters
-print(table.concat(phraseList))
 
--- while phraseGuessed = false do
--- --     Main game loop
---     print("Guess a letter!")
+if phraseList in validLetters do
+    print(table.concat(phraseList))
+else
+    print("Error: Invalid phrase")
+end
+
+while phraseGuessed = false do
+--     Main game loop
+    print("Guess a letter!")
+    while 
