@@ -12,7 +12,7 @@ local guessedLetters = {}
 --TODO: Lua doesn't have a split function. Find a way to break string into a table to its characters
 local phraseList = split(phrase, '%s') --Break phrase into list of characters
 
-if phraseList in validLetters do
+if phraseList in validLetters then
     print(table.concat(phraseList))
 else
     print("Error: Invalid phrase")
