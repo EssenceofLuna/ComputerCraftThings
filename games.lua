@@ -15,8 +15,8 @@ if selection == "1" then
     shell.run("pastebin run 6BcdRV75")
 elseif selection == "2" then
     shell.run("wget run https://github.com/LDDestroier/CC/raw/master/ldris.lua")
-elseif election == "3" then
-    shell.run("pastebin run zCfqpZfy ")
+elseif selection == "3" then
+    shell.run("pastebin run zCfqpZfy")
 else
     print("Error: Invalid selection")
 end
