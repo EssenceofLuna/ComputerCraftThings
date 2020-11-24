@@ -51,7 +51,7 @@ function runGame(phrase)
 
     phrase = string.lower(phrase) --make phrase lowercase
 
-    local phraseLength = len(phrase)
+    local phraseLength = string.len(phrase)
     local phraseList = split(phrase, "%s")
 
     local guessedLetters = {}
