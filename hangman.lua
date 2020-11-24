@@ -38,13 +38,9 @@ function askForPhrase()
     end
 end   
 
-function checkLetter(list, letter)
+function checkLetter(set, letter)
     --function to check if a letter is in a list
-    -- return list[letter] ~= nil
-    for list in letter do
-        return true
-    end
-    return false
+    return set[letter]
 end
 
 function runGame(phrase)
@@ -73,6 +69,7 @@ function runGame(phrase)
             sleep(3)
         else
             print("DEBUG: Letter not guessed") --Debug
+            print(checkLetter(guessedLetters, letter)) --Debug
             sleep(3) --Debug
 
             --letter has not been poreviously guessed
