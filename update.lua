@@ -52,10 +52,16 @@ elseif (#arg == 1) then
 
     --Update based on argument provided by user
     if arg[1] == 'computer' or 'advanced_computer' then
+        print("DEBUG: computer argument") --Debug
+        sleep(3) --Debug
         updateComputer()
     elseif arg[1] == 'turtle' or 'advanced_turtle' then
+        print("DEBUG: Turtle argument") --Debug
+        sleep(3) --Debug
         updateTurtle()
     elseif arg[1] == 'pda' or 'advanced_pda' then
+        print("DEBUG: PDA argument") --Debug
+        sleep(3) --Debug
         updatePDA()
     else
         print("Error updating: Invalid computer type provided by user.")
