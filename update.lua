@@ -6,4 +6,4 @@ shell.run("github clone Alstro20/ComputerCraftThings")
 term.clear()
 print("Updated!")
 
-if os.getComputerType ==
+-- if os.getComputerType ==
