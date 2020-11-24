@@ -70,7 +70,7 @@ function runGame(phrase)
         else
             print("DEBUG: Letter not guessed") --Debug
             sleep(3) --Debug
-            
+
             --letter has not been poreviously guessed
             if string.len(letter) == 1 then
                 print("DEBUG: Letter is 1 character long") --Debug
@@ -83,6 +83,9 @@ function runGame(phrase)
 
                     --Letter was valid
                     table.insert(guessedLetters, letter)
+
+                    print("DEBUG: Guessed Letters: ") --Debug
+                    print(table.concat(guessedLetters)) --Debug
                 else
                     --letter was invalid
                     print("Error: Not a valid letter")
