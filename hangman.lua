@@ -11,6 +11,8 @@ local phraseGuessed = false
 local guessedLetters = {}
 
 function checkIfValid(toCheck)
+
+    --OLD CODE
     -- --TODO: Fix this. Can't use 'in' in if statement
     -- --Checks if phrase is valid by comparing phraseList and validLetters
     -- for _, i in validLetters(toCheck) do
@@ -22,18 +24,30 @@ function checkIfValid(toCheck)
 
     -- --Executed if phraseList is invalid
     -- print("Error: Invalid phrase")
+    --END OLD CODE
+
 
     --if(string.gmatch(toCheck, "%a")) then
     if(toCheck:match("%A")) then
-        print("Valid phrase") --debug
-        print(toCheck) --debug
-        
+        --Invalid phrase
+        --print("Invalid phrase. Phrase must be alphanumeric.") --Debug
+        return false
     else
-        print("Invalid phrase. Phrase must be alphanumeric.")
+        --Valid phrase
+        --print("Valid phrase") --debug
+        --print(toCheck) --debug
+
+        return true
     end
 end
 
-checkIfValid(phrase)
+--checkIfValid(phrase) --debug
+if checkIfValid(phrase) then
+    print(phrase)
+elseif checkIfValid(phrase) == false then
+    print("Invalid phrase. Phrase must only be letters and spaces.")
+else
+    print("An error occurred while checking if your phrase was valid.")
 
 -- while phraseGuessed = false do
 -- --Main game loop
