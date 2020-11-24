@@ -28,7 +28,7 @@ function checkIfValid(toCheck)
 
 
     --if(string.gmatch(toCheck, "%a")) then
-    if(toCheck:match("%A")) then
+    if(toCheck:match("%A ")) then
         --Invalid phrase
         --print("Invalid phrase. Phrase must be alphanumeric.") --Debug
         return false
