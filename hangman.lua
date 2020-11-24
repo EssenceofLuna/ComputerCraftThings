@@ -83,7 +83,7 @@ function runGame(phrase)
                     table.insert(guessedLetters, letter)
                     table.sort(guessedLetters)
                     
-                    print(table.concat(guessedLetters, ', '))
+                    print("Guessed letters: "+table.concat(guessedLetters, ', '))
                     sleep(3)
                 else
                     --letter was invalid
