@@ -55,11 +55,15 @@ function runGame(phrase)
     end
 
     phrase = string.upper(phrase) --make phrase uppercase
+    --TODO: Ask user how many guesses to give the guesser
+    maxGuesses = 8
 
     local phraseLength = string.len(phrase)
     local phraseList = split(phrase, "%s")
 
     local guessedLetters = {}
+
+    local guessCount = 0
 
     while true do
         --main game loop
@@ -91,7 +95,21 @@ function runGame(phrase)
 
                     term.clear()
                     
-                    print("Guessed letters: "..table.concat(guessedLetters, ', '))
+                    --print("Guessed letters: "..table.concat(guessedLetters, ', ')) --Debug
+                    if checkLetter(phraseList, letter) then
+                        --Letter was in word
+                        print(letter.." is in the word!")
+                    else
+                        --Letter was not in word
+                        print(letter.." is incorrect")
+                        guessCount = guessCount+1
+
+                        if guessCount >= maxGuess then
+                            --TODO: This break might break the code idk
+                            print("Game Over!")
+                            break
+                        end
+                    end
 
                     --TODO: Turn "Press key to continue" into a function, maybe add to library.lua
                     print("Press any key to continue")
