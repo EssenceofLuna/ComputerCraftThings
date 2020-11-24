@@ -25,10 +25,11 @@ function checkIfValid(toCheck)
     -- print("Error: Invalid phrase")
 
     if(string.match(toCheck, "%w")) then
-        print("Invalid phrase")
-    else
         print("Valid phrase")
         print(table.concat(toCheck))
+        
+    else
+        print("Invalid phrase. Phrase must be alphanumeric.")
     end
 end
 
