@@ -3,28 +3,26 @@ require '/ComputerCraftThings/library'
 --TODO: Make this into a function
 
 --Set game values to starting points
+--These are currently unused and will probably be deleted in the future
 local phraseGuessed = false
 local guessedLetters = {}
 
 function checkIfValid(toCheck)
-    if(toCheck:match("%A")) then
+    --Function to check if toCheck contains anything other than letters.
+    if(toCheck:match("%A ")) then
         --TODO: Change to allow spaces
-        
-        --Invalid phrase
-        --print("Invalid phrase. Phrase must be alphanumeric.") --Debug
+        --Failed: Contains other than letters
         return false
     else
-        --Valid phrase
-        --print("Valid phrase") --debug
-        --print(toCheck) --debug
-        
+        --Passed: Only contains letters
         return true
     end
 end
 
 function askForPhrase()
+    -- function that asks for and returns a phrase
     while true do
-        -- function that asks for and returns a phrase
+        --Loop that goes until a valid phrase is entered
         print("Enter the phrase")
         local phrase = read("*") --The phrase P1 enters
 
@@ -54,6 +52,7 @@ else
     print("An error occurred while checking if your phrase was valid.")
 end
 
+--TODO: Write main game loop
 -- while phraseGuessed = false do
 -- --Main game loop
 --     print("Guess a letter!")
