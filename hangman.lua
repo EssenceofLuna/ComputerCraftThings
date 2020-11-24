@@ -54,7 +54,7 @@ function runGame(phrase)
         phrase = askForPhrase()
     end
 
-    phrase = string.lower(phrase) --make phrase lowercase
+    phrase = string.upper(phrase) --make phrase uppercase
 
     local phraseLength = string.len(phrase)
     local phraseList = split(phrase, "%s")
@@ -66,7 +66,7 @@ function runGame(phrase)
         term.clear()
         print("Guess a letter")
         local letter = io.read()
-        letter = string.lower(letter)
+        letter = string.upper(letter)
 
         --Currently broken: checkLetter() always returns false
         if checkLetter(guessedLetters, letter) then
