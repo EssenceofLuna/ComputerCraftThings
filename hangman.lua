@@ -9,8 +9,6 @@ local phrase = read("*") --The phrase P1 enters
 local phraseGuessed = false
 local guessedLetters = {}
 
-local phraseList = split(phrase, '%s') --Break phrase into list of characters
-
 function checkIfValid(toCheck)
     -- --TODO: Fix this. Can't use 'in' in if statement
     -- --Checks if phrase is valid by comparing phraseList and validLetters
@@ -24,9 +22,9 @@ function checkIfValid(toCheck)
     -- --Executed if phraseList is invalid
     -- print("Error: Invalid phrase")
 
-    if(string.match(toCheck, "%w")) then
-        print("Valid phrase")
-        print(toCheck)
+    if(string.match(toCheck, validLetters)) then
+        print("Valid phrase") --debug
+        print(toCheck) --debug
         
     else
         print("Invalid phrase. Phrase must be alphanumeric.")
