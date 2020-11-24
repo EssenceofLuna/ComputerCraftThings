@@ -23,7 +23,8 @@ function checkIfValid(toCheck)
     -- --Executed if phraseList is invalid
     -- print("Error: Invalid phrase")
 
-    if(string.gmatch(toCheck, "%a")) then
+    --if(string.gmatch(toCheck, "%a")) then
+    if(toCheck:match("%A")) then
         print("Valid phrase") --debug
         print(toCheck) --debug
         
