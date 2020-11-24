@@ -9,7 +9,7 @@ local guessedLetters = {}
 
 function checkIfValid(toCheck)
     --Function to check if toCheck contains anything other than letters.
-    if(toCheck:match("%A ")) then
+    if(toCheck:match("%A")) then
         --TODO: Change to allow spaces
         --Failed: Contains other than letters
         return false
