@@ -44,7 +44,7 @@ function checkLetter(set, letter)
     -- return set[letter] ~= nil
 
     for i,v in set do
-        if v == letter then
+        if v == ipairs(letter) then
             return true
         end
     end
