@@ -14,13 +14,13 @@ local phraseList = split(phrase, '%s') --Break phrase into list of characters
 function checkIfValid(toCheck)
     --TODO: Fix this. Can't use 'in' in if statement
     --Checks if phrase is valid by comparing phraseList and validLetters
-    for toCheck in validLetters do
+    for _, i in validLetters(toCheck) do
         --Executed if phraseList is valid
         print(table.concat(phraseList)) --debug
         --TODO: Write this. Possibly have main game loop in here
         return true
     end
-    
+
     --Executed if phraseList is invalid
     print("Error: Invalid phrase")
 end
