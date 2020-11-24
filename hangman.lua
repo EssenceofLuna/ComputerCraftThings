@@ -38,22 +38,70 @@ function askForPhrase()
     end
 end   
 
---DEBUG
+function checkLetter(list, letter)
+    --function to check if a letter is in a list
 
-phrase = askForPhrase()
-
-
-if checkIfValid(phrase) == true then
-    print("Valid phrase:")
-    print(phrase)
-elseif checkIfValid(phrase) == false then
-    print("Invalid phrase. Phrase may only contain letters.")
-else
-    print("An error occurred while checking if your phrase was valid.")
 end
 
+function runGame(phrase)
+    if phrase = nil then
+        --If no phrase entered, ask for one
+        local phrase = askForPhrase()
+    end
+
+    phrase = string.lower(phrase) --make phrase lowercase
+
+    local phraseLength = len(phrase)
+    local phraseList = split(phrase, "%s")
+
+    local guessedLetters = {}
+
+    while true do
+        --main game loop
+        term.clear()
+        print("Guess a letter")
+        local letter = io.read()
+        letter = string.lower(letter)
+
+        if checkLetter(guessedLetters, letter) then
+            --letter has already been guessed
+            print("You have already guessed that letter!")
+            sleep(3)
+        else
+            --letter has not been poreviously guessed
+            if string.len(letter) == 1 then
+                --string is 1 character long
+                if checkIfValid(letter) then
+                    --Letter was valid
+                    table.insert(letter, guessedLetters)
+                else
+                    --letter was invalid
+                    print("Error: Not a valid letter")
+                    sleep(3)
+                end
+            else
+                print("Error: Letter can only be 1 character long")
+                sleep(3)
+            end
+        end
+
+    end
+end
+
+--DEBUG
+
+runGame()
+
+-- local phrase = askForPhrase()
+
+
+-- if checkIfValid(phrase) == true then
+--     print("Valid phrase:")
+--     print(phrase)
+-- elseif checkIfValid(phrase) == false then
+--     print("Invalid phrase. Phrase may only contain letters.")
+-- else
+--     print("An error occurred while checking if your phrase was valid.")
+-- end
+
 --TODO: Write main game loop
--- while phraseGuessed = false do
--- --Main game loop
---     print("Guess a letter!")
---     while 
