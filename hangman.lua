@@ -65,7 +65,7 @@ function runGame(phrase)
         --main game loop
         term.clear()
 
-        if tableLength(guessedLetters) > 0 then
+        if table.(guessedLetters) > 0 then
             --if letters have been guessed, print the letters that have been guessed
             print("Guessed letters: "..table.concat(guessedLetters, ', '))
         end
