@@ -7,8 +7,9 @@ local phraseGuessed = false
 local guessedLetters = {}
 
 function askForPhrase()
+    -- function that asks for and returns a phrase
     print("Enter the phrase")
-    local phrase = read("*") --The phrase P1 enters
+    return read("*") --The phrase P1 enters
 end    
 
 function checkIfValid(toCheck)
@@ -27,7 +28,7 @@ function checkIfValid(toCheck)
     end
 end
 
-askForPhrase()
+phrase = askForPhrase()
 
 --checkIfValid(phrase) --debug
 if checkIfValid(phrase) == true then
