@@ -32,7 +32,7 @@ function os.getComputerType()
     local ret = {}
 
     if term.isColor() then
-        table.insert(ret, "advaned")
+        table.insert(ret, "advanced")
     end
     if pocket then
         table.insert(ret, "pda")
