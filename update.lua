@@ -28,16 +28,20 @@ end
 term.clear()
 print("Updating from github")
 
+--Store the computer's type as a string
+computerType = os.getComputerType()
+
 if (#arg == 0) then
     --If no argument provided, discover the type of computer and update accordingly
-    if os.getComputerType == 'computer' or 'advanced_computer' then
+    if computerType == 'computer' or 'advanced_computer' then
         updateComputer()
-    elseif os.getComputerType == 'turtle' or 'advanced_turtle' then
+    elseif computerType == 'turtle' or 'advanced_turtle' then
         updateTurtle()
-    elseif os.getComputerType == 'pda' or 'advanced_pda' then
+    elseif computerType == 'pda' or 'advanced_pda' then
         updatePDA()
     else
-        print("Error updating. Computer not updated.")
+        print("Error updating. Invalid computer type detected. Computer not updated.")
+        print("Computer type "..computerType.." detected")
     end
 else
     --Update based on argument provided by user
@@ -48,7 +52,7 @@ else
     elseif arg[1] == 'pda' or 'advanced_pda' then
         updatePDA()
     else
-        print("Error updating: Invalid computer type provided.")
+        print("Error updating: Invalid computer type provided by user.")
         print("Please enter computer, turtle, of pda (all lowercase")
         print("Or enter no argument to auto update.")
     end
