@@ -48,19 +48,20 @@ if (#arg == 0) then
     end
 elseif (#arg == 1) then
     print("DEBUG: Args were 1") --Debug
-    print(arg[1]..arg1)
+    print(arg[1])
+    print(table.concat(arg))
     sleep(3) --Debug
 
     --Update based on argument provided by user
-    if arg1 == 'computer' or 'advanced_computer' then
+    if arg[1] == 'computer' or 'advanced_computer' then
         print("DEBUG: computer argument") --Debug
         sleep(3) --Debug
         updateComputer()
-    elseif arg1 == 'turtle' or 'advanced_turtle' then
+    elseif arg[1] == 'turtle' or 'advanced_turtle' then
         print("DEBUG: Turtle argument") --Debug
         sleep(3) --Debug
         updateTurtle()
-    elseif arg1 == 'pda' or 'advanced_pda' then
+    elseif arg[1] == 'pda' or 'advanced_pda' then
         print("DEBUG: PDA argument") --Debug
         sleep(3) --Debug
         updatePDA()
