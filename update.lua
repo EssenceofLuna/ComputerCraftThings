@@ -34,7 +34,7 @@ computerType = os.getComputerType()
 if (#arg == 0) then
     print("DEBUG: Args were 0") --Debug
     sleep(3) --Debug
-    
+
     --If no argument provided, discover the type of computer and update accordingly
     if computerType == 'computer' or 'advanced_computer' then
         updateComputer()
@@ -46,8 +46,8 @@ if (#arg == 0) then
         print("Error updating. Invalid computer type detected. Computer not updated.")
         print("Computer type "..computerType.." detected")
     end
-else
-    print("DEBUG: Args were NOT 0") --Debug
+elseif (#arg == 1) then
+    print("DEBUG: Args were 1") --Debug
     sleep(3) --Debug
 
     --Update based on argument provided by user
@@ -62,4 +62,6 @@ else
         print("Please enter computer, turtle, of pda (all lowercase")
         print("Or enter no argument to auto update.")
     end
+else
+    print("Error: Too many arguments provided")
 end
