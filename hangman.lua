@@ -19,10 +19,10 @@ function checkIfValid(toCheck)
         print(table.concat(phraseList)) --debug
         --TODO: Write this. Possibly have main game loop in here
         return true
-    else
-        --Executed if phraseList is invalid
-        print("Error: Invalid phrase")
     end
+    
+    --Executed if phraseList is invalid
+    print("Error: Invalid phrase")
 end
 
 checkIfValid(phraseList)
