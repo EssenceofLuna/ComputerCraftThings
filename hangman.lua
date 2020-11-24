@@ -43,8 +43,8 @@ function checkLetter(set, letter)
     --function to check if a letter is in a list
     -- return set[letter] ~= nil
 
-    for i,v in set do
-        if v == ipairs(letter) then
+    for i,v in ipairs(set) do
+        if v == letter then
             return true
         end
     end
