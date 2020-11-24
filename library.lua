@@ -25,5 +25,21 @@ function tableLength(T)
     local count = 0
     for _ in pairs(T) do count = count + 1 end
     return count
-  end
+end
   
+--Returns the type of computer as a table
+function os.getComputerType()
+    local ret = {}
+
+    if term.isColor() then
+        table.insert(ret, "advaned")
+    end
+    if pocket then
+        table.insert(ret, "pda")
+    elseif turtle then
+        table.insert(ret, "turtle")
+    else
+        table.insert(ret, "computer")
+    end
+    return table.concat(ret, "_")
+end
