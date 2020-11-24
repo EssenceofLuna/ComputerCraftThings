@@ -1,6 +1,7 @@
 require '/ComputerCraftThings/library'
 
 local validLetters = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' '} --Letters allowed in the game
+local validLettersPhrase
 
 print("Enter the phrase")
 local phrase = read("*") --The phrase P1 enters
@@ -22,7 +23,7 @@ function checkIfValid(toCheck)
     -- --Executed if phraseList is invalid
     -- print("Error: Invalid phrase")
 
-    if(string.match(toCheck, validLetters)) then
+    if(string.match(toCheck, "%a")) then
         print("Valid phrase") --debug
         print(toCheck) --debug
         
