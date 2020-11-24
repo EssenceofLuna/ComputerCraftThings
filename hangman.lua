@@ -25,7 +25,7 @@ function checkIfValid(toCheck)
 end
 
 --checkIfValid(phrase) --debug
-if checkIfValid(phrase) then
+if checkIfValid(phrase) == true then
     print("Valid phrase:")
     print(phrase)
 elseif checkIfValid(phrase) == false then
