@@ -27,7 +27,7 @@ function tableLength(T)
     return count
 end
   
---Returns the type of computer as a table
+--Returns the type of computer as a string
 function os.getComputerType()
     local ret = {}
 
