@@ -79,13 +79,13 @@ function runGame(phrase)
                 --string is 1 character long
                 if checkIfValid(letter) then
                     print("DEBUG: Letter is valid") --Debug
-                    sleep(3) --Debug
-
+                    
                     --Letter was valid
                     table.insert(guessedLetters, letter)
-
+                    
                     print("DEBUG: Guessed Letters: ") --Debug
                     print(table.concat(guessedLetters)) --Debug
+                    sleep(3) --Debug
                 else
                     --letter was invalid
                     print("Error: Not a valid letter")
