@@ -64,6 +64,12 @@ function runGame(phrase)
     while true do
         --main game loop
         term.clear()
+
+        if tableLength(guessedLetters) > 0 then
+            --if letters have been guessed, print the letters that have been guessed
+            print("Guessed letters: "..table.concat(guessedLetters, ', '))
+        end
+
         print("Guess a letter")
         local letter = io.read()
         letter = string.upper(letter)
@@ -82,38 +88,30 @@ function runGame(phrase)
                     --Add the letter to the guessed letters, then sort alphabetically
                     table.insert(guessedLetters, letter)
                     table.sort(guessedLetters)
+
+                    term.clear()
                     
                     print("Guessed letters: "..table.concat(guessedLetters, ', '))
-                    -- sleep(3)
+
+                    --TODO: Turn "Press key to continue" into a function, maybe add to library.lua
                     print("Press any key to continue")
                     os.pullEvent("key")
                 else
                     --letter was invalid
+                    term.clear()
                     print("Error: Not a valid letter")
-                    sleep(3)
+                    print("Press any key to continue")
+                    os.pullEvent("key")
                 end
             else
+                --letter was longer than 1 character
+                term.clear()
                 print("Error: Letter can only be 1 character long")
-                sleep(3)
+                print("Press any key to continue")
+                    os.pullEvent("key")
             end
         end
     end
 end
 
---DEBUG
-
 runGame()
-
--- local phrase = askForPhrase()
-
-
--- if checkIfValid(phrase) == true then
---     print("Valid phrase:")
---     print(phrase)
--- elseif checkIfValid(phrase) == false then
---     print("Invalid phrase. Phrase may only contain letters.")
--- else
---     print("An error occurred while checking if your phrase was valid.")
--- end
-
---TODO: Write main game loop

@@ -19,3 +19,11 @@ function split (inputstr, sep)
     end
     return t
 end
+
+--Returns the number of elements in a table as an int
+function tablelength(T)
+    local count = 0
+    for _ in pairs(T) do count = count + 1 end
+    return count
+  end
+  
