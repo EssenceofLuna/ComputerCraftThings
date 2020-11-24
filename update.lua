@@ -11,7 +11,7 @@ end
 
 function updateTurtle()
     --https://github.com/Alstro20/ComputerCraftThings/tree/turtles
-    shell.run("github clone Alstro20/ComputerCraftThings -b")
+    shell.run("github clone Alstro20/ComputerCraftThings -b turtles")
     term.clear()
     print("Turtle Updated!")
 end
