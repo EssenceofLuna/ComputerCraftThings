@@ -24,7 +24,7 @@ function checkIfValid(toCheck)
     -- --Executed if phraseList is invalid
     -- print("Error: Invalid phrase")
 
-    if(toCheck:match("%w")) then
+    if(string.match(toCheck, "%w")) then
         print("Invalid phrase")
     else
         print("Valid phrase")
@@ -32,7 +32,7 @@ function checkIfValid(toCheck)
     end
 end
 
-checkIfValid(phraseList)
+checkIfValid(phrase)
 
 -- while phraseGuessed = false do
 -- --Main game loop
