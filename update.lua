@@ -48,6 +48,7 @@ if (#arg == 0) then
     end
 elseif (#arg == 1) then
     print("DEBUG: Args were 1") --Debug
+    print(arg[1]..arg1)
     sleep(3) --Debug
 
     --Update based on argument provided by user
