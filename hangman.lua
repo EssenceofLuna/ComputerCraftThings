@@ -39,10 +39,7 @@ function askForPhrase()
 end   
 
 function checkLetter(set, letter)
-    --TODO: Make this function work
     --function to check if a letter is in a list
-    -- return set[letter] ~= nil
-
     for i,v in ipairs(set) do
         if v == letter then
             return true
@@ -77,25 +74,15 @@ function runGame(phrase)
             print("You have already guessed that letter!")
             sleep(3)
         else
-            print("DEBUG: Letter not guessed") --Debug
-            print(checkLetter(guessedLetters, letter)) --Debug
-            sleep(3) --Debug
-
             --letter has not been poreviously guessed
             if string.len(letter) == 1 then
-                print("DEBUG: Letter is 1 character long") --Debug
-                sleep(3) --Debug
 
                 --string is 1 character long
-                if checkIfValid(letter) then
-                    print("DEBUG: Letter is valid") --Debug
-                    
+                if checkIfValid(letter) then                   
                     --Letter was valid
                     table.insert(guessedLetters, letter)
                     
-                    print("DEBUG: Guessed Letters: ") --Debug
-                    print(table.concat(guessedLetters)) --Debug
-                    sleep(3) --Debug
+                    -- print(table.concat(guessedLetters))
                 else
                     --letter was invalid
                     print("Error: Not a valid letter")
