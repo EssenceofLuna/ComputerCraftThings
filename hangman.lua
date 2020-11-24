@@ -48,6 +48,7 @@ elseif checkIfValid(phrase) == false then
     print("Invalid phrase. Phrase must only be letters and spaces.")
 else
     print("An error occurred while checking if your phrase was valid.")
+end
 
 -- while phraseGuessed = false do
 -- --Main game loop
