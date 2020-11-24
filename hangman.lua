@@ -44,7 +44,7 @@ function checkLetter(list, letter)
 end
 
 function runGame(phrase)
-    if phrase = nil then
+    if phrase == nil then
         --If no phrase entered, ask for one
         local phrase = askForPhrase()
     end
@@ -84,7 +84,6 @@ function runGame(phrase)
                 sleep(3)
             end
         end
-
     end
 end
 
