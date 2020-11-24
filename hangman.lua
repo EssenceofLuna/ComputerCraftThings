@@ -84,7 +84,9 @@ function runGame(phrase)
                     table.sort(guessedLetters)
                     
                     print("Guessed letters: "..table.concat(guessedLetters, ', '))
-                    sleep(3)
+                    -- sleep(3)
+                    print("Press any key to continue")
+                    os.pullEvent("key")
                 else
                     --letter was invalid
                     print("Error: Not a valid letter")
