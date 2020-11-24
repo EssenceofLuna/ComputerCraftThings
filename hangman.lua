@@ -73,7 +73,7 @@ function runGame(phrase)
                 --string is 1 character long
                 if checkIfValid(letter) then
                     --Letter was valid
-                    table.insert(letter, guessedLetters)
+                    table.insert(guessedLetters, letter)
                 else
                     --letter was invalid
                     print("Error: Not a valid letter")
