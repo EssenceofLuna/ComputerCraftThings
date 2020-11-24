@@ -39,6 +39,7 @@ function askForPhrase()
 end   
 
 function checkLetter(set, letter)
+    --TODO: Make this function work
     --function to check if a letter is in a list
     -- return set[letter] ~= nil
 
@@ -70,6 +71,7 @@ function runGame(phrase)
         local letter = io.read()
         letter = string.lower(letter)
 
+        --Currently broken: checkLetter() always returns false
         if checkLetter(guessedLetters, letter) then
             --letter has already been guessed
             print("You have already guessed that letter!")
