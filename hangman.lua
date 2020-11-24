@@ -31,7 +31,7 @@ function askForPhrase()
         if checkIfValid(phrase) == true then
             --Phrase was valid. Return phrase
             return phrase
-            break
+            --break
         else
             --Phrase was not valid. Clear and keep asking for phrases.
             term.clear()
