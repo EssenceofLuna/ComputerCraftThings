@@ -32,9 +32,6 @@ print("Updating from github")
 computerType = os.getComputerType()
 
 if (#arg == 0) then
-    print("DEBUG: Args were 0") --Debug
-    sleep(3) --Debug
-
     --If no argument provided, discover the type of computer and update accordingly
     if computerType == 'computer' or computerType == 'advanced_computer' then
         updateComputer()
@@ -47,23 +44,14 @@ if (#arg == 0) then
         print("Computer type "..computerType.." detected")
     end
 elseif (#arg == 1) then
-    print("DEBUG: Args were 1") --Debug
     argument = table.concat(arg)
-    print(argument)
-    sleep(3) --Debug
 
     --Update based on argument provided by user
     if argument == 'computer' or argument == 'advanced_computer' then
-        print("DEBUG: computer argument") --Debug
-        sleep(3) --Debug
         updateComputer()
     elseif argument == 'turtle' or argument == 'advanced_turtle' then
-        print("DEBUG: Turtle argument") --Debug
-        sleep(3) --Debug
         updateTurtle()
     elseif argument == 'pda' or argument == 'advanced_pda' then
-        print("DEBUG: PDA argument") --Debug
-        sleep(3) --Debug
         updatePDA()
     else
         print("Error updating: Invalid computer type provided by user.")
