@@ -105,6 +105,7 @@ function runGame(phrase)
                         guessCount = guessCount+1
 
                         if guessCount >= maxGuess then
+                            --TODO: this if is broken idk why
                             --TODO: This break might break the code idk
                             print("Game Over!")
                             break
