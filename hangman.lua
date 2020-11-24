@@ -76,13 +76,15 @@ function runGame(phrase)
         else
             --letter has not been poreviously guessed
             if string.len(letter) == 1 then
-
                 --string is 1 character long
                 if checkIfValid(letter) then                   
                     --Letter was valid
+                    --Add the letter to the guessed letters, then sort alphabetically
                     table.insert(guessedLetters, letter)
+                    table.sort(guessedLetters)
                     
-                    -- print(table.concat(guessedLetters))
+                    print(table.concat(guessedLetters))
+                    sleep(3)
                 else
                     --letter was invalid
                     print("Error: Not a valid letter")
