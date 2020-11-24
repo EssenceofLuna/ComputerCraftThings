@@ -40,7 +40,7 @@ end
 
 function checkLetter(set, letter)
     --function to check if a letter is in a list
-    return set[letter]
+    return set[letter] ~= nil
 end
 
 function runGame(phrase)
