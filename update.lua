@@ -36,11 +36,11 @@ if (#arg == 0) then
     sleep(3) --Debug
 
     --If no argument provided, discover the type of computer and update accordingly
-    if computerType == 'computer' or 'advanced_computer' then
+    if computerType == 'computer' or computerType == 'advanced_computer' then
         updateComputer()
-    elseif computerType == 'turtle' or 'advanced_turtle' then
+    elseif computerType == 'turtle' or computerType == 'advanced_turtle' then
         updateTurtle()
-    elseif computerType == 'pda' or 'advanced_pda' then
+    elseif computerType == 'pda' or computerType == 'advanced_pda' then
         updatePDA()
     else
         print("Error updating. Invalid computer type detected. Computer not updated.")
