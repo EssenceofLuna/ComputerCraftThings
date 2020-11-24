@@ -56,7 +56,7 @@ function runGame(phrase)
 
     phrase = string.upper(phrase) --make phrase uppercase
     --TODO: Ask user how many guesses to give the guesser
-    maxGuesses = 8
+    local maxGuesses = 8
 
     local phraseLength = string.len(phrase)
     local phraseList = split(phrase, "%s")
