@@ -46,7 +46,7 @@ end
 function runGame(phrase)
     if phrase == nil then
         --If no phrase entered, ask for one
-        local phrase = askForPhrase()
+        phrase = askForPhrase()
     end
 
     phrase = string.lower(phrase) --make phrase lowercase
