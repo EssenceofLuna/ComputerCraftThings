@@ -9,7 +9,7 @@ local guessedLetters = {}
 function askForPhrase()
     print("Enter the phrase")
     local phrase = read("*") --The phrase P1 enters
-    
+end    
 
 function checkIfValid(toCheck)
     if(toCheck:match("%A")) then
