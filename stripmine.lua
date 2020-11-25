@@ -5,8 +5,7 @@ function strip(stripDepth, stripCount)
     for i=1,stripDepth do
         for i=1,stripCount do
             --dig
-            --checkFuel()
-            turtle.refuel()
+            checkFuel()
             turtle.dig()
             turtle.digUp()
             turtle.forward()

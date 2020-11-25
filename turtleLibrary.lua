@@ -49,7 +49,6 @@ function checkFuel()
                 return true
             end
         end
- 
         return false
     else
         return true
