@@ -1,7 +1,8 @@
 require '/ComputerCraftThings/library'
 
+--If github is not installed run 'pastebin run p8PJVxC4'
+
 --Functions to update different computer types
---
 function updateComputer()
     --https://github.com/Alstro20/ComputerCraftThings/tree/master
     shell.run("github clone Alstro20/ComputerCraftThings")
@@ -59,5 +60,22 @@ elseif (#arg == 1) then
         print("Or enter no argument to auto update.")
     end
 else
-    print("Error: Too many arguments provided")
+    print("Error: Invalid PC Type. Please enter PC type:")
+    print("0) cancel")
+    print("1) Computer")
+    print("2) Turtle")
+    print("3) PDA")
+
+    local continueInput = io.read()
+    if continueInput == 1 then
+        updateComputer()
+    elseif continueInput == 2 then
+        updateTurtle()
+    elseif continueInput == 3 then
+        updatePDA()
+    else
+        print("Canceling...")
+        sleep(3)
+        break
+    end
 end
