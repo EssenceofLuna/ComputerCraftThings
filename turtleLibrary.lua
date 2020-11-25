@@ -65,6 +65,7 @@ function manageInventory()
         local item = turtle.getItemDetail(slot)
         if(item ~= nil) then
             if(item["name"] ~= "minecraft:coal_block" and item["name"] ~= "minecraft:coal") then
+                --TODO: Limit how much fuel to keep on hand at one time
                 turtle.select(slot)
                 turtle.dropUp()
             end
