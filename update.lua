@@ -62,7 +62,7 @@ elseif (#arg == 1) then
 else
     print("Error: Invalid PC Type. Please enter PC type:")
     print("0) cancel")
-    print("1) Computer")
+    print("1) Computer (default)")
     print("2) Turtle")
     print("3) PDA")
 
