@@ -7,6 +7,6 @@ This is automatically installed in the update process, so simply run ```wget run
 
 This may pop up a few prompts, especially in first time installation.
 
-This will download this repository (the branch associated with your machine, that is) to the directory `ComputerCraftThings/`
+This will download this repository (the branch associated with your machine, that is) to the directory `ComputerCraftThings/`.
 
 To update, simply run `update.lua` at any time.
