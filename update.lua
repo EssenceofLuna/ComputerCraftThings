@@ -60,6 +60,7 @@ elseif (#arg == 1) then
         print("Or enter no argument to auto update.")
     end
 else
+    --Could not determing PC type. Asking user directly.
     print("Error: Invalid PC Type. Please enter PC type:")
     print("0) cancel")
     print("1) Computer (default)")
@@ -74,8 +75,8 @@ else
     elseif continueInput == 3 then
         updatePDA()
     else
+        --PC type not entered/Invalid entered. Canceling
         print("Canceling...")
         sleep(3)
-        break
     end
 end
