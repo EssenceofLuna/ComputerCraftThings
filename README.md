@@ -1,9 +1,9 @@
 # ComputerCraftThings
 Things I have programmed in ComputerCraft, including branches for turtles and (soon) PDA's.
-# Instal Instructions
+# Install Instructions
 the update script (which automatically pulls from this github) requires this github cloning script: https://github.com/eric-wieser/computercraft-github
 
-To instal this, run ```pastebin run p8PJVxC4```
+To install this, run ```pastebin run p8PJVxC4```
 
 Then, to run the update script (which will download all other scripts) run ```wget run https://github.com/Alstro20/ComputerCraftThings/blob/master/update.lua```
 
