@@ -1,35 +1,36 @@
 require '/ComputerCraftThings/library'
+require '/ComputerCraftThings/turtleLibrary'
 
-local SLOT_COUNT = 16
+function strip(depth, count)
+    for i=1,count do
+        for i=1,tonumber(depth) do
+            --dig
+            checkFuel()
+            turtle.dig()
+            turtle.digUp()
+            turtle.forward()
+        end
+        turtle.digUp()
 
---Credit to Micheal Reeves
-function checkFuel()
-    turtle.select(1)
- 
-    if(turtle.getFuelLevel() < 50) then
-        print("Attempting Refuel...")
-        for slot = 1, SLOT_COUNT, 1 do
-            turtle.select(slot)
-            if(turtle.refuel(1)) then
-                return true
+        print("Strip of depth "..depth.." returning....")
+        --Turtle finished a strip
+        turtle.turnLeft()
+        turtle.turnLeft()
+        for i=1,tonumber(depth) do
+            turtle.forward()
+        end
+
+        --turtle has returned to start
+        if i < count then
+            --move to next mine
+            turtle.turnLeft()
+            for i=1,3 do
+                turtle.dig()
+                turtle.forward()
+                turtle.digUp()
             end
         end
- 
-        return false
-    else
-        return true
     end
-end
-
-function strip(depth)
-    for i=1,tonumber(depth) do
-        checkFuel()
-        turtle.dig()
-        turtle.digUp()
-        turtle.forward()
-    end
-    turtle.digUp()
-    print("Strip of depth "..depth.." completed.")
 end
 
 print("How many strips?")
