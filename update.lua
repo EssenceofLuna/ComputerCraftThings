@@ -99,7 +99,6 @@ elseif (#arg == 1) then
         print("Or enter no argument to auto update.")
     end
 else
-    print("DEBUG: Prompting input")
     --Could not determing PC type. Asking user directly.
     print("Error: Invalid PC Type. Please enter PC type:")
     print("0) cancel")
@@ -107,24 +106,15 @@ else
     print("2) Turtle")
     print("3) PDA")
 
-
     local continueInput = io.read()
     
     if continueInput == '1' then
-        print("DEBUG: 1")
-        sleep(3)
         updateComputer()
     elseif continueInput == '2' then
-        print("DEBUG: 2")
-        sleep(3)
         updateTurtle()
     elseif continueInput == '3' then
-        print("DEBUG: 3")
-        sleep(3)
         updatePDA()
     else
-        print("DEBUG: Other")
-        sleep(3)
         --PC type not entered/Invalid entered. Canceling
         print("Canceled. Press any key to exit")
         os.pullEvent("key")
