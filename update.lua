@@ -63,6 +63,7 @@ else
     term.clear()
     print("Github has been installed. Press any key to continue.")
     os.pullEvent("key")
+    term.clear()
 end
 
 print("Updating from github")
@@ -105,14 +106,24 @@ else
     print("2) Turtle")
     print("3) PDA")
 
+    print("DEBUG: Prompting input")
+
     local continueInput = io.read()
     if continueInput == 1 then
+        print("DEBUG: 1")
+        sleep(3)
         updateComputer()
     elseif continueInput == 2 then
+        print("DEBUG: 2")
+        sleep(3)
         updateTurtle()
     elseif continueInput == 3 then
+        print("DEBUG: 3")
+        sleep(3)
         updatePDA()
     else
+        print("DEBUG: Other")
+        sleep(3)
         --PC type not entered/Invalid entered. Canceling
         print("Canceled. Press any key to exit")
         os.pullEvent("key")
