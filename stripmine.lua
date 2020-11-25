@@ -59,3 +59,5 @@ print("Mining...")
 
 
 strip(5, 5)
+--TODO: Once code is finished, stress test to find places where it can run out of fuel and add a fuel check there
+--I expect to find one when returning when mining is finished
