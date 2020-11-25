@@ -35,7 +35,7 @@ end
 print("How many strips?")
 sctripCount = io.read()
 print("How deep are the strips?")
-stripDepth = io.read
+stripDepth = tonumber(io.read())
 print("Mining...")
 
 strip(stripDepth)
