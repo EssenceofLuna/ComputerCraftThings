@@ -1,7 +1,9 @@
 require '/ComputerCraftThings/library'
 
+--Instal Github: 'pastebin run p8PJVxC4'        https://github.com/eric-wieser/computercraft-github
+--Initial install: 'wget run https://github.com/Alstro20/ComputerCraftThings/blob/master/update.lua'
+
 --Functions to update different computer types
---
 function updateComputer()
     --https://github.com/Alstro20/ComputerCraftThings/tree/master
     shell.run("github clone Alstro20/ComputerCraftThings")
@@ -59,5 +61,25 @@ elseif (#arg == 1) then
         print("Or enter no argument to auto update.")
     end
 else
-    print("Error: Too many arguments provided")
+    --Could not determing PC type. Asking user directly.
+    print("Error: Invalid PC Type. Please enter PC type:")
+    print("0) cancel")
+    print("1) Computer (default)")
+    print("2) Turtle")
+    print("3) PDA")
+
+    local continueInput = io.read()
+    if continueInput == 1 then
+        updateComputer()
+    elseif continueInput == 2 then
+        updateTurtle()
+    elseif continueInput == 3 then
+        updatePDA()
+    else
+        --PC type not entered/Invalid entered. Canceling
+        print("Canceling...")
+        sleep(3)
+        term.clear()
+        --NOTE: This should be the end of the code
+    end
 end
