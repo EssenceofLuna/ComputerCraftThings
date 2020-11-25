@@ -24,7 +24,7 @@ function strip(stripDepth, stripCount)
         end
 
         --turtle has returned to start
-        if i < stripCount then
+        if i <= stripCount then
             --move to next mine
             turtle.turnLeft()
             for i=1,3 do
@@ -35,12 +35,20 @@ function strip(stripDepth, stripCount)
             turtle.turnLeft()
         end
     end
+    --End of mining
+    print("Mining completed. Mined "..stripCount.." strips witha depth of "..stripDepth..".")
+    print("Returning...")
+    turtle.turnRight()
+    for i=1,stripCount*3 do
+        turtle.forward()
+    end
+    print("Turtle returned to start. Shutting down...")
 end
 
 print("How many strips?")
-sctripCount = tonumber(io.read())
+sctripCount = tonumber(read())
 print("How deep are the strips?")
-stripDepth = tonumber(io.read())
+stripDepth = tonumber(read())
 print("Mining...")
 
 strip(5, 5)
