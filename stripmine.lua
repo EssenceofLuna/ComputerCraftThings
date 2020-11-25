@@ -43,6 +43,7 @@ function strip(stripDepth, stripCount)
     for i=1,returnCount do
         turtle.forward()
     end
+    turtle.turnRight()
     print("Turtle returned to start. Shutting down...")
 end
 
