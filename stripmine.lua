@@ -39,7 +39,8 @@ function strip(stripDepth, stripCount)
     print("Mining completed. Mined "..stripCount.." strips witha depth of "..stripDepth..".")
     print("Returning...")
     turtle.turnRight()
-    for i=1,stripCount*3 do
+    local returnCount = (stripCount-1)*3 --How many blocks to travel to return to start
+    for i=1,returnCount do
         turtle.forward()
     end
     print("Turtle returned to start. Shutting down...")
