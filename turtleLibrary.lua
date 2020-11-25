@@ -60,6 +60,7 @@ function manageInventory()
         turtle.digUp()      
         turtle.placeUp()  
     end
+    --TODO: Add a catch for when no ender chest is found
     -- Chest is now deployed
     for slot = 1, SLOT_COUNT, 1 do
         local item = turtle.getItemDetail(slot)
