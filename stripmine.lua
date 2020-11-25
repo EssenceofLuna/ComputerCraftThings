@@ -2,8 +2,8 @@ require '/ComputerCraftThings/library'
 require '/ComputerCraftThings/turtleLibrary'
 
 function strip(depth, count)
-    for i=1,count do
-        for i=1,depth do
+    for i=1,5 do
+        for i=1,5 do
             --dig
             checkFuel()
             turtle.dig()
