@@ -5,13 +5,18 @@
 
 --Checks if github is installed
 if fs.exists("github") and fs.exists("github.rom") then
-    --debug
-    print("Github found")
-    sleep(3)
+    --Do nothing
 else
-    --debug
-    print("Github not found")
-    sleep(3)
+    --github installation process
+
+    print("Warning: Github not found. Github is required to use this script")
+    print("Press any key to install github, or hold CTRL+T to cancel.")
+    sleep(2)
+    os.pullEvent("key")
+
+    --download and instal github
+    shell.run("pastebin run p8PJVxC4")
+    term.clear()
 end
 
 --Returns the type of computer as a string
