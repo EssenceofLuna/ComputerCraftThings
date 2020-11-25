@@ -2,8 +2,8 @@ require '/ComputerCraftThings/library'
 require '/ComputerCraftThings/turtleLibrary'
 
 function strip(depth, count)
-    for i=1,tonumber(count) do
-        for i=1,tonumber(depth) do
+    for i=1,count do
+        for i=1,depth do
             --dig
             checkFuel()
             turtle.dig()
@@ -34,9 +34,9 @@ function strip(depth, count)
 end
 
 print("How many strips?")
-sctripCount = io.read()
+sctripCount = tonumber(io.read())
 print("How deep are the strips?")
-stripDepth = io.read()
+stripDepth = tonumber(io.read())
 print("Mining...")
 
 strip(stripDepth,stripCount)
