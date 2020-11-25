@@ -22,7 +22,7 @@ function checkFuel()
 end
 
 function strip(depth)
-    for i=1,depth do
+    for i=1,tonumber(depth) do
         checkFuel()
         turtle.dig()
         turtle.digUp()
@@ -35,7 +35,7 @@ end
 print("How many strips?")
 sctripCount = io.read()
 print("How deep are the strips?")
-stripDepth = tonumber(io.read())
+stripDepth = io.read()
 print("Mining...")
 
 strip(stripDepth)
