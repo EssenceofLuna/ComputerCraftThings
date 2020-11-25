@@ -1,7 +1,24 @@
-require '/ComputerCraftThings/library'
+-- require '/ComputerCraftThings/library' --Removed to make update.lua seperate from all other scripts.
 
 --Instal Github: 'pastebin run p8PJVxC4'        https://github.com/eric-wieser/computercraft-github
 --Initial install: 'wget run https://raw.githubusercontent.com/Alstro20/ComputerCraftThings/master/update.lua'
+
+--Returns the type of computer as a string
+function os.getComputerType()
+    local ret = {}
+
+    if term.isColor() then
+        table.insert(ret, "advanced")
+    end
+    if pocket then
+        table.insert(ret, "pda")
+    elseif turtle then
+        table.insert(ret, "turtle")
+    else
+        table.insert(ret, "computer")
+    end
+    return table.concat(ret, "_")
+end
 
 --Functions to update different computer types
 function updateComputer()
