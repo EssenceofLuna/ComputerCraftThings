@@ -39,4 +39,4 @@ print("How deep are the strips?")
 stripDepth = io.read()
 print("Mining...")
 
-strip(stripDepth)
+strip(stripDepth,stripCount)
