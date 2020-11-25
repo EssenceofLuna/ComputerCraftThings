@@ -78,5 +78,8 @@ else
         --PC type not entered/Invalid entered. Canceling
         print("Canceling...")
         sleep(3)
+
+
+        
     end
 end
