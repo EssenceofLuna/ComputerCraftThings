@@ -1,9 +1,9 @@
 require '/ComputerCraftThings/library'
 require '/ComputerCraftThings/turtleLibrary'
 
-function strip(depth, count)
-    for i=1,5 do
-        for i=1,5 do
+function strip(stripDepth, stripCount)
+    for i=1,stripDepth do
+        for i=1,stripCount do
             --dig
             checkFuel()
             turtle.dig()
@@ -21,7 +21,7 @@ function strip(depth, count)
         end
 
         --turtle has returned to start
-        if i < count then
+        if i < stripCount then
             --move to next mine
             turtle.turnLeft()
             for i=1,3 do
