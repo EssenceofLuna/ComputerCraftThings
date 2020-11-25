@@ -16,7 +16,7 @@ function strip(stripDepth, stripCount)
         --Turtle finished a strip
         turtle.turnLeft()
         turtle.turnLeft()
-        for i=1,stripDepth do
+        for i=1,stripDepth+1 do
             turtle.forward()
         end
 
@@ -29,6 +29,7 @@ function strip(stripDepth, stripCount)
                 turtle.forward()
                 turtle.digUp()
             end
+            turtle.turnLeft()
         end
     end
 end
