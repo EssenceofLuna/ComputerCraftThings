@@ -5,7 +5,10 @@ function strip(stripDepth, stripCount)
     for i=1,stripDepth do
         for i=1,stripCount do
             --dig
-            checkFuel()
+            if(not checkFuel()) then
+                print("Our of fuel")
+                return
+            end
             turtle.dig()
             turtle.digUp()
             turtle.forward()
