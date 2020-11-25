@@ -5,7 +5,7 @@ the update script (which automatically pulls from this github) requires this git
 
 To install this, run ```pastebin run p8PJVxC4```
 
-Then, to run the update script (which will download all other scripts) run ```wget run https://github.com/Alstro20/ComputerCraftThings/blob/master/update.lua```
+Then, to run the update script (which will download all other scripts) run ```wget run https://raw.githubusercontent.com/Alstro20/ComputerCraftThings/master/update.lua```
 
 This may prompt you to enter what PC you're downloading it on.
 
