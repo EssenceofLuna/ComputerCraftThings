@@ -114,8 +114,8 @@ else
         updatePDA()
     else
         --PC type not entered/Invalid entered. Canceling
-        print("Canceling...")
-        sleep(3)
+        print("Canceled. Press any key to exit")
+        os.pullEvent("key")
         term.clear()
         --NOTE: This should be the end of the code
     end
