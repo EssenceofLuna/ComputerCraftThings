@@ -3,6 +3,17 @@
 --Instal Github: 'pastebin run p8PJVxC4'        https://github.com/eric-wieser/computercraft-github
 --Initial install: 'wget run https://raw.githubusercontent.com/Alstro20/ComputerCraftThings/master/update.lua'
 
+--Checks if github is installed
+if fs.exists("github") and fs.exists("github.rom") then
+    --debug
+    print("Github found")
+    sleep(3)
+else
+    --debug
+    print("Github not found")
+    sleep(3)
+end
+
 --Returns the type of computer as a string
 function os.getComputerType()
     local ret = {}
