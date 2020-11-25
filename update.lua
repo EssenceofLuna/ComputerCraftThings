@@ -49,7 +49,7 @@ term.clear()
 
 --Checks if github is installed
 if fs.exists("github") and fs.exists("github.rom") then
-    --Do nothing
+    --Do nothing.
 else
     --github installation process
 
