@@ -3,26 +3,11 @@
 --Instal Github: 'pastebin run p8PJVxC4'        https://github.com/eric-wieser/computercraft-github
 --Initial install: 'wget run https://raw.githubusercontent.com/Alstro20/ComputerCraftThings/master/update.lua'
 
---Checks if github is installed
-if fs.exists("github") and fs.exists("github.rom") then
-    --Do nothing
-else
-    --github installation process
-
-    print("Warning: Github not found. Github is required to use this script")
-    print("Press any key to install github, or hold CTRL+T to cancel.")
-    sleep(2)
-    os.pullEvent("key")
-
-    --download and instal github
-    shell.run("pastebin run p8PJVxC4")
-    term.clear()
-end
 
 --Returns the type of computer as a string
 function os.getComputerType()
     local ret = {}
-
+    
     if term.isColor() then
         table.insert(ret, "advanced")
     end
@@ -61,6 +46,25 @@ function updatePDA()
 end
 
 term.clear()
+
+--Checks if github is installed
+if fs.exists("github") and fs.exists("github.rom") then
+    --Do nothing
+else
+    --github installation process
+
+    print("Warning: Github not found. Github is required to use this script")
+    print("Press any key to install github, or hold CTRL+T to cancel.")
+    sleep(2)
+    os.pullEvent("key")
+
+    --download and instal github
+    shell.run("pastebin run p8PJVxC4")
+    term.clear()
+    print("Github has been installed. Press any key to continue.")
+    os.pullEvent("key")
+end
+
 print("Updating from github")
 
 --Store the computer's type as a string
