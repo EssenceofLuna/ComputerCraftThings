@@ -38,7 +38,7 @@ function strip(stripDepth, stripCount)
     --End of mining
     print("Mining completed. Mined "..stripCount.." strips witha depth of "..stripDepth..".")
     print("Returning...")
-    turtle.turnLeft()
+    turtle.turnRight()
     for i=1,stripCount*3 do
         turtle.forward()
     end
