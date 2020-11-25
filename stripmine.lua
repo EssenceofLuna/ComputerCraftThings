@@ -19,7 +19,7 @@ function strip(stripDepth, stripCount)
         --Turtle finished a strip
         turtle.turnLeft()
         turtle.turnLeft()
-        for i=1,stripDepth+1 do
+        for i=1,stripDepth do
             turtle.forward()
         end
 
