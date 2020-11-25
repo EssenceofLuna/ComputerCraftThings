@@ -15,6 +15,7 @@ function strip(stripDepth, stripCount)
         end
         turtle.digUp()
 
+        manageInventory()
         print("Strip of depth "..stripDepth.." returning....")
         --Turtle finished a strip
         turtle.turnLeft()
@@ -47,10 +48,14 @@ function strip(stripDepth, stripCount)
     print("Turtle returned to start. Shutting down...")
 end
 
+--TODO: Make this code work when asking for player input.
+--Function strip() throws an error for some reason when using user input
+--Maybe switch io.read() to read()?
 print("How many strips?")
 sctripCount = tonumber(read())
 print("How deep are the strips?")
 stripDepth = tonumber(read())
 print("Mining...")
+
 
 strip(5, 5)
