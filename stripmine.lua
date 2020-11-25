@@ -12,7 +12,7 @@ function strip(stripDepth, stripCount)
         end
         turtle.digUp()
 
-        print("Strip of depth "..depth.." returning....")
+        print("Strip of depth "..stripDepth.." returning....")
         --Turtle finished a strip
         turtle.turnLeft()
         turtle.turnLeft()
