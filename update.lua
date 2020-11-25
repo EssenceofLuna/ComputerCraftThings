@@ -1,6 +1,7 @@
 require '/ComputerCraftThings/library'
 
---If github is not installed run 'pastebin run p8PJVxC4'
+--Instal Github: 'pastebin run p8PJVxC4'        https://github.com/eric-wieser/computercraft-github
+--Initial install: 'wget run https://github.com/Alstro20/ComputerCraftThings/blob/master/update.lua'
 
 --Functions to update different computer types
 function updateComputer()
@@ -78,8 +79,7 @@ else
         --PC type not entered/Invalid entered. Canceling
         print("Canceling...")
         sleep(3)
-
-
-        
+        term.clear()
+        --NOTE: This should be the end of the code
     end
 end
