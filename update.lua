@@ -1,7 +1,7 @@
 require '/ComputerCraftThings/library'
 
 --Instal Github: 'pastebin run p8PJVxC4'        https://github.com/eric-wieser/computercraft-github
---Initial install: 'wget run https://github.com/Alstro20/ComputerCraftThings/blob/master/update.lua'
+--Initial install: 'wget run https://raw.githubusercontent.com/Alstro20/ComputerCraftThings/master/update.lua'
 
 --Functions to update different computer types
 function updateComputer()
