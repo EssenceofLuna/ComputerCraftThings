@@ -6,7 +6,7 @@ Things I have programmed in ComputerCraft, including branches for turtles and (s
 
 These scripts rely on this github script: https://github.com/eric-wieser/computercraft-github
 
-This is automatically installed in the update process, so simply run ```wget run https://raw.githubusercontent.com/Alstro20/ComputerCraftThings/master/update.lua```.
+This is automatically installed in the update process, so simply run ```wget run https://raw.githubusercontent.com/Alstro20/ComputerCraftThings/master/update.lua``` on any computer.
 
 This may pop up a few prompts, especially in first time installation.
 
