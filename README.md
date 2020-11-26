@@ -1,6 +1,6 @@
 # ComputerCraftThings
 
-Things I have programmed in ComputerCraft, including branches for turtles and (soon) PDA's. All of the scripts here are designed for [CC: Tweaked](https://www.curseforge.com/minecraft/mc-mods/cc-tweaked) and may not work on the original ComputerCraft.
+Things I have programmed in ComputerCraft, including branches for turtles and (soon) PDA's. All of the scripts here are designed for [CC: Tweaked](https://www.curseforge.com/minecraft/mc-mods/cc-tweaked) and may not work on the original ComputerCraft. Also, these have been designed in [FTB Revelation](https://www.curseforge.com/minecraft/modpacks/ftb-revelation) and you may run into problems when running other modpacks. If this is the case, please create an issue post (see Contributing/troubleshooting below).
 
 # Install Instructions
 
@@ -15,6 +15,8 @@ To update, simply run `update.lua` at any time.
 # Contributing/troubleshooting
 
 This repo is still very early in development. If you would like to contribute, feel free. If you find an issue or recommendation, feel free to post an issue, but please check to see if it's been posted yet. And if you want to contribute directly, feel free to make a pull request.
+
+When creating an issue post, please follow [this template](https://github.com/Alstro20/ComputerCraftThings/wiki/Issues-Template) when making a post.
 
 # FAQ
 
