@@ -1,6 +1,7 @@
 local SLOT_COUNT = 16
 
 --Unwanted items
+--TODO: Add settings command to edit what items to drop
 DROPPED_ITEMS = {
     "minecraft:stone",
     "minecraft:dirt",
