@@ -1,7 +1,8 @@
 require '/ComputerCraftThings/library'
 
 term.clear()
-print("Fuel level: "..turtle.getFuelLevel())
-print("Computer type: "..os.getComputerType())
+print("System Info")
 print("Computer ID: "..os.getComputerID())
+print("Github Branch: Master Branch")
+print("Computer type: "..os.getComputerType())
 print("Computer Label: "..os.getComputerLabel())
