@@ -173,7 +173,7 @@ end
     ]]--
 
 --Go forward with ground and gravel detection
-function turtle.goForward(distance)
+function turtle.moveForward(distance)
     if distance == nil then
         --If no distance specified, only run once
         distance = 1
@@ -218,7 +218,7 @@ function turtle.digForward(distance)
         --If no distance specified, only run once
         distance = 1
     end
-    
+
     for i=1,distance do
         --Refuel
         if(not checkFuel()) then
