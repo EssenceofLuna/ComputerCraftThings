@@ -57,7 +57,11 @@ function strip(stripDepth, stripCount)
         turtle.turnLeft()
         for i=1,stripDepth do
             turtle.forward()
-            turtle.dig()
+            while turtle.detect() do
+                print("Obstruction detected while returning!") --Debug
+                turtle.dig()
+                sleep(0.5)
+            end
             if(not checkFuel()) then
                 print("Out of fuel")
                 return
