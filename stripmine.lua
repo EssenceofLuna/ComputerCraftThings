@@ -9,6 +9,7 @@ function initialCheck()
 end
 
 function strip(stripDepth, stripCount)
+    manageInventory()
     for i=1,stripCount do
         for i=1,stripDepth do
             --dig
