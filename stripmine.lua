@@ -53,6 +53,7 @@ function strip(stripDepth, stripCount)
                     turtle.placeDown()
                 else
                     print("No cobblestone found. Not building floor.")
+                    return
                 end
             end
             turtle.forward()
