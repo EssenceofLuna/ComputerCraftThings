@@ -24,7 +24,7 @@ function strip(stripDepth, stripCount)
                 --Place torch every 10 blocks
                 local index = getTorchIndex()
                 if(index ~= nil) then
-                    --TODO: Torch placing is currently direction
+                    --TODO: Torch placing is currently directional
                     --Possible solution: Place on ground instead
                     --Possible solution: Go up, break block, go down and place torch
                     --print("Torch found. Placing...") --Debug
@@ -45,7 +45,6 @@ function strip(stripDepth, stripCount)
         turtle.digUp()
 
         manageInventory()
-        --TODO: Manage inventory regularly while mining strips
         print("Strip "..i.." of "..stripCount.." completed.")
         --Turtle finished a strip
         turtle.turnLeft()
@@ -87,9 +86,6 @@ function strip(stripDepth, stripCount)
     print("Turtle returned to start. Shutting down...")
 end
 
---TODO: Make this code work when asking for player input.
---Function strip() throws an error for some reason when using user input
---Maybe switch io.read() to read()?
 print("How many strips?")
 stripCount = tonumber(read())
 print("How deep are the strips?")

@@ -27,7 +27,7 @@ KEPT_ITEMS = {
     "minecraft:coal",
     "minecraft:coal_block",
     "minecraft:torch",
-    "enderstorage:ender_storage"
+    --"enderstorage:ender_storage" --Note: Don't need to keep echests unless you want more than 1
 }
 
 function dropItems()
@@ -117,4 +117,9 @@ function checkFuel()
     else
         return true
     end
+end
+
+--Moves turtle to specific coordinates
+function goto(xTarget, yTarget, zTarget)
+    
 end
