@@ -93,6 +93,7 @@ function strip(stripDepth, stripCount)
         end
     end
     turtle.turnRight()
+    manageInventory()
     print("Turtle returned to start. Shutting down...")
 end
 
