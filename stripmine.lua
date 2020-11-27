@@ -12,6 +12,16 @@ function strip(stripDepth, stripCount)
             turtle.dig()
             turtle.digUp()
             turtle.forward()
+            if i % 10 == 0 then
+                --Place torch every 10 blocks
+                local torchIndex = getTorchIndex()
+                if(index ~= nil) then
+                    turtle.select(index)
+                    turtle.digUp()      
+                    turtle.placeUp()  
+                end
+            end
+
         end
         turtle.digUp()
 
