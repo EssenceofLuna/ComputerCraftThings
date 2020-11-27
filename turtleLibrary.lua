@@ -51,6 +51,18 @@ function getEnderIndex()
     end
     return nil
 end
+
+function getTorchIndex()
+    for slot = 1, SLOT_COUNT, 1 do
+        local item = turtle.getItemDetail(slot)
+        if(item ~= nil) then
+            if(item["name"] == "minecraft:torch") then
+                return slot
+            end
+        end
+    end
+    return nil
+end
  
 function manageInventory()
     --Credit to Micheal Reeves
