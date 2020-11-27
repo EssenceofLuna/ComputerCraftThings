@@ -13,20 +13,20 @@ function strip(stripDepth, stripCount)
         for i=1,stripDepth do
             --dig
             if(not checkFuel()) then
-                print("Our of fuel")
+                print("Out of fuel")
                 return
             end
             turtle.dig()
             turtle.digUp()
             if i % 10 == 0 then
-                print("Attempting torch placement...") --Debug
+                --print("Attempting torch placement...") --Debug
                 --Place torch every 10 blocks
                 local index = getTorchIndex()
                 if(index ~= nil) then
                     --TODO: Torch placing is currently direction
                     --Possible solution: Place on ground instead
                     --Possible solution: Go up, break block, go down and place torch
-                    print("Torch found. Placing...") --Debug
+                    --print("Torch found. Placing...") --Debug
                     turtle.select(index)     
                     turtle.placeUp()
                     
@@ -41,12 +41,17 @@ function strip(stripDepth, stripCount)
         turtle.digUp()
 
         manageInventory()
-        print("Strip "..i.." of depth "..stripDepth.." returning....")
+        print("Strip "..i.." of "..stripCount.." completed.")
         --Turtle finished a strip
         turtle.turnLeft()
         turtle.turnLeft()
         for i=1,stripDepth do
             turtle.forward()
+            turtle.dig()
+            if(not checkFuel()) then
+                print("Out of fuel")
+                return
+            end
         end
 
         --turtle has returned to start
@@ -68,6 +73,10 @@ function strip(stripDepth, stripCount)
     local returnCount = (stripCount-1)*3 --How many blocks to travel to return to start
     for i=1,returnCount do
         turtle.forward()
+        if(not checkFuel()) then
+            print("Out of fuel")
+            return
+        end
     end
     turtle.turnRight()
     print("Turtle returned to start. Shutting down...")
