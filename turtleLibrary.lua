@@ -47,24 +47,38 @@ function dropItems()
     end
 end
 
-function getEnderIndex()
-    --Credit to Micheal Reeves
-    for slot = 1, SLOT_COUNT, 1 do
-        local item = turtle.getItemDetail(slot)
-        if(item ~= nil) then
-            if(item["name"] == "enderstorage:ender_storage") then
-                return slot
-            end
-        end
-    end
-    return nil
-end
+--OLD: Replaced by getItemIndex()
+-- function getEnderIndex()
+--     --Credit to Micheal Reeves
+--     for slot = 1, SLOT_COUNT, 1 do
+--         local item = turtle.getItemDetail(slot)
+--         if(item ~= nil) then
+--             if(item["name"] == "enderstorage:ender_storage") then
+--                 return slot
+--             end
+--         end
+--     end
+--     return nil
+-- end
 
-function getTorchIndex()
+--OLD: Replaced by getItemIndex()
+-- function getTorchIndex()
+--     for slot = 1, SLOT_COUNT, 1 do
+--         local item = turtle.getItemDetail(slot)
+--         if(item ~= nil) then
+--             if(item["name"] == "minecraft:torch") then
+--                 return slot
+--             end
+--         end
+--     end
+--     return nil
+-- end
+
+function getItemIndex(itemName))
     for slot = 1, SLOT_COUNT, 1 do
         local item = turtle.getItemDetail(slot)
         if(item ~= nil) then
-            if(item["name"] == "minecraft:torch") then
+            if(item["name"] == itemName) then
                 return slot
             end
         end
@@ -75,7 +89,7 @@ end
 function manageInventory()
     --Credit to Micheal Reeves
     dropItems()
-    index = getEnderIndex()
+    index = getItemIndex("enderstorage:ender_storage")
     if(index ~= nil) then
         turtle.select(index)
         turtle.digUp()      

@@ -22,7 +22,7 @@ function strip(stripDepth, stripCount)
             if i % 10 == 0 then
                 --print("Attempting torch placement...") --Debug
                 --Place torch every 10 blocks
-                local index = getTorchIndex()
+                local index = getItemIndex("minecraft:torch")
                 if(index ~= nil) then
                     --TODO: Torch placing is currently directional
                     --Possible solution: Place on ground instead
