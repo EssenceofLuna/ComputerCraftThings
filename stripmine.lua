@@ -69,12 +69,13 @@ function strip(stripDepth, stripCount)
         turtle.turnLeft()
         turtle.turnLeft()
         for i=1,stripDepth do
-            turtle.forward()
+            --TODO: Possible bug where turtle infinitely digs away from strip
             while turtle.detect() do
                 print("Obstruction detected while returning!") --Debug
                 turtle.dig()
                 sleep(0.5)
             end
+            turtle.forward()
             if(not checkFuel()) then
                 print("Out of fuel")
                 return
@@ -131,4 +132,4 @@ strip(stripDepth, stripCount)
 
 --TODO: Rewrite all movement to a move function, maybe mineForward(), that detects gravel and ground below
 
---TODO: Add settings for things like placing floor
+--TODO: Add settings for things like placing floor, placing torches, etc.

@@ -14,10 +14,10 @@ DROPPED_ITEMS = {
     "extrautils2:ingredients",
     "minecraft:dye",
     "thaumcraft:nugget",
-    "thaumcraft:crystal_essence",
-    "thermalfoundation:material",
+    --"thaumcraft:crystal_essence",
+    --"thermalfoundation:material",
     "projectred-core:resource_item",
-    "thaumcraft:ore_cinnabar",
+    --"thaumcraft:ore_cinnabar",
     "deepresonance:resonating_ore",
     "forestry:apatite"
 }
