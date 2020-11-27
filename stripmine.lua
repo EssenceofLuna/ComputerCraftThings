@@ -13,6 +13,7 @@ function strip(stripDepth, stripCount)
             turtle.digUp()
             turtle.forward()
             if i % 10 == 0 then
+                print("Attempting torch placement...") --Debug
                 --Place torch every 10 blocks
                 local torchIndex = getTorchIndex()
                 if(index ~= nil) then
