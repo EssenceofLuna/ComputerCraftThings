@@ -32,6 +32,14 @@ KEPT_ITEMS = {
 
 --TODO: Make a table of items to be used as building blocks like cobblestone
 
+--[[
+
+
+    TURTLE INVENTORY MANAGEMENT
+
+
+]]--
+
 function dropItems()
     --Credit to Micheal Reeves
     print("Purging Inventory...")
@@ -154,4 +162,48 @@ function goto(xTarget, yTarget, zTarget)
         --TODO: Figure out what to return when an error happens
         return
     end
+end
+
+--[[
+
+
+    TURTLE MOVEMENT
+
+
+]]--
+
+function turtle.digForward()
+    --Refuel
+    if(not checkFuel()) then
+        print("Out of fuel")
+        return
+    end
+
+    turtle.dig()
+    turtle.digUp()
+
+    --Ground detection
+    if turtle.detectDown() ~= true then
+        --print("No floor detected. Solving...") --Debug
+        --Find a block to be used
+        if getItemIndex("minecraft:cobblestone") ~= nil then
+            --Place ground using cobblestone
+            local blockIndex = getItemIndex("minecraft:cobblestone")
+            turtle.select(blockIndex)
+            turtle.placeDown()
+        else
+            print("No cobblestone found. Not building floor.")
+        end
+    end
+
+    --Sand/Gravel handler
+    while turtle.detect() do
+        print("GRAVEL DETECTED!") --Debug
+        turtle.dig()
+        sleep(0.5)
+    end
+
+    --Move forward once all checks are done
+    turtle.forward()
+
 end

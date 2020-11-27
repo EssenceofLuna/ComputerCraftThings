@@ -12,13 +12,14 @@ function strip(stripDepth, stripCount)
     manageInventory()
     for i=1,stripCount do
         for i=1,stripDepth do
+            turtle.digForward()
             --dig
-            if(not checkFuel()) then
-                print("Out of fuel")
-                return
-            end
-            turtle.dig()
-            turtle.digUp()
+            -- if(not checkFuel()) then
+            --     print("Out of fuel")
+            --     return
+            -- end
+            -- turtle.dig()
+            -- turtle.digUp()
             --Torch placement
             if i % 10 == 0 then
                 --print("Attempting torch placement...") --Debug
@@ -37,25 +38,26 @@ function strip(stripDepth, stripCount)
                     print("Error placing torch: Torch not found") --Debug
                 end
             end
-            while turtle.detect() do
-                --Sand/Gravel handler
-                print("GRAVEL DETECTED!") --Debug
-                turtle.dig()
-                sleep(0.5)
-            end
-            if turtle.detectDown() ~= true then
-                print("No floor detected. Solving...") --Debug
-                --Find a block to be used
-                if getItemIndex("minecraft:cobblestone") ~= nil then
-                    --Place ground using cobblestone
-                    local blockIndex = getItemIndex("minecraft:cobblestone")
-                    turtle.select(blockIndex)
-                    turtle.placeDown()
-                else
-                    print("No cobblestone found. Not building floor.")
-                end
-            end
-            turtle.forward()
+            -- while turtle.detect() do
+            --     --Sand/Gravel handler
+            --     print("GRAVEL DETECTED!") --Debug
+            --     turtle.dig()
+            --     sleep(0.5)
+            -- end
+            -- if turtle.detectDown() ~= true then
+            --     print("No floor detected. Solving...") --Debug
+            --     --Find a block to be used
+            --     if getItemIndex("minecraft:cobblestone") ~= nil then
+            --         --Place ground using cobblestone
+            --         local blockIndex = getItemIndex("minecraft:cobblestone")
+            --         turtle.select(blockIndex)
+            --         turtle.placeDown()
+            --     else
+            --         print("No cobblestone found. Not building floor.")
+            --     end
+            -- end
+
+            -- turtle.forward()
             --manage inventory every 30 blocks
             if i % 30 == 0 then
                 manageInventory()
