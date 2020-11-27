@@ -1,5 +1,11 @@
-local SLOT_COUNT = 16
+local SLOT_COUNT = 16 --should always be 16
+--[[
+   
 
+    SETTINGS
+
+
+]]--
 autoPlaceFloor = true
 
 --TODO: Add settings command to edit what items to drop
