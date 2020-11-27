@@ -1,7 +1,7 @@
 local SLOT_COUNT = 16
 
---Unwanted items
 --TODO: Add settings command to edit what items to drop
+--Unwanted items
 DROPPED_ITEMS = {
     "minecraft:stone",
     "minecraft:dirt",
@@ -22,6 +22,7 @@ DROPPED_ITEMS = {
     "forestry:apatite"
 }
 
+--Items to be kept in the turtle's inventory
 KEPT_ITEMS = {
     "minecraft:coal",
     "minecraft:coal_block",
