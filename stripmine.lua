@@ -39,7 +39,7 @@ function strip(stripDepth, stripCount)
                 end
             end
             turtle.digForward()
-            
+
             -- while turtle.detect() do
             --     --Sand/Gravel handler
             --     print("GRAVEL DETECTED!") --Debug
@@ -72,35 +72,39 @@ function strip(stripDepth, stripCount)
         --Turtle finished a strip
         turtle.turnLeft()
         turtle.turnLeft()
-        for i=1,stripDepth do
-            --TODO: Possible bug where turtle infinitely digs away from strip
-            while turtle.detect() do
-                print("Obstruction detected while returning!") --Debug
-                turtle.dig()
-                sleep(0.5)
-            end
-            turtle.forward()
-            if(not checkFuel()) then
-                print("Out of fuel")
-                return
-            end
-        end
+        turtle.moveForward(stripDepth)
+        -- for i=1,stripDepth do
+        --     --TODO: Possible bug where turtle infinitely digs away from strip
+        --     while turtle.detect() do
+        --         print("Obstruction detected while returning!") --Debug
+        --         turtle.dig()
+        --         sleep(0.5)
+        --     end
+
+        --     turtle.forward()
+            
+        --     if(not checkFuel()) then
+        --         print("Out of fuel")
+        --         return
+        --     end
+        -- end
 
         --turtle has returned to start
         if i < stripCount then
             --move to next mine
             turtle.turnLeft()
-            for i=1,3 do
-                turtle.dig()
-                while turtle.detect() do
-                    --Sand/Gravel handler
-                    print("GRAVEL DETECTED!") --Debug
-                    turtle.dig()
-                    sleep(0.5)
-                end
-                turtle.forward()
-                turtle.digUp()
-            end
+            turtle.moveForward(3)
+            -- for i=1,3 do
+            --     turtle.dig()
+            --     while turtle.detect() do
+            --         --Sand/Gravel handler
+            --         print("GRAVEL DETECTED!") --Debug
+            --         turtle.dig()
+            --         sleep(0.5)
+            --     end
+            --     turtle.forward()
+            --     turtle.digUp()
+            -- end
             turtle.turnLeft()
         end
     end
@@ -137,3 +141,5 @@ strip(stripDepth, stripCount)
 --TODO: Rewrite all movement to a move function, maybe mineForward(), that detects gravel and ground below
 
 --TODO: Add settings for things like placing floor, placing torches, etc.
+
+--TODO: Add a check for stripCount and stripDepth to be numbers. Maybe a while loop until a number is entered

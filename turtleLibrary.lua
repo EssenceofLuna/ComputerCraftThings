@@ -170,40 +170,87 @@ end
     TURTLE MOVEMENT
 
 
-]]--
+    ]]--
 
-function turtle.digForward()
-    --Refuel
-    if(not checkFuel()) then
-        print("Out of fuel")
-        return
+--Go forward with ground and gravel detection
+function turtle.goForward(distance)
+    if distance == nil then
+        --If no distance specified, only run once
+        distance = 1
     end
-
-    turtle.dig()
     
-    --Ground detection
-    if turtle.detectDown() ~= true then
-        --print("No floor detected. Solving...") --Debug
-        --Find a block to be used
-        if getItemIndex("minecraft:cobblestone") ~= nil then
-            --Place ground using cobblestone
-            local blockIndex = getItemIndex("minecraft:cobblestone")
-            turtle.select(blockIndex)
-            turtle.placeDown()
-        else
-            print("No cobblestone found. Not building floor.")
+    for i=1,distance do
+        --Refuel
+        if(not checkFuel()) then
+            print("Out of fuel")
+            return
         end
+        
+        --Ground detection
+        if turtle.detectDown() ~= true then
+            --print("No floor detected. Solving...") --Debug
+            --Find a block to be used
+            if getItemIndex("minecraft:cobblestone") ~= nil then
+                --Place ground using cobblestone
+                local blockIndex = getItemIndex("minecraft:cobblestone")
+                turtle.select(blockIndex)
+                turtle.placeDown()
+            else
+                print("No cobblestone found. Not building floor.")
+            end
+        end
+        
+        --Sand/Gravel handler
+        while turtle.detect() do
+            print("GRAVEL DETECTED!") --Debug
+            turtle.dig()
+            sleep(0.5)
+        end
+        
+        --Move forward once all checks are done, then dig up
+        turtle.forward()
+    end
+end
+
+--Same as turtle.goForward, but digs a tunnel as it goes
+function turtle.digForward(distance)
+    if distance == nil then
+        --If no distance specified, only run once
+        distance = 1
     end
     
-    --Sand/Gravel handler
-    while turtle.detect() do
-        print("GRAVEL DETECTED!") --Debug
+    for i=1,distance do
+        --Refuel
+        if(not checkFuel()) then
+            print("Out of fuel")
+            return
+        end
+
         turtle.dig()
-        sleep(0.5)
+        
+        --Ground detection
+        if turtle.detectDown() ~= true then
+            --print("No floor detected. Solving...") --Debug
+            --Find a block to be used
+            if getItemIndex("minecraft:cobblestone") ~= nil then
+                --Place ground using cobblestone
+                local blockIndex = getItemIndex("minecraft:cobblestone")
+                turtle.select(blockIndex)
+                turtle.placeDown()
+            else
+                print("No cobblestone found. Not building floor.")
+            end
+        end
+        
+        --Sand/Gravel handler
+        while turtle.detect() do
+            print("GRAVEL DETECTED!") --Debug
+            turtle.dig()
+            sleep(0.5)
+        end
+        
+        --Move forward once all checks are done, then dig up
+        turtle.forward()
+        turtle.digUp()
     end
-    
-    --Move forward once all checks are done, then dig up
-    turtle.forward()
-    turtle.digUp()
-    
 end
