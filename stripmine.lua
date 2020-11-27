@@ -20,7 +20,7 @@ function strip(stripDepth, stripCount)
                     print("Torch found. Placing...") --Debug
                     turtle.select(index)
                     turtle.digUp()      
-                    turtle.placeUp()  
+                    turtle.place()  
                 end
             end
 
