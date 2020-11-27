@@ -1,7 +1,25 @@
-require '/ComputerCraftThings/library'
+-- require '/ComputerCraftThings/library' --Removed to make update.lua seperate from all other scripts.
 
 --Instal Github: 'pastebin run p8PJVxC4'        https://github.com/eric-wieser/computercraft-github
---Initial install: 'wget run https://github.com/Alstro20/ComputerCraftThings/blob/master/update.lua'
+--Initial install: 'wget run https://raw.githubusercontent.com/Alstro20/ComputerCraftThings/master/update.lua'
+
+
+--Returns the type of computer as a string
+function os.getComputerType()
+    local ret = {}
+    
+    if term.isColor() then
+        table.insert(ret, "advanced")
+    end
+    if pocket then
+        table.insert(ret, "pda")
+    elseif turtle then
+        table.insert(ret, "turtle")
+    else
+        table.insert(ret, "computer")
+    end
+    return table.concat(ret, "_")
+end
 
 --Functions to update different computer types
 function updateComputer()
@@ -28,6 +46,26 @@ function updatePDA()
 end
 
 term.clear()
+
+--Checks if github is installed
+if fs.exists("github") and fs.exists("github.rom") then
+    --Do nothing.
+else
+    --github installation process
+
+    print("Warning: Github not found. Github is required to use this script")
+    print("Press any key to install github, or hold CTRL+T to cancel.")
+    sleep(2)
+    os.pullEvent("key")
+
+    --download and instal github
+    shell.run("pastebin run p8PJVxC4")
+    term.clear()
+    print("Github has been installed. Press any key to continue.")
+    os.pullEvent("key")
+    term.clear()
+end
+
 print("Updating from github")
 
 --Store the computer's type as a string
@@ -69,16 +107,17 @@ else
     print("3) PDA")
 
     local continueInput = io.read()
-    if continueInput == 1 then
+    
+    if continueInput == '1' then
         updateComputer()
-    elseif continueInput == 2 then
+    elseif continueInput == '2' then
         updateTurtle()
-    elseif continueInput == 3 then
+    elseif continueInput == '3' then
         updatePDA()
     else
         --PC type not entered/Invalid entered. Canceling
-        print("Canceling...")
-        sleep(3)
+        print("Canceled. Press any key to exit")
+        os.pullEvent("key")
         term.clear()
         --NOTE: This should be the end of the code
     end
