@@ -15,7 +15,7 @@ function strip(stripDepth, stripCount)
         end
         turtle.digUp()
 
-        manageInventory()
+        --manageInventory()
         print("Strip of depth "..stripDepth.." returning....")
         --Turtle finished a strip
         turtle.turnLeft()
