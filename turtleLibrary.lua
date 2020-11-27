@@ -74,7 +74,7 @@ end
 --     return nil
 -- end
 
-function getItemIndex(itemName))
+function getItemIndex(itemName)
     for slot = 1, SLOT_COUNT, 1 do
         local item = turtle.getItemDetail(slot)
         if(item ~= nil) then
