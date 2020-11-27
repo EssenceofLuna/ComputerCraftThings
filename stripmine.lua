@@ -18,6 +18,7 @@ function strip(stripDepth, stripCount)
             end
             turtle.dig()
             turtle.digUp()
+            --Torch placement
             if i % 10 == 0 then
                 --print("Attempting torch placement...") --Debug
                 --Place torch every 10 blocks
@@ -36,7 +37,10 @@ function strip(stripDepth, stripCount)
                 end
             end
             turtle.forward()
-
+            --manage inventory every 30 blocks
+            if i % 30 == 0 then
+                manageInventory()
+            end
         end
         turtle.digUp()
 
