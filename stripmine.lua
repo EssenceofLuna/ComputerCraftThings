@@ -38,6 +38,7 @@ function strip(stripDepth, stripCount)
             end
             while turtle.detect() do
                 --Sand/Gravel handler
+                print("GRAVEL DETECTED!") --Debug
                 turtle.dig()
                 sleep(0.5)
             end
@@ -49,7 +50,7 @@ function strip(stripDepth, stripCount)
         end
         turtle.digUp()
 
-        manageInventory()
+        --manageInventory() --Not sure if needed
         print("Strip "..i.." of "..stripCount.." completed.")
         --Turtle finished a strip
         turtle.turnLeft()
