@@ -23,10 +23,15 @@ function tableLength(T)
     local count = 0
     for _ in pairs(T) do count = count + 1 end
     return count
-  end
+end
+
+--Returns true it table contains item
+function tableContains(table, item)
+    return set[key] ~= nil
+end
   
   --Returns the type of computer as a table
-  function os.getComputerType()
+function os.getComputerType()
     local ret = {}
 
     if term.isColor() then

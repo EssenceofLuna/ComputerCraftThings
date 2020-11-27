@@ -86,16 +86,15 @@ function manageInventory()
     for slot = 1, SLOT_COUNT, 1 do
         local item = turtle.getItemDetail(slot)
         if(item ~= nil) then
-            for filterIndex = 1, #KEPT_ITEMS, 1 do
-                if(item["name"] ~= KEPT_ITEMS[filterIndex]) then
-                    --TODO: Limit how much fuel to keep on hand at one time
-                    print("Storing - " .. item["name"])
-                    turtle.select(slot)
-                    turtle.dropUp()
-                end
+            if tableContains(KEPT_ITEMS) == false then
+                --TODO: Limit how much fuel to keep on hand at one time
+                print("Storing - " .. item["name"])
+                turtle.select(slot)
+                turtle.dropUp()
             end
         end
     end
+
     -- Items are now stored
  
     turtle.digUp()
