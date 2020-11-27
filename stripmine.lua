@@ -2,8 +2,8 @@ require '/ComputerCraftThings/library'
 require '/ComputerCraftThings/turtleLibrary'
 
 function strip(stripDepth, stripCount)
-    for i=1,stripDepth do
-        for i=1,stripCount do
+    for i=1,stripCount do
+        for i=1,stripDepth do
             --dig
             if(not checkFuel()) then
                 print("Our of fuel")
@@ -15,7 +15,7 @@ function strip(stripDepth, stripCount)
         end
         turtle.digUp()
 
-        --manageInventory()
+        manageInventory()
         print("Strip of depth "..stripDepth.." returning....")
         --Turtle finished a strip
         turtle.turnLeft()
