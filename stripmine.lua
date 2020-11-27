@@ -11,7 +11,6 @@ function strip(stripDepth, stripCount)
             end
             turtle.dig()
             turtle.digUp()
-            turtle.forward()
             if i % 10 == 0 then
                 print("Attempting torch placement...") --Debug
                 --Place torch every 10 blocks
@@ -19,13 +18,14 @@ function strip(stripDepth, stripCount)
                 if(index ~= nil) then
                     print("Torch found. Placing...") --Debug
                     turtle.select(index)     
-                    turtle.place()
+                    turtle.placeUp()
                     
                 else
                     --No torch found
                     print("Error placing torch: Torch not found") --Debug
                 end
             end
+            turtle.forward()
 
         end
         turtle.digUp()
