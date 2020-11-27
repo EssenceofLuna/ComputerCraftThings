@@ -41,6 +41,7 @@ function strip(stripDepth, stripCount)
         turtle.digUp()
 
         manageInventory()
+        --TODO: Manage inventory regularly while mining strips
         print("Strip "..i.." of "..stripCount.." completed.")
         --Turtle finished a strip
         turtle.turnLeft()
