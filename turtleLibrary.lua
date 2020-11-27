@@ -121,5 +121,21 @@ end
 
 --Moves turtle to specific coordinates
 function goto(xTarget, yTarget, zTarget)
-    
+    --TODO: Finish this
+    --Need to figure out which way turtle is facing before moving more
+    local x, y, z = gps.locate()
+    if x ~= nil then
+        --Move up or down to match Y level
+        while y>yTarget do
+            turtle.up()
+            y = y + 1
+        end
+        while y<yTarget do
+            turtle.down()
+            y = y - 1
+        end
+    else
+        --TODO: Figure out what to return when an error happens
+        return
+    end
 end

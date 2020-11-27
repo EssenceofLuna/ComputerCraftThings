@@ -36,6 +36,11 @@ function strip(stripDepth, stripCount)
                     print("Error placing torch: Torch not found") --Debug
                 end
             end
+            while turtle.detect() do
+                --Sand/Gravel handler
+                turtle.dig()
+                sleep(0.5)
+            end
             turtle.forward()
             --manage inventory every 30 blocks
             if i % 30 == 0 then
