@@ -85,7 +85,7 @@ function manageInventory()
     for slot = 1, SLOT_COUNT, 1 do
         local item = turtle.getItemDetail(slot)
         if(item ~= nil) then
-            if tableContains(KEPT_ITEMS) == true then
+            if tableContains(KEPT_ITEMS, item) == true then
                 --TODO: Limit how much fuel to keep on hand at one time
                 print("Storing - " .. item["name"])
                 turtle.select(slot)
