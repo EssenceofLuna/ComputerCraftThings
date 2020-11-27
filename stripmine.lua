@@ -43,7 +43,7 @@ function strip(stripDepth, stripCount)
                 turtle.dig()
                 sleep(0.5)
             end
-            while turtle.detectDown() ~= true do
+            if turtle.detectDown() ~= true then
                 print("No floor detected. Solving...") --Debug
                 --Find a block to be used
                 if getItemIndex("minecraft:cobblestone") ~= nil then
@@ -53,7 +53,6 @@ function strip(stripDepth, stripCount)
                     turtle.placeDown()
                 else
                     print("No cobblestone found. Not building floor.")
-                    return
                 end
             end
             turtle.forward()
