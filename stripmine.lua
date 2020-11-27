@@ -145,3 +145,5 @@ strip(stripDepth, stripCount)
 --TODO: Add a check for stripCount and stripDepth to be numbers. Maybe a while loop until a number is entered
 
 --TODO: Decide what info to print during and at the end of mining
+
+--TODO: Stress test this code, then  remove old commented-out code

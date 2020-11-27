@@ -1,5 +1,7 @@
 local SLOT_COUNT = 16
 
+autoPlaceFloor = true
+
 --TODO: Add settings command to edit what items to drop
 --Unwanted items
 DROPPED_ITEMS = {
@@ -170,7 +172,30 @@ end
     TURTLE MOVEMENT
 
 
-    ]]--
+]]--
+
+--Function to check if ground is below turtle, and place block is no ground found
+--NOTE: autoPlaceFloor must be set to true for floor to be placed
+function turtle.groundCheck(block)
+    if block == nil then
+        --If no block specified, then use cobblestone
+        block = "minecraft:cobblestone"
+    end
+
+    --Ground detection
+    if turtle.detectDown() ~= true and autoPlaceFloor == true then
+        --print("No floor detected. Solving...") --Debug
+        --Find a block to be used
+        if getItemIndex(block) ~= nil then
+            --Place ground using cobblestone
+            local blockIndex = getItemIndex(block)
+            turtle.select(blockIndex)
+            turtle.placeDown()
+        else
+            print("No "..block.." found. Not building floor.")
+        end
+    end
+end
 
 --Go forward with ground and gravel detection
 function turtle.moveForward(distance)
@@ -186,19 +211,7 @@ function turtle.moveForward(distance)
             return
         end
         
-        --Ground detection
-        if turtle.detectDown() ~= true then
-            --print("No floor detected. Solving...") --Debug
-            --Find a block to be used
-            if getItemIndex("minecraft:cobblestone") ~= nil then
-                --Place ground using cobblestone
-                local blockIndex = getItemIndex("minecraft:cobblestone")
-                turtle.select(blockIndex)
-                turtle.placeDown()
-            else
-                print("No cobblestone found. Not building floor.")
-            end
-        end
+        turtle.groundCheck()
         
         --Sand/Gravel handler
         while turtle.detect() do
@@ -228,19 +241,7 @@ function turtle.digForward(distance)
 
         turtle.dig()
         
-        --Ground detection
-        if turtle.detectDown() ~= true then
-            --print("No floor detected. Solving...") --Debug
-            --Find a block to be used
-            if getItemIndex("minecraft:cobblestone") ~= nil then
-                --Place ground using cobblestone
-                local blockIndex = getItemIndex("minecraft:cobblestone")
-                turtle.select(blockIndex)
-                turtle.placeDown()
-            else
-                print("No cobblestone found. Not building floor.")
-            end
-        end
+        turtle.groundCheck()
         
         --Sand/Gravel handler
         while turtle.detect() do
