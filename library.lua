@@ -26,8 +26,14 @@ function tableLength(T)
 end
 
 --Returns true it table contains item
-function tableContains(table, item)
-    return table[item] ~= nil
+function tableContains (tab, val)
+    for index, value in ipairs(tab) do
+        if value == val then
+            return true
+        end
+    end
+
+    return false
 end
   
   --Returns the type of computer as a table
