@@ -1,6 +1,6 @@
 require '/ComputerCraftThings/library'
 
-local x, y, z = gps.locate()
+local x, y, z = gps.locate(5)
 
 term.clear()
 print("System Info")
