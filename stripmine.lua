@@ -18,9 +18,12 @@ function strip(stripDepth, stripCount)
                 local torchIndex = getTorchIndex()
                 if(index ~= nil) then
                     print("Torch found. Placing...") --Debug
-                    turtle.select(index)
-                    turtle.digUp()      
-                    turtle.place()  
+                    turtle.select(index)     
+                    turtle.place()
+                    
+                else
+                    --No torch found
+                    print("Error placing torch: Torch not found") --Debug
                 end
             end
 

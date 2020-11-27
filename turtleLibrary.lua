@@ -66,6 +66,7 @@ end
  
 function manageInventory()
     --Credit to Micheal Reeves
+    --TODO: Create a list of items to keep, rather than hard coding it here
     dropItems()
     index = getEnderIndex()
     if(index ~= nil) then
