@@ -48,6 +48,7 @@ KEPT_ITEMS = {
 
 ]]--
 
+--TODO: Keep 1 stack of cobblestone if autoPlaceFloor is true
 function dropItems()
     --Credit to Micheal Reeves
     print("Purging Inventory...")
