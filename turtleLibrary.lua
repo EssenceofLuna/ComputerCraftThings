@@ -30,6 +30,8 @@ KEPT_ITEMS = {
     --"enderstorage:ender_storage" --Note: Don't need to keep echests unless you want more than 1
 }
 
+--TODO: Make a table of items to be used as building blocks like cobblestone
+
 function dropItems()
     --Credit to Micheal Reeves
     print("Purging Inventory...")
