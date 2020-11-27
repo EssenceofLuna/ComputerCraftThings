@@ -27,7 +27,7 @@ end
 
 --Returns true it table contains item
 function tableContains(table, item)
-    return set[key] ~= nil
+    return table[item] ~= nil
 end
   
   --Returns the type of computer as a table
