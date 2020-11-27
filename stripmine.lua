@@ -87,6 +87,12 @@ function strip(stripDepth, stripCount)
             turtle.turnLeft()
             for i=1,3 do
                 turtle.dig()
+                while turtle.detect() do
+                    --Sand/Gravel handler
+                    print("GRAVEL DETECTED!") --Debug
+                    turtle.dig()
+                    sleep(0.5)
+                end
                 turtle.forward()
                 turtle.digUp()
             end
@@ -120,3 +126,9 @@ print("Mining...")
 strip(stripDepth, stripCount)
 --TODO: Once code is finished, stress test to find places where it can run out of fuel and add a fuel check there
 --I expect to find one when returning when mining is finished
+
+--TODO: The starts of the strips are dark. Need to make it place torches at the start of every few strips
+
+--TODO: Rewrite all movement to a move function, maybe mineForward(), that detects gravel and ground below
+
+--TODO: Add settings for things like placing floor
