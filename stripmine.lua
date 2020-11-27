@@ -63,7 +63,7 @@ function strip(stripDepth, stripCount)
                 manageInventory()
             end
         end
-        turtle.digUp()
+        -- turtle.digUp()
 
         --manageInventory() --Not sure if needed
         print("Strip "..i.." of "..stripCount.." completed.")
