@@ -23,6 +23,9 @@ function strip(stripDepth, stripCount)
                 --Place torch every 10 blocks
                 local index = getTorchIndex()
                 if(index ~= nil) then
+                    --TODO: Torch placing is currently direction
+                    --Possible solution: Place on ground instead
+                    --Possible solution: Go up, break block, go down and place torch
                     print("Torch found. Placing...") --Debug
                     turtle.select(index)     
                     turtle.placeUp()
