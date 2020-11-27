@@ -52,7 +52,7 @@ end
 --Function strip() throws an error for some reason when using user input
 --Maybe switch io.read() to read()?
 print("How many strips?")
-sctripCount = tonumber(read())
+stripCount = tonumber(read())
 print("How deep are the strips?")
 stripDepth = tonumber(read())
 print("Mining...")
