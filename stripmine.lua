@@ -12,7 +12,6 @@ function strip(stripDepth, stripCount)
     manageInventory()
     for i=1,stripCount do
         for i=1,stripDepth do
-            turtle.digForward()
             --dig
             -- if(not checkFuel()) then
             --     print("Out of fuel")
@@ -20,6 +19,7 @@ function strip(stripDepth, stripCount)
             -- end
             -- turtle.dig()
             -- turtle.digUp()
+
             --Torch placement
             if i % 10 == 0 then
                 --print("Attempting torch placement...") --Debug
@@ -38,6 +38,8 @@ function strip(stripDepth, stripCount)
                     print("Error placing torch: Torch not found") --Debug
                 end
             end
+            turtle.digForward()
+            
             -- while turtle.detect() do
             --     --Sand/Gravel handler
             --     print("GRAVEL DETECTED!") --Debug

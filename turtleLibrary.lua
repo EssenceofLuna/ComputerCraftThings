@@ -180,8 +180,7 @@ function turtle.digForward()
     end
 
     turtle.dig()
-    turtle.digUp()
-
+    
     --Ground detection
     if turtle.detectDown() ~= true then
         --print("No floor detected. Solving...") --Debug
@@ -195,15 +194,16 @@ function turtle.digForward()
             print("No cobblestone found. Not building floor.")
         end
     end
-
+    
     --Sand/Gravel handler
     while turtle.detect() do
         print("GRAVEL DETECTED!") --Debug
         turtle.dig()
         sleep(0.5)
     end
-
-    --Move forward once all checks are done
+    
+    --Move forward once all checks are done, then dig up
     turtle.forward()
-
+    turtle.digUp()
+    
 end
