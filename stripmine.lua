@@ -1,6 +1,13 @@
 require '/ComputerCraftThings/library'
 require '/ComputerCraftThings/turtleLibrary'
 
+function initialCheck()
+    --TODO: Write this
+    --Function that checks for fuel, ender chest, and torches.
+    --If no torches, warn user that it will be dark and ask to continue
+    --If no Echest/fuel, throw error and cancel. Maybe error() idk
+end
+
 function strip(stripDepth, stripCount)
     for i=1,stripCount do
         for i=1,stripDepth do
