@@ -15,7 +15,7 @@ function strip(stripDepth, stripCount)
             if i % 10 == 0 then
                 print("Attempting torch placement...") --Debug
                 --Place torch every 10 blocks
-                local torchIndex = getTorchIndex()
+                local index = getTorchIndex()
                 if(index ~= nil) then
                     print("Torch found. Placing...") --Debug
                     turtle.select(index)     

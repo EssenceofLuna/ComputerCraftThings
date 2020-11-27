@@ -22,6 +22,13 @@ DROPPED_ITEMS = {
     "forestry:apatite"
 }
 
+KEPT_ITEMS = {
+    "minecraft:coal",
+    "minecraft:coal_block",
+    "minecraft:torch",
+    "enderstorage:ender_storage"
+}
+
 function dropItems()
     --Credit to Micheal Reeves
     print("Purging Inventory...")
