@@ -15,7 +15,7 @@ function excavate(depth, width)
         if columns == 1 then
             depth = depth - 1
         end
-        
+
         turtle.turnRight()
         turtle.turnRight()
         turtle.moveForward(depth)
@@ -37,4 +37,20 @@ function excavate(depth, width)
 
 end
 
-excavate(5, 5)
+-- print("How many strips?")
+-- stripCount = tonumber(read())
+-- print("How deep are the strips?")
+-- stripDepth = tonumber(read())
+-- print("Mining...")
+term.clear()
+print("Enter depth and width of excavation (in front of turtle)")
+print("Enter Depth")
+depth = tonumber(read())
+term.clear()
+print("Enter depth and width of excavation (in front of turtle)")
+print ("Enter width (to right)")
+width = tonumber(read())
+term.clear()
+print("Excavation started")
+
+excavate(depth, width)
