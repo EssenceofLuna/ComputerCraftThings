@@ -17,7 +17,7 @@ require '/ComputerCraftThings/library'
 --     print("Error: Corrdinates not obtained.")
 -- end
 
-print(table.conct(turtle.inspect()))
+print(table.concat(turtle.inspect()))
 if turtle.inspect() == "minecraft:cobblestone" then
     turtle.dig()
 end 
