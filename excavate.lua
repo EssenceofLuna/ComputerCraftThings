@@ -16,11 +16,16 @@ function excavate(depth, width)
         turtle.turnRight()
         turtle.moveForward(depth)
 
-        --Turn to next row
-        turtle.turnLeft()
-        turtle.digForward()
-        turtle.turnLeft()
+        if i ~= width then
+            --Turn to next row
+            turtle.turnLeft()
+            turtle.digForward()
+            turtle.turnLeft()
+        end
     end
+    turtle.turnRight()
+    turtle.moveForward(width)
+    turtle.turnRight()
 end
 
 excavate(10, 5)
