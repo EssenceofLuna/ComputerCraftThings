@@ -54,3 +54,6 @@ term.clear()
 print("Excavation started")
 
 excavate(depth, width)
+
+term.clear()
+print("Excavation of "..depth.."x"..width.." complete.")
