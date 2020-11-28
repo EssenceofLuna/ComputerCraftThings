@@ -4,7 +4,6 @@ require '/ComputerCraftThings/turtleLibrary'
 function excavate(depth, width)
     manageInventory()
     for i=1,width do
-        manageInventory()
         for i=1,depth do
             --manage inventory every 30 blocks
             if i % 30 == 0 then
@@ -15,7 +14,8 @@ function excavate(depth, width)
         turtle.turnRight()
         turtle.turnRight()
         turtle.moveForward(depth)
-
+        manageInventory()
+        
         if i ~= width then
             --Turn to next row
             turtle.turnLeft()

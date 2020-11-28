@@ -355,9 +355,9 @@ function turtle.digForward(distance)
             return
         end
 
-        turtle.dig()
-        
         turtle.groundCheck()
+        
+        turtle.dig()
         
         --Sand/Gravel handler
         while turtle.detect() do
