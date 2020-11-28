@@ -12,6 +12,10 @@ function excavate(depth, width)
             turtle.digForward()
         end
         
+        if columns == 1 then
+            depth = depth - 1
+        end
+        
         turtle.turnRight()
         turtle.turnRight()
         turtle.moveForward(depth)
@@ -31,9 +35,6 @@ function excavate(depth, width)
     turtle.moveForward(width-1)
     turtle.turnRight()
 
-    if columns == 1 then
-        depth = depth - 1
-    end
 end
 
 excavate(5, 5)
