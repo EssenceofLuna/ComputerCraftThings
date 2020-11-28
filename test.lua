@@ -20,6 +20,6 @@ require '/ComputerCraftThings/turtleLibrary'
 
 print(getBlockName())
 if tableContains(ORES, getBlockName()) then
-    print("Ore found. Breaking")
+    print("Ore found. Breaking") --Debug
     turtle.dig()
 end
