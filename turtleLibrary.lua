@@ -49,13 +49,10 @@ ORES = {
     "minecraft:emerald_ore",
     "minecraft:lapis_ore",
     "minecraft:quartz_ore",
-
     --Thermal Foundation
     "thermalfoundation:ore",
-
     --Railcraft
     "railcraft:ore_metal",
-
     --Draconic Evolution
     "draconicevolution:draconium_ore",
     "draconicevolution:draconium_ore:1",
