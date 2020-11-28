@@ -47,7 +47,8 @@ ORES = {
     "minecraft:redstone_ore",
     "minecraft:emerald_ore",
     "minecraft:lapis_ore",
-    "minecraft:quartz_ore"
+    "minecraft:quartz_ore",
+    "thermalfoundation:ore"
 }
 
 --TODO: Make a table of items to be used as building blocks like cobblestone
