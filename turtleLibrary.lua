@@ -38,6 +38,18 @@ KEPT_ITEMS = {
     --"enderstorage:ender_storage" --Note: Don't need to keep echests unless you want more than 1
 }
 
+--TODO: Add a settings menu to allow adding ores
+ORES = {
+    "minecraft:coal_ore",
+    "minecraft:iron_ore",
+    "minecraft:gold_ore",
+    "minecraft:diamond_ore",
+    "minecraft:redstone_ore",
+    "minecraft:emerald_ore",
+    "minecraft:lapis_ore",
+    "minecraft:quartz_ore"
+}
+
 --TODO: Make a table of items to be used as building blocks like cobblestone
 
 --[[

@@ -19,6 +19,7 @@ require '/ComputerCraftThings/turtleLibrary'
 -- end
 
 print(getBlockName())
-if getBlockName() == "minecraft:stone" then
+if tableContains(ORES, getBlockName()) then
+    print("Ore found. Breaking")
     turtle.dig()
 end
