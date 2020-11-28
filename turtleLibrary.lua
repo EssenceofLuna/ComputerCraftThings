@@ -51,8 +51,36 @@ ORES = {
     "minecraft:quartz_ore",
     --Thermal Foundation
     "thermalfoundation:ore",
+    "thermalfoundation:ore:1",
+    "thermalfoundation:ore:2",
+    "thermalfoundation:ore:3",
+    "thermalfoundation:ore:4",
+    "thermalfoundation:ore:5",
+    "thermalfoundation:ore:6",
+    "thermalfoundation:ore:7",
+    "thermalfoundation:ore:8",
+    "thermalfoundation:ore_fluid",
+    "thermalfoundation:ore_fluid:1",
+    "thermalfoundation:ore_fluid:2",
+    "thermalfoundation:ore_fluid:3",
+    "thermalfoundation:ore_fluid:4",
+    "thermalfoundation:ore_fluid:5",
     --Railcraft
+    "railcraft:ore_magic",
     "railcraft:ore_metal",
+    "railcraft:ore_metal:1",
+    "railcraft:ore_metal:2",
+    "railcraft:ore_metal:3",
+    "railcraft:ore_metal:4",
+    "railcraft:ore_metal:5",
+    "railcraft:ore_metal_poor",
+    "railcraft:ore_metal_poor:1",
+    "railcraft:ore_metal_poor:2",
+    "railcraft:ore_metal_poor:3",
+    "railcraft:ore_metal_poor:4",
+    "railcraft:ore_metal_poor:5",
+    "railcraft:ore_metal_poor:6",
+    "railcraft:ore_metal_poor:7",
     --Draconic Evolution
     "draconicevolution:draconium_ore",
     "draconicevolution:draconium_ore:1",
@@ -76,8 +104,48 @@ ORES = {
     "immersiveengineering:ore:1",
     "immersiveengineering:ore:2",
     "immersiveengineering:ore:3",
-    "immersiveengineering:ore:4"
+    "immersiveengineering:ore:4",
+    --Project Red
+    "projectred-exploration:ore",
+    "projectred-exploration:ore1",
+    "projectred-exploration:ore2",
+    "projectred-exploration:ore3",
+    "projectred-exploration:ore4",
+    "projectred-exploration:ore5",
+    "projectred-exploration:ore6",
+    --Tinker's Construct
+    "tconstruct:ore",
+    "tconstruct:ore1",
+    --Applied Energistics 2
+    "appliedenergistics2:quartz_ore",
+    "appliedenergistics2:charged_quartz_ore",
+    --Forestry
+    "forestry:resources",
+    "forestry:resources:1",
+    "forestry:resources:2",
+    --Biomes O' Plenty
+    "biomesoplenty:gem_ore",
+    "biomesoplenty:gem_ore:1",
+    "biomesoplenty:gem_ore:2",
+    "biomesoplenty:gem_ore:3",
+    "biomesoplenty:gem_ore:4",
+    "biomesoplenty:gem_ore:5",
+    "biomesoplenty:gem_ore:6",
+    "biomesoplenty:gem_ore:7",
+    --RFTools
+    "rftools:dimensional_shard_ore",
+    "rftools:dimensional_shard_ore:1",
+    "rftools:dimensional_shard_ore:2",
+    --Deep Resonance
+    "deepresonance:resonating_ore",
+    "deepresonance:resonating_ore:1",
+    "deepresonance:resonating_ore:2"
+    --Thaumcraft
+    "thaumcraft:ore_amber",
+    "thaumcraft:ore_cinnabar",
+    "thaumcraft:ore_quartz"
 }
+--TODO: Verify that EnderIO doesn't have any ores
 
 --TODO: Make a table of items to be used as building blocks like cobblestone
 
