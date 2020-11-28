@@ -1,4 +1,5 @@
 require '/ComputerCraftThings/library'
+require '/ComputerCraftThings/turtleLibrary'
 
 
 -- local x, y, z = gps.locate(5)
