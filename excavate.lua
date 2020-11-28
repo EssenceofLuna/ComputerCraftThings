@@ -30,6 +30,7 @@ function excavate(depth, width)
             turtle.digForward()
             turtle.turnLeft()
         end
+        print("Column "..columns.." of "..width.." completed.")
     end
     
     --Finished excavating. Returning to start
