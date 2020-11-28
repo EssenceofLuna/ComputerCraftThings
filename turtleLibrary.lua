@@ -139,7 +139,7 @@ ORES = {
     --Deep Resonance
     "deepresonance:resonating_ore",
     "deepresonance:resonating_ore:1",
-    "deepresonance:resonating_ore:2"
+    "deepresonance:resonating_ore:2",
     --Thaumcraft
     "thaumcraft:ore_amber",
     "thaumcraft:ore_cinnabar",
