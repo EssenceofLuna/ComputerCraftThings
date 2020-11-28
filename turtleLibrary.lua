@@ -272,7 +272,7 @@ function getBlockName(direction)
             --Block has metadata (like stone variants)
             return data.name..":"..data.metadata
         else
-            rteturn data.name
+            return data.name
         end
     else
         return "No block found"
