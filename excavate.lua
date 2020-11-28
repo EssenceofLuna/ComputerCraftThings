@@ -37,4 +37,4 @@ function excavate(depth, width)
     turtle.turnRight()
 end
 
-excavate(10, 5)
+excavate(5, 5)
