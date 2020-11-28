@@ -262,3 +262,19 @@ function turtle.digForward(distance)
         turtle.digUp()
     end
 end
+
+function getBlockName(direction)
+    --TODO: Add direction support
+    local success, data = turtle.inspect()
+
+    if success then
+        if data.metadata ~= 0 then
+            --Block has metadata (like stone variants)
+            return data.name..":"..data.metadata
+        else
+            rteturn data.name
+        end
+    else
+        return "No block found"
+    end
+end
