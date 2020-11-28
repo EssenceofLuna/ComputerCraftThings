@@ -26,7 +26,7 @@ DROPPED_ITEMS = {
     --"thermalfoundation:material",
     "projectred-core:resource_item",
     --"thaumcraft:ore_cinnabar",
-    "deepresonance:resonating_ore",
+    --"deepresonance:resonating_ore",
     "forestry:apatite"
 }
 
@@ -152,6 +152,14 @@ function checkFuel()
     end
 end
 
+--[[
+
+
+    TURTLE MOVEMENT
+
+
+]]--
+
 --Moves turtle to specific coordinates
 function goto(xTarget, yTarget, zTarget)
     --TODO: Finish this
@@ -172,14 +180,6 @@ function goto(xTarget, yTarget, zTarget)
         return
     end
 end
-
---[[
-
-
-    TURTLE MOVEMENT
-
-
-]]--
 
 --Function to check if ground is below turtle, and place block is no ground found
 --NOTE: autoPlaceFloor must be set to true for floor to be placed
