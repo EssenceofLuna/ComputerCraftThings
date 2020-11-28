@@ -1,6 +1,8 @@
 require '/ComputerCraftThings/library'
 require '/ComputerCraftThings/turtleLibrary'
 
+autoPlaceFloor = false
+
 function excavate(depth, width)
     manageInventory()
     for columns=1,width do
