@@ -19,6 +19,6 @@ require '/ComputerCraftThings/turtleLibrary'
 -- end
 
 print(getBlockName())
-if getBlockName() == "stone" then
+if getBlockName() == "minecraft:stone" then
     turtle.dig()
 end
