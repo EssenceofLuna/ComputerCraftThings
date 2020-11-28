@@ -17,6 +17,7 @@ require '/ComputerCraftThings/library'
 --     print("Error: Corrdinates not obtained.")
 -- end
 
-if getBlockName == "stone" then
+print(getBlockName())
+if getBlockName() == "stone" then
     turtle.dig()
 end
