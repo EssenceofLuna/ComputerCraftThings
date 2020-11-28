@@ -6,8 +6,12 @@ function excavate(depth, width)
     for i=1,width do
         turtle.digForward(depth)
         turtle.turnRight()
-        turtle.digForward()
         turtle.turnRight()
+        turtle.moveForward(depth)
+
+        turtle.turnLeft()
+        turtle.digForward()
+        turtle.turnLeft()
     end
 end
 
