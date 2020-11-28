@@ -57,8 +57,8 @@ ORES = {
     "railcraft:ore_metal",
 
     --Draconic Evolution
-    "draconicevolution:draconium_ore"
-    "draconicevolution:draconium_ore:1"
+    "draconicevolution:draconium_ore",
+    "draconicevolution:draconium_ore:1",
     "draconicevolution:draconium_ore:2"
 }
 
