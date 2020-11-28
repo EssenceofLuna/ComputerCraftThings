@@ -61,7 +61,22 @@ ORES = {
     "ic2:resource:1",
     "ic2:resource:2",
     "ic2:resource:3",
-    "ic2:resource:4"
+    "ic2:resource:4",
+    --Big Reactors
+    "bigreactors:oreyellorite",
+    "bigreactors:oreanglesite",
+    "bigreactors:orebenitoite",
+    --Aroma1997's Dimensional World
+    "aroma1997sdimension:miningore",
+    "aroma1997sdimension:miningore:1",
+    --Actually Additions
+    "actuallyadditions:block_misc:3",
+    --Immersive Engineering
+    "immersiveengineering:ore",
+    "immersiveengineering:ore:1",
+    "immersiveengineering:ore:2",
+    "immersiveengineering:ore:3",
+    "immersiveengineering:ore:4"
 }
 
 --TODO: Make a table of items to be used as building blocks like cobblestone
