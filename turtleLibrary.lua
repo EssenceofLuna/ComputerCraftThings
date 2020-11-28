@@ -40,6 +40,7 @@ KEPT_ITEMS = {
 
 --TODO: Add a settings menu to allow adding ores
 ORES = {
+    --Minecraft
     "minecraft:coal_ore",
     "minecraft:iron_ore",
     "minecraft:gold_ore",
@@ -48,8 +49,15 @@ ORES = {
     "minecraft:emerald_ore",
     "minecraft:lapis_ore",
     "minecraft:quartz_ore",
+
+    --Thermal Foundation
     "thermalfoundation:ore",
-    "railcraft:ore_metal"
+
+    --Railcraft
+    "railcraft:ore_metal",
+
+    --Draconic Evolution
+    "draconicevolution:draconium_ore"
 }
 
 --TODO: Make a table of items to be used as building blocks like cobblestone
