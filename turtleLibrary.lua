@@ -58,6 +58,8 @@ ORES = {
 
     --Draconic Evolution
     "draconicevolution:draconium_ore"
+    "draconicevolution:draconium_ore:1"
+    "draconicevolution:draconium_ore:2"
 }
 
 --TODO: Make a table of items to be used as building blocks like cobblestone
