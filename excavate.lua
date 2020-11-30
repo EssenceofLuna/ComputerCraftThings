@@ -1,7 +1,9 @@
 require '/ComputerCraftThings/library'
 require '/ComputerCraftThings/turtleLibrary'
 
+--SETTINGS
 autoPlaceFloor = false
+autoPlaceTorch = true
 
 function excavate(depth, width)
     manageInventory()
@@ -12,6 +14,10 @@ function excavate(depth, width)
                 manageInventory()
             end
             turtle.digForward()
+            if columns % 5 == 0 and rows % 5 == 0 then
+                local torchIndex = getItemIndex("minecraft:torch")
+                turtle.place(torchIndex)
+            end
         end
         
         if columns == 1 then
