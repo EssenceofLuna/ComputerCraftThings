@@ -3,7 +3,7 @@ require '/ComputerCraftThings/turtleLibrary'
 
 --SETTINGS
 autoPlaceFloor = false
-autoPlaceTorch = true
+autoPlaceTorch = false
 
 function excavate(depth, width)
     manageInventory()
@@ -14,6 +14,8 @@ function excavate(depth, width)
                 manageInventory()
             end
             turtle.digForward()
+
+            --TODO: Fix torch placement code
             if autoPlaceTorch == true --[[and columns % 5 == 0]] and rows % 5 == 0 then
                 print("Placing torch...")
                 --Torch placement in 5x5 grid
