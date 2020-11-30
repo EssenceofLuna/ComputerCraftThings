@@ -20,7 +20,8 @@ function excavate(depth, width)
                 local torchIndex = getItemIndex("minecraft:torch")
 
                 turtle.back()
-                turtle.place(torchIndex)
+                turtle.select(torchIndex)
+                turtle.place()
                 turtle.forward()
             end
         end
