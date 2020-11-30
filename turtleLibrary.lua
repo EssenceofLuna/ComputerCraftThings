@@ -331,9 +331,11 @@ function turtle.moveForward(distance)
         
         --Sand/Gravel handler
         while turtle.detect() do
-            print("GRAVEL DETECTED!") --Debug
-            turtle.dig()
-            sleep(0.5)
+            if getBlockName() ~= "minecraft:torch" then --Ignore torches
+                print("GRAVEL DETECTED!") --Debug
+                turtle.dig()
+                sleep(0.5)
+            end
         end
         
         --Move forward once all checks are done, then dig up
@@ -361,9 +363,11 @@ function turtle.digForward(distance)
         
         --Sand/Gravel handler
         while turtle.detect() do
-            print("GRAVEL DETECTED!") --Debug
-            turtle.dig()
-            sleep(0.5)
+            if getBlockName() ~= "minecraft:torch" then --Ignore torches
+                print("GRAVEL DETECTED!") --Debug
+                turtle.dig()
+                sleep(0.5)
+            end
         end
         
         --Move forward once all checks are done, then dig up
