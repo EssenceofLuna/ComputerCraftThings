@@ -15,9 +15,10 @@ function excavate(depth, width)
             end
             turtle.digForward()
             if autoPlaceTorch == true and columns % 5 == 0 and rows % 5 == 0 then
+                print("Placing torch...") --Debug
                 --Torch placement in 5x5 grid
                 local torchIndex = getItemIndex("minecraft:torch")
-                
+
                 turtle.back()
                 turtle.place(torchIndex)
                 turtle.forward()

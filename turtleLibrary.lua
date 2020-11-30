@@ -343,6 +343,8 @@ function turtle.moveForward(distance)
     end
 end
 
+--TODO: Add entity detection/smacking to turtle move and dig functions
+
 --Same as turtle.goForward, but digs a tunnel as it goes
 function turtle.digForward(distance)
     if distance == nil then
