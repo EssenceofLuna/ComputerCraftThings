@@ -9,5 +9,5 @@ require '/ComputerCraftThings/library'
 
 turbineStr = 'BigReactors-Turbine_0'
 
-print('Turbine Connected: '..peripheral.isPresent(turbineStr))
+print('Turbine Connected: '..tostring(peripheral.isPresent(turbineStr)))
 print('Turbine Type: '..peripheral.getType(turbineStr))
