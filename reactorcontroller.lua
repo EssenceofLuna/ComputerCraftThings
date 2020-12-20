@@ -2,25 +2,33 @@ require '/ComputerCraftThings/library'
 
 --TODO: Write pocket computer program to check on reactor stuff
 
-turbines = {}
-turbineCount = 0
 
-for turbineIndex = 1,1000 do --TODO: Maybe change to while loop idk
-    --turbineIndex is the int value of the current check, starting at 1
-    --turbineStr is the string for the peripheral name
-    turbineStr = 'BigReactors-Turbine_'..turbineIndex
-    --print('DEBUG: Checking '..turbineIndex..' named '..turbineStr) --DEBUG
-    if peripheral.isPresent(turbineStr) then
-        --print('DEBUG: '..turbineStr..' was found. Adding to index..') --DEBUG
-        table.insert(turbines, turbineStr)
+function countTurbines()
+    --Returns a table of turbines and an int of how many turbines where found
+    local turbines = {}
+    
+    for turbineIndex = 1,100 do --TODO: Maybe change to while loop idk
+        --turbineIndex is the int value of the current check, starting at 1
+        --turbineStr is the string for the peripheral name
+        turbineStr = 'BigReactors-Turbine_'..turbineIndex
+        --print('DEBUG: Checking '..turbineIndex..' named '..turbineStr) --DEBUG
+        if peripheral.isPresent(turbineStr) then
+            --print('DEBUG: '..turbineStr..' was found. Adding to index..') --DEBUG
+            table.insert(turbines, turbineStr)
+        end
+        -- else
+        --     --print('No more turbines found. Exiting at '..turbineIndex) --DEBUG
+        --     --Once a turbine is not found, set the turbineCount and break the loop
+        --     turbineCount = turbineIndex-1
+        --     break
+        -- end
     end
-    -- else
-    --     --print('No more turbines found. Exiting at '..turbineIndex) --DEBUG
-    --     --Once a turbine is not found, set the turbineCount and break the loop
-    --     turbineCount = turbineIndex-1
-    --     break
-    -- end
+
+    local turbineCount = tableLength(turbines)
+    return tubines, turbineCount
 end
+
+turbines,turbineCount = countTurbines()
 
 --DEBUG
 print('DEBUG: turbine count: '..tostring(turbineCount))
