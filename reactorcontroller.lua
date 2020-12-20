@@ -23,4 +23,4 @@ end
 
 --DEBUG
 print('DEBUG: turbine count: '..tostring(turbineCount))
-print('DEBUG: turbines: '..table.concat(turbines))
+print('DEBUG: turbines: '..table.concat(turbines, ", "))
