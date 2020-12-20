@@ -7,7 +7,7 @@ require '/ComputerCraftThings/library'
 -- print("Computer ID: "..os.getComputerID())
 -- print("Computer type: "..os.getComputerType())
 
-turbineStr = 'BigReactors-Turbine_0'
+turbineStr = 'BigReactors-Turbine_1'
 turbine = peripheral.wrap(turbineStr)
 
 print('Turbine Connected: '..tostring(peripheral.isPresent(turbineStr)))
