@@ -23,3 +23,7 @@ When creating an issue post, please follow [this template](https://github.com/Al
 **Q)** Why are there no releases? How do I download *x* script? How do I update?
 
 **A)** All installation and updating is currently handled in game. Refer to the *install instructions* section above for more info. In the future, I may create releases for different versions/scripts. If you only want to download/run a single script, follow these instructions: 1) Navigate to the script you want to run/download. 2) Above the code, click `raw` to see the raw code. 3) Copy the URL you are taken to. 4) In game, run `wget [run] <link you just coppied>`. Include `run` if you only want to run it once instead of downloading. If you're
+
+**Q)** Every time I break my computer/turtle the codes delete themselves!
+
+**A)** Every time you break a computer in CC, it resets it to factory settings. Simply use the `label <name>` command to name your computer. This will make it remember what programs it had when picked up.
