@@ -9,7 +9,7 @@ for turbineIndex = 1,1000 do --TODO: Maybe change to while loop idk
     --turbineIndex is the int value of the current check, starting at 1
     --turbineStr is the string for the peripheral name
     turbineStr = 'BigReactorsTurbine_'..turbineIndex
-    if peripherl.isPresent(turbineStr) then
+    if peripheral.isPresent(turbineStr) then
         table.insert(turbines, turbineStr)
     else
         --Once a turbine is not found, set the turbineCount and break the loop
