@@ -13,12 +13,13 @@ for turbineIndex = 1,1000 do --TODO: Maybe change to while loop idk
     if peripheral.isPresent(turbineStr) then
         --print('DEBUG: '..turbineStr..' was found. Adding to index..') --DEBUG
         table.insert(turbines, turbineStr)
-    else
-        --print('No more turbines found. Exiting at '..turbineIndex) --DEBUG
-        --Once a turbine is not found, set the turbineCount and break the loop
-        turbineCount = turbineIndex-1
-        break
     end
+    -- else
+    --     --print('No more turbines found. Exiting at '..turbineIndex) --DEBUG
+    --     --Once a turbine is not found, set the turbineCount and break the loop
+    --     turbineCount = turbineIndex-1
+    --     break
+    -- end
 end
 
 --DEBUG
