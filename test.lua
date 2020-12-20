@@ -8,6 +8,8 @@ require '/ComputerCraftThings/library'
 -- print("Computer type: "..os.getComputerType())
 
 turbineStr = 'BigReactors-Turbine_0'
+turbine = peripheral.wrap(turbineStr)
 
 print('Turbine Connected: '..tostring(peripheral.isPresent(turbineStr)))
 print('Turbine Type: '..peripheral.getType(turbineStr))
+print('Turbine Speed: '..turbine.getRotorSpeed())
