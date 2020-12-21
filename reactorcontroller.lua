@@ -264,16 +264,16 @@ function getUserCommand()
             --Turbine Speed Regulation
             if autoRegulateTurbineSpeed == true then
                 if speed == turbineSpeedGoal then
+                    --Turbine is at speed goal. Activating and engaging coils
                     turbine.setActive(true)
                     turbine.setInductorEngaged(true)
-                elseif speed > turbineSpeedGoal + 50 then
+                elseif speed > turbineSpeedGoal + 25 then
                     --Turbine spinning too fast. Deactivating and engaging coils
                     turbine.setActive(false)
                     turbine.setInductorEngaged(true)
-                elseif speed < turbineSpeedGoal - 50 then
-                    --Turbine too slow. Activating
-                    --Turbine too slow. Disengaging coils until up to speed
-                    --turbine.setInductorEngaged(false)
+                elseif speed < turbineSpeedGoal - 25 then
+                    --Turbine too slow. Activating and disengaging coils
+                    turbine.setInductorEngaged(false)
                     turbine.setActive(true)
                 end
             end
