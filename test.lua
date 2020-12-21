@@ -19,3 +19,9 @@ local surface = dofile("surface") --load Surface (Graphics API)
 term.clear()
 
 button.setMonitor('top')
+myButton = button.create("Button Thingy")
+myButton.setPos(1,1)
+myButton.onClick(function() print("CLICK!") end)
+while true do
+    button.await(myButton)
+end
