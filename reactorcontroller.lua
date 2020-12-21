@@ -86,7 +86,44 @@ function startAllTurbines()
     --Starts all connected turbines
     local turbineCount,turbines = getTurbines()
     --TODO: Write this
+    local startedTurbines = 0
+    while true do
+        for i=1,turbineCount do
+            local turbineStr = turbines[i]
+            local turbine = peripheral.wrap(turbineStr)
+            local turbineSpeed = turbine.getRotorSpeed()
 
+            --check if turbine is connected
+            if turbine.getConnected() == false then
+                print("Error: Turbine "..i.." not connected. Aborting startup.")
+                return
+            end
+            --If turbine is connected, continue
+
+            --Check if turbine is powered on, and power on if not
+            if turbine.getActive() == false then
+                print('Turbine '..i..' powering on...')
+                turbine.setActive(true)
+            end
+            if turbine.getInductorEngaged() == true then
+                print('Coils where engaged on turbine '..i..'. Disengaging...')
+                turbine.setInductorEngaged(false)
+            end
+            --TODO: Control flow rate of turbine
+            
+            --DEBUG
+            --print('Debug: Checked Turbine '..i..' and got '..turbineSpeed)
+            if turbineSpeed >= 1800 then
+                --Turbine as reached speed
+                print('Turbine '..i..' reached speed. Engaging coils.')
+                turbine.setInductorEngaged(true)
+                table.remove(turbines, i)
+                break
+            else
+                print('Debug: Turbine '..i..' not ready. '..turbineSpeed)
+            end
+        end
+    end
 end
 
 --DEBUG
