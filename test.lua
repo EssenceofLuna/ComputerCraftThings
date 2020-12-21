@@ -26,7 +26,7 @@ require '/surface'
 
 term.clear()
 
-surface:drawRect(5, 5, 25, 10)
+surf:drawRect(5, 5, 25, 10)
 
 while true do
     event, side, xPos, yPos = os.pullEvent("monitor_touch")
