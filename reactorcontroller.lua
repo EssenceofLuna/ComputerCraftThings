@@ -220,6 +220,10 @@ function getUserCommand()
         term.write("1) Start All Turbines")
         term.setCursorPos(1,4)
         term.write("2) Stop All Turbines")
+        term.setCursorPos(1,5)
+        term.write("3) Engage All Turbines")
+        term.setCursorPos(1,6)
+        term.write("4) Disengage All Turbines")
 
         --Print Turbine Info
         for i=1,turbineCount do
@@ -233,45 +237,6 @@ function getUserCommand()
             term.setCursorPos(1,7+i)
             term.write('Turbine '..i..' '..engagedText..', '..activeText..': '..speed..' RPM, '..flowRate..' mB/t')
         end
-        
-        --OLD CODE
-        --Shows current info about turbines
-        -- term.setCursorPos(1,6)
-        -- term.write("Turbines Connected: "..turbineCount)
-        -- term.setCursorPos(1,7)
-        -- term.write("Turbine Speeds: "..table.concat(turbineSpeeds, " RPM, "))
-        -- term.write(" RPM") --Finish formatting
-        --term.setCursorPos(1,8)
-        --term.write("Press any key to update info (Temporary fix)") --TODO: Update when waiting for key press
-
-
-        --[[TODO: Rewrite info screen to something like this:
-        Turbines Connected: 3
-        Turbine 1: 1707 RPM, 27.8 KiRF/t Active, Engaged
-        Turbine 2: 1757 RPM, 28.8 KiRF/t Active, Engaged
-        Turbine 2: 2058 RPM, 0 KiRF/t Active, Disengaged
-        ...
-        ]]--
-        --TODO: Show a warning when above 2000 RPM
-
-        --OLD CODE
-        --Check user input
-        -- local x = keyPress()
-        -- if x ~= nil then
-        --     if x == keys.one then
-        --         startAllTurbines()
-        --         sleep(3)
-        --     elseif x == keys.two then
-        --         stopAllTurbines()
-        --         sleep(3)
-        --     elseif x == keys.zero then
-        --         term.clear()
-        --         term.setCursorPos(1,1)
-        --         term.write("Exiting controller...")
-        --         sleep(1)
-        --         error('Reactor Controller Closed')
-        --     end
-        -- end
         
         --If a key is pressed, execute command
         if keyPress(keys.zero) then
