@@ -162,7 +162,7 @@ function getUserCommand()
         center("Select a command")
         term.setCursorPos(1,2)
         term.write("1) Start All Turbines")
-        term.setCursorPos(2,2)
+        term.setCursorPos(1,3)
         term.write("2) Stop All Turbines")
         --TODO: Add a command to terminate program
 
