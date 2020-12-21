@@ -32,7 +32,7 @@ function drawSquare(xmin,xmax,ymin,ymax,text)
     term.setCursorPos(1,ymax+1)
 end
 
-drawSquare(5,10,5,25,'TEST BITCH')
+drawSquare(5,50,5,25,'TEST BITCH')
 
 -- while true do
 --     event, side, xPos, yPos = os.pullEvent("monitor_touch")
