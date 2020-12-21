@@ -145,6 +145,28 @@ function stopAllTurbines()
     print("All turbines stopped.")
 end
 
+function getUserCommand()
+    term.clear()
+    while true do
+        --Function to ask the user what to do
+        --TODO: Add functionality to  start/stop specific turbine
+        print("Select a command")
+        print("1) Start All Turbines")
+        print("2) Stop All Turbines")
+        userInput = read()
+
+        --Check user input
+        if userInput == "1" then
+            startAllTurbines()
+        elseif userInput == "2" then
+            stopAllTurbines()
+        else
+            term.clear()
+            print("Error: Invalid Input")
+        end
+    end
+end
+
 --TODO: Write a function to shut down specific turbine
 --TODO: Write a function to shut down all turbines
 
@@ -163,4 +185,5 @@ print('DEBUG: turbines: '..table.concat(turbines, ", "))
 -- startTurbine(3)
 
 --stopAllTurbines()
-startAllTurbines()
+--startAllTurbines()
+getUserCommand()
