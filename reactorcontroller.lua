@@ -199,7 +199,17 @@ function getUserCommand()
         term.write("Turbine Speeds: "..table.concat(turbineSpeeds, " RPM, "))
         term.write(" RPM") --Finish formatting
         term.setCursorPos(1,8)
-        term.write("Press any key to update info (Temporary fix)")
+        term.write("Press any key to update info (Temporary fix)") --TODO: Update when waiting for key press
+
+
+        --[[TODO: Rewrite info screen to something like this:
+        Turbines Connected: 3
+        Turbine 1: 1707 RPM, 27.8 KiRF/t Active, Engaged
+        Turbine 2: 1757 RPM, 28.8 KiRF/t Active, Engaged
+        Turbine 2: 2058 RPM, 0 KiRF/t Active, Disengaged
+        ...
+        ]]--
+        --TODO: Show a warning when above 2000 RPM
 
         --Check user input
         local x = keyPress()
