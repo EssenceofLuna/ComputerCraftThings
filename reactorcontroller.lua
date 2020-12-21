@@ -200,8 +200,8 @@ function getUserCommand()
             local turbine = peripheral.wrap(turbineStr)
             local speed = math.floor(turbine.getRotorSpeed())
             local flowRate = turbine.getFluidFlowRate()
-            if turbine.getActive() then local activeText = 'Active' else local activeText = 'Inactive' end
-            if turbine.getInductorEngaged() then local engagedText = 'Engaged' else local activeText = 'Disengaged' end
+            if turbine.getActive() then activeText = 'Active' else activeText = 'Inactive' end
+            if turbine.getInductorEngaged() then engagedText = 'Engaged' else activeText = 'Disengaged' end
 
             term.setCursorPos(1,5+i)
             term.write('Reactor '..i..' '..engagedText..', '..activeText..': '..speed..' RPM, '..flowRate..' mB/t Steam, ')
