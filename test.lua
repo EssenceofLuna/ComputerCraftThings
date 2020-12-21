@@ -1,6 +1,6 @@
 require '/ComputerCraftThings/library'
 require '/ComputerCraftThings/button'
-surface = dofile("surface") --load Surface (Graphics API)
+local surface = dofile("surface") --load Surface (Graphics API)
 
 -- term.clear()
 -- print("System Info")
@@ -16,17 +16,14 @@ surface = dofile("surface") --load Surface (Graphics API)
 -- print('Turbine Type: '..peripheral.getType(turbineStr))
 -- print('Turbine Speed: '..turbine.getRotorSpeed())
 
--- Loads the color.bmp image.
-local surf = surface.load("home/color.bmp")
--- Converts the colours from RGB to CC, with dithering.
-surf:toPalette(surface.palette.cc, true)
+-- Creates a new surface with a blue background with a size of 51x19 pixels.
+local surf = surface.create(51, 19, colors.blue)
 
--- Creates the screen surface.
-local screen = surface.create(57, 19)
--- Draws the image surface with smaller pixels.
-screen:drawSurfaceSmall(surf, 0, 0)
+-- Draws the string "Hello, world!" at position (2,2).
+surf:drawString("Hello, world!", 2, 2)
 
--- Outputs the screen surface.
-screen:output()
+-- Outputs the surface to the screen.
+surf:output()
+
 -- Waits for a mouse click.
 os.pullEvent("mouse_click")
