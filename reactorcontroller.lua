@@ -122,7 +122,7 @@ function startAllTurbines()
             --print('Debug: Checked Turbine '..i..' and got '..turbineSpeed)
             if turbineSpeed >= 1790 then
                 --Turbine as reached speed
-                print('Turbine '..i..' reached speed. Engaging coils.')
+                --print('Turbine '..i..' reached speed. Engaging coils.') --DEBUG
                 turbine.setInductorEngaged(true)
                 table.remove(turbines, i)
                 break
@@ -161,6 +161,8 @@ function getUserCommand()
         --TODO: Add functionality to  start/stop specific turbine. To do this, index all the turbines and list then to let the user pick one
         center("Select a command")
         term.setCursorPos(1,2)
+        term.write("0) Exit Program")
+        term.setCursorPos(1,3)
         term.write("1) Start All Turbines")
         term.setCursorPos(1,3)
         term.write("2) Stop All Turbines")
@@ -175,6 +177,12 @@ function getUserCommand()
             elseif x == keys.two then
                 stopAllTurbines()
                 sleep(3)
+            elseif x == keys.zero then
+                term.clear()
+                term.setCursorPos(1,1)
+                term.write("Exiting controller...")
+                sleep(3)
+                os.terminate()
             end
         end
     end
