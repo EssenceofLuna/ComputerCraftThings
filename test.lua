@@ -27,7 +27,7 @@ local surface = dofile("surface")
 
 term.clear()
 
-local surf = surface.create(51, 19)
+local surf = surface.create(term.getSize())
 
 surf:drawRect(5, 5, 25, 10)
 
