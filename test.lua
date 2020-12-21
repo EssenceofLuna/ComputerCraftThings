@@ -1,5 +1,5 @@
 require '/ComputerCraftThings/library'
-require 'surface'
+require '/surface'
 
 -- term.clear()
 -- print("System Info")
