@@ -182,7 +182,7 @@ function getUserCommand()
                 term.setCursorPos(1,1)
                 term.write("Exiting controller...")
                 sleep(3)
-                os.terminate()
+                os.exit()
             end
         end
     end
