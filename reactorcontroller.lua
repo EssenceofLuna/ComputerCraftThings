@@ -193,13 +193,27 @@ function getUserCommand()
         term.write("1) Start All Turbines")
         term.setCursorPos(1,4)
         term.write("2) Stop All Turbines")
+
+        --Print Turbine Info
+        for i=1,turbineCount do
+            local turbineStr = turbines[i]
+            local turbine = peripheral.wrap(turbineStr)
+            local speed = math.floor(turbine.getRotorSpeed())
+            local flowRate = turbine.getFluidFlowRate()
+            if turbine.getActive() then local activeText = 'Active' else local activeText = 'Inactive' end
+            if turbine.getInductorEngaged() then local engagedText = 'Engaged' else local activeText = 'Disengaged' end
+
+            term.setCursorPos(1,5+i)
+            term.write('Reactor '..i..' '..engagedText..', '..activeText..': '..speed..' RPM, '..flowRate..' mB/t Steam, ')
+        end
         
+        --OLD CODE
         --Shows current info about turbines
-        term.setCursorPos(1,6)
-        term.write("Turbines Connected: "..turbineCount)
-        term.setCursorPos(1,7)
-        term.write("Turbine Speeds: "..table.concat(turbineSpeeds, " RPM, "))
-        term.write(" RPM") --Finish formatting
+        -- term.setCursorPos(1,6)
+        -- term.write("Turbines Connected: "..turbineCount)
+        -- term.setCursorPos(1,7)
+        -- term.write("Turbine Speeds: "..table.concat(turbineSpeeds, " RPM, "))
+        -- term.write(" RPM") --Finish formatting
         --term.setCursorPos(1,8)
         --term.write("Press any key to update info (Temporary fix)") --TODO: Update when waiting for key press
 
