@@ -52,8 +52,8 @@ end
 
 --[[
 Purpose: Centers text on line
-Input: String, boolean
-Output: Nil or coords
+Input: String
+Output: Nil
 Usage: Enter text and it will be centered. If screen is odd will align to left by 1.
 ]]--
 function centerText(str)
@@ -111,16 +111,31 @@ end
 
 --[[
 Purpose: To write at a set of coords
-Input: String, {x,y}
+Input: String, {x,y, boolean}
 Output: Nil
-Usage: Input a string, and coords (optional) and it will write there. If no value for x or y it will default to current coords.
+Usage: 
+Input a string
+Input coords (optional) and it will write there. If no value for x or y it will default to current coords.
+Input Boolean (optional) will advance to the next line at the same starting point as previous. 
+Use nil as a value to ignore coord input if using boolean a.
 ]]--
-function setWrite(s,x,y)
+function setWrite(s,x,y,a)
 	local oldx,oldy = term.getCursorPos()
 	local x = x or oldx
 	local y = y or oldy
+	local a = a or false
+	
 	term.setCursorPos(x,y)
 	term.write(s)
+	x = x + string.len(s)
+	
+	if a == true then
+		x = x - string.len(s)
+		y = y + 1
+		term.setCursorPos(x,y)
+	else
+	term.setCursorPos(x,y)
+	end
 end
 
 --[[
