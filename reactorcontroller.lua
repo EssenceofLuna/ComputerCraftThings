@@ -240,13 +240,14 @@ function getUserCommand()
             local turbine = peripheral.wrap(turbineStr)
             local speed = math.floor(turbine.getRotorSpeed())
             local flowRate = turbine.getFluidFlowRate()
+            local energyProduced = math.floor(turbine.getEnergyProducedLastTick()) --This turbine function returns a float, so math.floor is used to round it
             if turbine.getActive() then activeText = 'Active' else activeText = 'Inactive' end
             if turbine.getInductorEngaged() then engagedText = 'Engaged' else engagedText = 'Disengaged' end
 
             --Set to the line, clear it, then write new info in
             term.setCursorPos(1,7+i)
             term.clearLine()
-            term.write('Turbine '..i..' '..engagedText..', '..activeText..': '..speed..' RPM, '..flowRate..' mB/t')
+            term.write('Turbine '..i..' '..engagedText..', '..activeText..': '..speed..' RPM, '..flowRate..' mB/t, '..energyProduced..' FE/t')
 
             if speed > 2000 and turbine.getActive() and turbine.getInductorEngaged() == false then
                 --Turbine at risk of melting down. Engaging coils
