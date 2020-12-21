@@ -239,10 +239,12 @@ function getUserCommand()
             term.write("Exiting controller...")
             sleep(1)
             error('Reactor Controller Closed')
-        elseif keyPress(keys.one) then
+        end
+        if keyPress(keys.one) then
             startAllTurbines()
             sleep(3)
-        elseif keyPress(keys.two) then
+        end
+        if keyPress(keys.two) then
             stopAllTurbines()
             sleep(3)
         end
