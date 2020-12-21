@@ -267,12 +267,13 @@ function getUserCommand()
                     turbine.setActive(true)
                     turbine.setInductorEngaged(true)
                 elseif speed > turbineSpeedGoal + 50 then
-                    --Turbine spinning too fast. Deactivating
+                    --Turbine spinning too fast. Deactivating and engaging coils
                     turbine.setActive(false)
                     turbine.setInductorEngaged(true)
                 elseif speed < turbineSpeedGoal - 50 then
+                    --Turbine too slow. Activating
                     --Turbine too slow. Disengaging coils until up to speed
-                    turbine.setInductorEngaged(false)
+                    --turbine.setInductorEngaged(false)
                     turbine.setActive(true)
                 end
             end
