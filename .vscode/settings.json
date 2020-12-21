@@ -15,6 +15,7 @@
         "pullEvent",
         "fs",
         "colors",
-        "pink"
+        "pink",
+        "keys"
     ]
 }

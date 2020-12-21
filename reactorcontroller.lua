@@ -158,10 +158,10 @@ function getUserCommand()
         --TODO: Add a command to terminate program
 
         --Check user input
-        if keyPress() == 1 then
+        if keyPress() == keys.one then
             startAllTurbines()
             sleep(3)
-        elseif keyPress() == 2 then
+        elseif keyPress() == keys.two then
             stopAllTurbines()
             sleep(3)
         else
