@@ -219,6 +219,8 @@ function getUserCommand()
 
         --term.clear()
         --TODO: Add functionality to  start/stop specific turbine. To do this, index all the turbines and list then to let the user pick one
+
+        --TODO: Convert these term.write and term.setCursorPos to setWrite
         term.setCursorPos(1,1)
         centerText("Select a command")
         term.setCursorPos(1,2)
@@ -234,6 +236,9 @@ function getUserCommand()
         term.setCursorPos(1,6)
         term.write("4) Disengage All Turbines")
 
+        term.setCursorPos(1,8)
+        term.write("Turbines:")
+
         --Runs once for each connected turbine
         for i=1,turbineCount do
             local turbineStr = turbines[i]
@@ -245,9 +250,9 @@ function getUserCommand()
             if turbine.getInductorEngaged() then engagedText = 'Engaged' else engagedText = 'Disengaged' end
 
             --Set to the line, clear it, then write new info in
-            term.setCursorPos(1,7+i)
+            term.setCursorPos(1,8+i)
             term.clearLine()
-            term.write('Turbine '..i..' '..engagedText..', '..activeText..': '..speed..' RPM, '..flowRate..' mB/t, '..energyProduced..' FE/t')
+            term.write(i..' '..engagedText..', '..activeText..': '..speed..' RPM, '..flowRate..' mB/t, '..energyProduced..' FE/t')
 
             if speed > 2000 and turbine.getActive() and turbine.getInductorEngaged() == false then
                 --Turbine at risk of melting down. Engaging coils
