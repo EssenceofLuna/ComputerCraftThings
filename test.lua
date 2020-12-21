@@ -1,6 +1,6 @@
 require '/ComputerCraftThings/library'
 require '/ComputerCraftThings/button'
-local surface = dofile("surface") --load Surface (Graphics API)
+surface = dofile("surface") --load Surface (Graphics API)
 
 -- term.clear()
 -- print("System Info")
