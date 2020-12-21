@@ -1,5 +1,5 @@
 require '/ComputerCraftThings/library'
 
 while true do
-    print('dumbass')
+    print('nightmare')
 end
