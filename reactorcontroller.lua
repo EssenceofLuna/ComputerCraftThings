@@ -124,8 +124,7 @@ function startAllTurbines()
             --Startup Info Screen--
             term.clear()
             term.setCursorPos(1,1)
-            centerX()
-            term.write("[Turbine Startup]") --TODO: Center this
+            centerText("[Turbine Startup]") --TODO: Center this
             term.setCursorPos(1, 2)
             term.write('Turbines Remaining: '..turbineCount)
             
