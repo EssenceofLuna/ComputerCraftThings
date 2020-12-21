@@ -112,9 +112,11 @@ function startAllTurbines()
             end
             --TODO: Control flow rate of turbine
 
+            --Startup Info Screen--
             term.clear()
             center("[Turbine Startup]") --TODO: Center this
-            print('Turbines Remaining: '..turbineCount)
+            term.setCursorPos(1, 2)
+            term.write('Turbines Remaining: '..turbineCount)
             
             --DEBUG
             --print('Debug: Checked Turbine '..i..' and got '..turbineSpeed)
@@ -157,9 +159,11 @@ function getUserCommand()
     while true do
         term.clear()
         --TODO: Add functionality to  start/stop specific turbine. To do this, index all the turbines and list then to let the user pick one
-        print("Select a command")
-        print("1) Start All Turbines")
-        print("2) Stop All Turbines")
+        center("Select a command")
+        term.setCursorPos(1,2)
+        term.write("1) Start All Turbines")
+        term.setCursorPos(2,2)
+        term.write("2) Stop All Turbines")
         --TODO: Add a command to terminate program
 
         --Check user input
