@@ -1,5 +1,6 @@
 require '/ComputerCraftThings/library'
-os.loadAPI("button")
+require '/ComputerCraftThings/button'
+--os.loadAPI("button")
 button.setMonitor(top)
 
 -- term.clear()
