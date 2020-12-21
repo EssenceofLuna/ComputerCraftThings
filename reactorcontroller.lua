@@ -247,7 +247,7 @@ function getUserCommand()
                 --Turbine at risk of melting down. Engaging coils
                 turbine.setInductorEngaged(true)
                 term.clear()
-                centerText('WARNING: Turbine '..i..' Safety Engaged.')
+                --centerText('WARNING: Turbine '..i..' Safety Engaged.') --Debug
             end
         end
         
