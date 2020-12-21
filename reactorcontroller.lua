@@ -204,7 +204,7 @@ function getUserCommand()
             if turbine.getInductorEngaged() then engagedText = 'Engaged' else activeText = 'Disengaged' end
 
             term.setCursorPos(1,5+i)
-            term.write('Reactor '..i..' '..engagedText..', '..activeText..': '..speed..' RPM, '..flowRate..' mB/t Steam, ')
+            term.write('Turbine '..i..' '..engagedText..', '..activeText..': '..speed..' RPM, '..flowRate..' mB/t Steam, ')
         end
         
         --OLD CODE
