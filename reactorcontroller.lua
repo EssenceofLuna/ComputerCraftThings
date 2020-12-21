@@ -88,9 +88,9 @@ function startAllTurbines()
     --TODO: Write this
     local startedTurbines = 0
     while true do
+        local turbineCount = tableLength(turbines) --Recount turbines
         for i=1,turbineCount do
             local turbineStr = turbines[i]
-            local turbineCount = tableLength(turbines) --Recount turbines
             local turbine = peripheral.wrap(turbineStr)
             local turbineSpeed = turbine.getRotorSpeed()
 
@@ -128,6 +128,9 @@ function startAllTurbines()
         end
     end
 end
+
+--TODO: Write a function to shut down specific turbine
+--TODO: Write a function to shut down all turbines
 
 --DEBUG
 turbineCount,turbines = getTurbines()
