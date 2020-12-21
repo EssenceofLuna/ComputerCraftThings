@@ -29,7 +29,7 @@ term.clear()
 
 local surf = surface.create(51, 19, colors.blue)
 
-surf:fillRect(5, 5, 25, 10, colors.red, colors,pink, "#")
+--surf:fillRect(5, 5, 25, 10, colors.red, colors,pink, "#")
 
 surf:output()
 
