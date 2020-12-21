@@ -27,9 +27,11 @@ local surface = dofile("surface")
 
 term.clear()
 
-local surf = surface.create(term.getSize())
+local surf = surface.create(51, 19, colors.blue)
 
-surf:drawRect(5, 5, 25, 10, 5, 5, 5)
+surf:fillrect(5, 5, 25, 10, colors.red, colors,pink, "#")
+
+surf:output()
 
 while true do
     event, side, xPos, yPos = os.pullEvent("monitor_touch")
