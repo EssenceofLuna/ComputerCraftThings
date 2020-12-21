@@ -1,6 +1,5 @@
 require '/ComputerCraftThings/library'
-os.loadAPI('/button.lua')
-local surface = dofile("surface") --load Surface (Graphics API)
+
 
 -- term.clear()
 -- print("System Info")
@@ -16,12 +15,3 @@ local surface = dofile("surface") --load Surface (Graphics API)
 -- print('Turbine Type: '..peripheral.getType(turbineStr))
 -- print('Turbine Speed: '..turbine.getRotorSpeed())
 
-term.clear()
-
-button.setMonitor('top')
-myButton = button.create("Button Thingy")
-myButton.setPos(1,1)
-myButton.onClick(function() print("CLICK!") end)
-while true do
-    button.await(myButton)
-end
