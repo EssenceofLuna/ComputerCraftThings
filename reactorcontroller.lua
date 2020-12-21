@@ -213,22 +213,31 @@ function getUserCommand()
         ]]--
         --TODO: Show a warning when above 2000 RPM
 
+        --OLD CODE
         --Check user input
-        local x = keyPress()
-        if x ~= nil then
-            if x == keys.one then
-                startAllTurbines()
-                sleep(3)
-            elseif x == keys.two then
-                stopAllTurbines()
-                sleep(3)
-            elseif x == keys.zero then
-                term.clear()
-                term.setCursorPos(1,1)
-                term.write("Exiting controller...")
-                sleep(1)
-                error('Reactor Controller Closed')
-            end
+        -- local x = keyPress()
+        -- if x ~= nil then
+        --     if x == keys.one then
+        --         startAllTurbines()
+        --         sleep(3)
+        --     elseif x == keys.two then
+        --         stopAllTurbines()
+        --         sleep(3)
+        --     elseif x == keys.zero then
+        --         term.clear()
+        --         term.setCursorPos(1,1)
+        --         term.write("Exiting controller...")
+        --         sleep(1)
+        --         error('Reactor Controller Closed')
+        --     end
+        -- end
+        
+        if keyPress() == keys.zero then
+            --         term.clear()
+            --         term.setCursorPos(1,1)
+            --         term.write("Exiting controller...")
+            --         sleep(1)
+            --         error('Reactor Controller Closed')
         end
     end
 end
