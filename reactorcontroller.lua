@@ -25,10 +25,10 @@ function countTurbines()
     end
 
     local turbineCount = tableLength(turbines)
-    return tubines, turbineCount
+    return turbineCount, turbines
 end
 
-turbines,turbineCount = countTurbines()
+turbineCount,turbines = countTurbines()
 
 --DEBUG
 print('DEBUG: turbine count: '..tostring(turbineCount))
