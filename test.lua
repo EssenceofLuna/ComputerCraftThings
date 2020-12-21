@@ -26,6 +26,8 @@ require '/surface'
 
 term.clear()
 
+local surf = surface.create(51, 19)
+
 surf:drawRect(5, 5, 25, 10)
 
 while true do
