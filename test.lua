@@ -36,8 +36,8 @@ surf:output()
 while true do
     event, side, xPos, yPos = os.pullEvent("mouse_click")
     
-    if xPos >= 5 and xPos <= 25 and yPos >= 5 and yPos <= 10 then
-        surf:drawString('Button Clicked!', 2, 2, colors.blue, colors.red)
+    if xPos >= 5 and xPos <= 30 and yPos >= 5 and yPos <= 15 then
+        surf:drawString('Button Clicked!', 5, 2, colors.blue, colors.red)
         surf:output()
         sleep(1)
         surf:clear(colors.blue)
