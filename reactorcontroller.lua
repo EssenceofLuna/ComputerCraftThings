@@ -138,7 +138,7 @@ function startAllTurbines()
             break
         end
     end
-    term.clear
+    term.clear()
     center("Finished booting turbines.")
 end
 
