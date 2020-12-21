@@ -2,6 +2,10 @@ require '/ComputerCraftThings/APIs/library'
 
 --TODO: Write pocket computer program to check on reactor stuff
 
+--TODO: Write function to edit settings
+--SETTINGS--
+avoidTurbineMeltdown = true --Auto avoids turbines from melting down
+
 
 function getTurbines()
     --Returns a count of the turbines and a table of their names
@@ -225,7 +229,7 @@ function getUserCommand()
         term.setCursorPos(1,6)
         term.write("4) Disengage All Turbines")
 
-        --Print Turbine Info
+        --Runs once for each connected turbine
         for i=1,turbineCount do
             local turbineStr = turbines[i]
             local turbine = peripheral.wrap(turbineStr)
@@ -238,6 +242,13 @@ function getUserCommand()
             term.setCursorPos(1,7+i)
             term.clearLine()
             term.write('Turbine '..i..' '..engagedText..', '..activeText..': '..speed..' RPM, '..flowRate..' mB/t')
+
+            if speed > 2000 and turbine.getActive() and turbine.getInductorEngaged() == false then
+                --Turbine at risk of melting down. Engaging coils
+                turbine.setInductorEngaged(true)
+                term.clear()
+                centerText('WARNING: Turbine '..i..' Safety Engaged.')
+            end
         end
         
         --If a key is pressed, execute command
