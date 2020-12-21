@@ -158,13 +158,15 @@ function getUserCommand()
         --TODO: Add a command to terminate program
 
         --Check user input
-        if keyPress() == keys.one then
-            startAllTurbines()
-            sleep(3)
-        end
-        if keyPress() == keys.two then
-            stopAllTurbines()
-            sleep(3)
+        local x = keyPress()
+        if x ~= nil then
+            if x == keys.one then
+                startAllTurbines()
+                sleep(3)
+            elseif x == keys.two then
+                stopAllTurbines()
+                sleep(3)
+            end
         end
     end
 end
