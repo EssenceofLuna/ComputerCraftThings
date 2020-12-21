@@ -31,6 +31,9 @@ end
 --DEBUG
 turbineCount,turbines = getTurbines()
 
+term.clear()
+print('Turbine Debug Info:')
+
 print('DEBUG: turbine count: '..tostring(turbineCount))
 print('DEBUG: turbines: '..table.concat(turbines, ", "))
-print(tostring(turbines[1]))
+--print(tostring(turbines[1]))
