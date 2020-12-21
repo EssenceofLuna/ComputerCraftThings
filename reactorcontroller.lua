@@ -90,6 +90,7 @@ function startAllTurbines()
     while true do
         for i=1,turbineCount do
             local turbineStr = turbines[i]
+            local turbineCount = tableLength(turbines) --Recount turbines
             local turbine = peripheral.wrap(turbineStr)
             local turbineSpeed = turbine.getRotorSpeed()
 
