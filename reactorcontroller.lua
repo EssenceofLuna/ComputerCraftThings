@@ -3,8 +3,8 @@ require '/ComputerCraftThings/library'
 --TODO: Write pocket computer program to check on reactor stuff
 
 
-function countTurbines()
-    --Returns a table of turbines and an int of how many turbines where found
+function getTurbines()
+    --Returns a count of the turbines and a table of their names
     local turbines = {}
     
     for turbineIndex = 1,100 do --TODO: Maybe change to while loop idk
@@ -28,8 +28,9 @@ function countTurbines()
     return turbineCount, turbines
 end
 
-turbineCount,turbines = countTurbines()
-
 --DEBUG
+turbineCount,turbines = getTurbines()
+
 print('DEBUG: turbine count: '..tostring(turbineCount))
 print('DEBUG: turbines: '..table.concat(turbines, ", "))
+print(tostring(turbines[1]))
