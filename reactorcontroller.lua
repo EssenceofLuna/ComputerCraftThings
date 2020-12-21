@@ -69,7 +69,7 @@ function startTurbine(turbineIndex)
     --Loop to check rotor speed and engage coils when ready (at 1750 RPM)
     while true do
         local currentSpeed = turbine.getRotorSpeed()
-        print('DEBUG: Turbine Speed: '..currentSpeed) --Debug
+        --print('DEBUG: Turbine Speed: '..currentSpeed) --Debug
         if currentSpeed >= 1750 then
             --Turbine as reached speed
             print('Turbine reached speed. Engaging coils.')
@@ -77,7 +77,7 @@ function startTurbine(turbineIndex)
             break
         else
             print('Turbine spinning up... '..currentSpeed..' RPM')
-            sleep(10000)
+            sleep(10)
         end
     end
 end
