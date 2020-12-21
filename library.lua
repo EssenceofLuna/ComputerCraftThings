@@ -41,3 +41,8 @@ function os.getComputerType()
     end
     return table.concat(ret, "_")
 end
+
+function keyPress() --raid.keyPress(keys.{key})
+    local event, p1 = os.pullEvent("key")
+    return p1
+end
