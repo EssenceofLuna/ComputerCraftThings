@@ -171,9 +171,9 @@ end
 
 function getUserCommand()
     local turbineCount,turbines = getTurbines()
-    local turbineSpeeds = {}
     term.clear()
     while true do
+        local turbineSpeeds = {}
         for i=1,turbineCount do
             --Put current turbine speeds into table turbineSpeeds which correspond with their locations in turbines
             local turbineStr = turbines[i]
@@ -192,10 +192,11 @@ function getUserCommand()
         term.setCursorPos(1,4)
         term.write("2) Stop All Turbines")
         
+        --Shows current info about turbines
         term.setCursorPos(1,6)
         term.write("Turbines Connected: "..turbineCount)
         term.setCursorPos(1,7)
-        term.write("Turbine Speeds: "..table.concat(turbineSpeeds, ", "))
+        term.write("Turbine Speeds: "..table.concat(turbineSpeeds, " RPM, "))
 
         --Check user input
         local x = keyPress()
