@@ -64,6 +64,7 @@ function startTurbine(turbineIndex)
         print('Coils where engaged. Disengaging...')
         turbine.setInductorEngaged(false)
     end
+    --TODO: Control flow rate of turbine
 
     --Loop to check rotor speed and engage coils when ready (at 1750 RPM)
     while true do
@@ -89,4 +90,5 @@ print('Turbine Debug Info:')
 print('DEBUG: turbine count: '..tostring(turbineCount))
 print('DEBUG: turbines: '..table.concat(turbines, ", "))
 --print(tostring(turbines[1]))
-debugTurbines()
+--debugTurbines()
+startTurbine(1)
