@@ -156,13 +156,12 @@ function getUserCommand()
         print("1) Start All Turbines")
         print("2) Stop All Turbines")
         --TODO: Add a command to terminate program
-        userInput = read()
 
         --Check user input
-        if userInput == "1" then
+        if keyPress() == 1 then
             startAllTurbines()
             sleep(3)
-        elseif userInput == "2" then
+        elseif keyPress() == 2 then
             stopAllTurbines()
             sleep(3)
         else

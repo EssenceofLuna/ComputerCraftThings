@@ -1,5 +1,5 @@
 require '/ComputerCraftThings/library'
-local surface = dofile("surface")
+-- local surface = dofile("surface")
 
 
 -- term.clear()
@@ -25,24 +25,24 @@ local surface = dofile("surface")
 --         "Y: "..tostring(yPos))
 -- end
 
-term.clear()
-local xSize, ySize = term.getSize()
-local surf = surface.create(xSize, ySize, colors.blue)
+-- term.clear()
+-- local xSize, ySize = term.getSize()
+-- local surf = surface.create(xSize, ySize, colors.blue)
 
-surf:fillRect(5, 5, 25, 10, colors.red, colors.yellow, "@")
+-- surf:fillRect(5, 5, 25, 10, colors.red, colors.yellow, "@")
 
-surf:output()
+-- surf:output()
 
-while true do
-    event, side, xPos, yPos = os.pullEvent("mouse_click")
+-- while true do
+--     event, side, xPos, yPos = os.pullEvent("mouse_click")
     
-    if xPos > 5 and xPos <= 30 and yPos > 5 and yPos <= 15 then
-        surf:drawString('Button Clicked!', 5, 2, colors.blue, colors.red)
-        surf:output()
-        sleep(1)
-        surf:clear(colors.blue)
-    end
+--     if xPos > 5 and xPos <= 30 and yPos > 5 and yPos <= 15 then
+--         surf:drawString('Button Clicked!', 5, 2, colors.blue, colors.red)
+--         surf:output()
+--         sleep(1)
+--         surf:clear(colors.blue)
+--     end
     
-    surf:fillRect(5, 5, 25, 10, colors.red, colors.yellow, "@")
-    surf:output()
-end
+--     surf:fillRect(5, 5, 25, 10, colors.red, colors.yellow, "@")
+--     surf:output()
+-- end
