@@ -138,7 +138,8 @@ function startAllTurbines()
             break
         end
     end
-    print("Finished booting turbines.")
+    term.clear
+    center("Finished booting turbines.")
 end
 
 function stopAllTurbines()
@@ -184,7 +185,7 @@ function getUserCommand()
                 term.clear()
                 term.setCursorPos(1,1)
                 term.write("Exiting controller...")
-                sleep(3)
+                sleep(1)
                 error('Reactor Controller Closed')
             end
         end
