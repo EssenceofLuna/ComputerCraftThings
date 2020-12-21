@@ -162,11 +162,38 @@ function stopAllTurbines()
         turbineStr = turbines[i]
         turbine = peripheral.wrap(turbineStr)
         turbine.setActive(false)
-        print("Stopped Turbine "..i)
+        --print("Stopped Turbine "..i) --Debug
     end
-    print("All turbines stopped.")
+    --print("All turbines stopped.") --Debug
 end
 
+
+
+function engageAllTurbines()
+    --print("Engaging all turbines...") --Debug
+    local turbineCount,turbines = getTurbines()
+    for i=1,turbineCount do
+        turbineStr = turbines[i]
+        turbine = peripheral.wrap(turbineStr)
+        turbine.setInductorEngaged(true)
+        --print("DEBUG: Engaged Turbine "..i) --Debug
+    end
+    --print("All turbines engaged.") --Debug
+end
+
+
+
+function disengageAllTurbines()
+    --print("Disengaging all turbines...") --Debug
+    local turbineCount,turbines = getTurbines()
+    for i=1,turbineCount do
+        turbineStr = turbines[i]
+        turbine = peripheral.wrap(turbineStr)
+        turbine.setInductorEngaged(false)
+        --print("DEBUG: Disengaged Turbine "..i) --Debug
+    end
+    --print("All turbines disengaged.") --Debug
+end
 
 
 
@@ -203,7 +230,7 @@ function getUserCommand()
             if turbine.getActive() then activeText = 'Active' else activeText = 'Inactive' end
             if turbine.getInductorEngaged() then engagedText = 'Engaged' else activeText = 'Disengaged' end
 
-            term.setCursorPos(1,5+i)
+            term.setCursorPos(1,7+i)
             term.write('Turbine '..i..' '..engagedText..', '..activeText..': '..speed..' RPM, '..flowRate..' mB/t')
         end
         
@@ -260,7 +287,15 @@ function getUserCommand()
         end
         if keyPress(keys.two) then
             stopAllTurbines()
-            sleep(3)
+            --sleep(3)
+        end
+        if keyPress(keys.three) then
+            engageAllTurbines()
+            --sleep(3)
+        end
+        if keyPress(keys.four) then
+            disengageAllTurbines()
+            --sleep(3)
         end
     end
 end
