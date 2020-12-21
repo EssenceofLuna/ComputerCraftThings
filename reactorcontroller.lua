@@ -123,7 +123,7 @@ function startAllTurbines()
 
             --Startup Info Screen--
             term.clear()
-            center("[Turbine Startup]") --TODO: Center this
+            centerText("[Turbine Startup]") --TODO: Center this
             term.setCursorPos(1, 2)
             term.write('Turbines Remaining: '..turbineCount)
             
@@ -148,7 +148,7 @@ function startAllTurbines()
         end
     end
     term.clear()
-    center("Finished booting turbines.")
+    centerText("Finished booting turbines.")
 end
 
 
@@ -184,7 +184,7 @@ function getUserCommand()
 
         term.clear()
         --TODO: Add functionality to  start/stop specific turbine. To do this, index all the turbines and list then to let the user pick one
-        center("Select a command")
+        centerText("Select a command")
         term.setCursorPos(1,2)
         term.write("0) Exit Program")
         term.setCursorPos(1,3)
