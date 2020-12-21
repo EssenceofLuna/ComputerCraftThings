@@ -124,8 +124,7 @@ function startAllTurbines()
             --Startup Info Screen--
             term.clear()
             term.setCursorPos(1,1)
-            centerX()
-            term.write("[Turbine Startup]") --TODO: Center this
+            centerText("[Turbine Startup]") --TODO: Center this
             term.setCursorPos(1, 2)
             term.write('Turbines Remaining: '..turbineCount)
             
@@ -187,8 +186,7 @@ function getUserCommand()
         term.clear()
         --TODO: Add functionality to  start/stop specific turbine. To do this, index all the turbines and list then to let the user pick one
         term.setCursorPos(1,1)
-        centerX()
-        term.write("Select a command")
+        centerText("Select a command")
         term.setCursorPos(1,2)
         term.write("0) Exit Program")
         term.setCursorPos(1,3)
@@ -241,10 +239,12 @@ function getUserCommand()
             term.write("Exiting controller...")
             sleep(1)
             error('Reactor Controller Closed')
-        elseif keyPress(keys.one) then
+        end
+        if keyPress(keys.one) then
             startAllTurbines()
             sleep(3)
-        elseif keyPress(keys.two) then
+        end
+        if keyPress(keys.two) then
             stopAllTurbines()
             sleep(3)
         end
