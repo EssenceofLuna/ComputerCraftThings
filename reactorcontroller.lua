@@ -161,12 +161,10 @@ function getUserCommand()
         if keyPress() == keys.one then
             startAllTurbines()
             sleep(3)
-        elseif keyPress() == keys.two then
+        end
+        if keyPress() == keys.two then
             stopAllTurbines()
             sleep(3)
-        else
-            print("Error: Invalid Input. Press any key to continue")
-            os.pullEvent("key")
         end
     end
 end
