@@ -28,6 +28,9 @@ function getTurbines()
     return turbineCount, turbines
 end
 
+
+
+
 function debugTurbines()
     --Function that prints out a bunch of debug info for all connected turbines
     local turbineCount,turbines = getTurbines()
@@ -41,6 +44,9 @@ function debugTurbines()
         print('Turbine Energy Stored: '..turbine.getEnergyStored())
     end
 end
+
+
+
 
 --TODO: Add functionality for booting multiple turbines at once
 function startTurbine(turbineIndex)
@@ -81,6 +87,9 @@ function startTurbine(turbineIndex)
         end
     end
 end
+
+
+
 
 function startAllTurbines()
     --Starts all connected turbines
@@ -142,6 +151,9 @@ function startAllTurbines()
     center("Finished booting turbines.")
 end
 
+
+
+
 function stopAllTurbines()
     print("Stopping all turbines.")
     local turbineCount,turbines = getTurbines()
@@ -154,11 +166,22 @@ function stopAllTurbines()
     print("All turbines stopped.")
 end
 
+
+
+
 function getUserCommand()
     local turbineCount,turbines = getTurbines()
-    --Function to ask the user what to do
+    local turbineSpeeds = {}
     term.clear()
     while true do
+        for i=1,turbineCount do
+            --Put current turbine speeds into table turbineSpeeds which correspond with their locations in turbines
+            local turbineStr = turbines[i]
+            local turbine = peripheral.wrap(turbineStr)
+            local speed = math.floor(turbine.getRotorSpeed())
+            table.insert(turbineSpeeds, i, speed)
+        end
+
         term.clear()
         --TODO: Add functionality to  start/stop specific turbine. To do this, index all the turbines and list then to let the user pick one
         center("Select a command")
@@ -171,6 +194,8 @@ function getUserCommand()
         
         term.setCursorPos(1,6)
         term.write("Turbines Connected: "..turbineCount)
+        term.setCursorPos(1,7)
+        term.write("Turbine Speeds: "..table.concat(turbineSpeeds, ", "))
 
         --Check user input
         local x = keyPress()
