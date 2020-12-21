@@ -154,6 +154,7 @@ function stopAllTurbines()
 end
 
 function getUserCommand()
+    local turbineCount,turbines = getTurbines()
     --Function to ask the user what to do
     term.clear()
     while true do
@@ -166,7 +167,9 @@ function getUserCommand()
         term.write("1) Start All Turbines")
         term.setCursorPos(1,4)
         term.write("2) Stop All Turbines")
-        --TODO: Add a command to terminate program
+        
+        term.setCursorPos(1,6)
+        term.write("Turbines Connected: "..turbineCount)
 
         --Check user input
         local x = keyPress()
