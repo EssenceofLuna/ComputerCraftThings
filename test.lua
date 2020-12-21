@@ -29,7 +29,7 @@ term.clear()
 
 local surf = surface.create(51, 19, colors.blue)
 
-surf:drawSurfaceSmall(surf, 0, 0)
+surf:drawSurfaceSmall(surf, 2, 3)
 
 surf:fillRect(5, 5, 25, 10, colors.red, colors.yellow, "@")
 
