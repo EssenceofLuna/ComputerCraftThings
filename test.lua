@@ -25,6 +25,10 @@ local surface = dofile("surface")
 --         "Y: "..tostring(yPos))
 -- end
 
+function drawButton()
+    surf:fillRect(5, 5, 25, 10, colors.red, colors.yellow, "@")
+end
+
 term.clear()
 
 local surf = surface.create(51, 19, colors.blue)
@@ -33,13 +37,12 @@ surf:output()
 
 while true do
     event, side, xPos, yPos = os.pullEvent("monitor_touch")
-    surf:fillRect(5, 5, 25, 10, colors.red, colors.pink, "#")
     
     if xPos >= 5 and xPos <= 25 and yPos >= 5 and yPos <= 10 then
-        local clickedText = surf:drawString('Button Clicked!', 2, 2, colors.blue, colors.red)
-    else
-        clickedText = nil
+        surf:drawString('Button Clicked!', 2, 2, colors.blue, colors.red)
     end
 
+    surf:clear(colors.blue)
+    drawButton()
     surf:output()
 end
