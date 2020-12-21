@@ -232,12 +232,12 @@ function getUserCommand()
         --     end
         -- end
         
-        if keyPress() == keys.zero then
-            --         term.clear()
-            --         term.setCursorPos(1,1)
-            --         term.write("Exiting controller...")
-            --         sleep(1)
-            --         error('Reactor Controller Closed')
+        if keyPress(keys.zero) then
+                    term.clear()
+                    term.setCursorPos(1,1)
+                    term.write("Exiting controller...")
+                    sleep(1)
+                    error('Reactor Controller Closed')
         end
     end
 end
