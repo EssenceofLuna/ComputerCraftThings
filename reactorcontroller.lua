@@ -3,8 +3,11 @@ require '/ComputerCraftThings/APIs/library'
 --TODO: Write pocket computer program to check on reactor stuff
 
 --TODO: Write function to edit settings
+--TODO: Allow setting different speeds for different turbines
 --SETTINGS--
 avoidTurbineMeltdown = true --Auto avoids turbines from melting down
+autoRegulateTurbineSpeed = true --Auto regulates a turbine's speed
+turbineSpeedGoal = 1800 --Either 900 or 1800, depending on desired RPM. Only matters if autoRegulateTurbineSpeed is true
 
 
 function getTurbines()
@@ -223,7 +226,9 @@ function getUserCommand()
         term.setCursorPos(1,3)
         term.write("1) Start All Turbines")
         term.setCursorPos(1,4)
-        term.write("2) Stop All Turbines")
+        term.write("2) Deactivate All Turbines")
+        term.setCursorPos(1,4)
+        term.write("2) Deactivate All Turbines")
         term.setCursorPos(1,5)
         term.write("3) Engage All Turbines")
         term.setCursorPos(1,6)
@@ -248,6 +253,18 @@ function getUserCommand()
                 turbine.setInductorEngaged(true)
                 term.clear()
                 --centerText('WARNING: Turbine '..i..' Safety Engaged.') --Debug
+            end
+
+            --Turbine Speed Regulation
+            if autoRegulateTurbineSpeed == true then
+                if speed > turbineSpeedGoal + 50 then
+                    --Turbine spinning too fast. Deactivating
+                    turbine.setActive(false)
+                    turbine.setInductorEngaged(true)
+                elseif speed < turbineSpeedGoal - 50 then
+                    --Turbine too slow. Disengaging coils until up to speed
+                    turbine.setInductorEngaged(false)
+                end
             end
         end
         
