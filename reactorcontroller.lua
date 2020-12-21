@@ -210,7 +210,7 @@ function getUserCommand()
             table.insert(turbineSpeeds, i, speed)
         end
 
-        term.clear()
+        --term.clear()
         --TODO: Add functionality to  start/stop specific turbine. To do this, index all the turbines and list then to let the user pick one
         term.setCursorPos(1,1)
         centerText("Select a command")
@@ -234,7 +234,9 @@ function getUserCommand()
             if turbine.getActive() then activeText = 'Active' else activeText = 'Inactive' end
             if turbine.getInductorEngaged() then engagedText = 'Engaged' else activeText = 'Disengaged' end
 
+            --Set to the line, clear it, then write new info in
             term.setCursorPos(1,7+i)
+            term.clearLine()
             term.write('Turbine '..i..' '..engagedText..', '..activeText..': '..speed..' RPM, '..flowRate..' mB/t')
         end
         
