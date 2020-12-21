@@ -70,7 +70,7 @@ function startTurbine(turbineIndex)
     while true do
         local currentSpeed = turbine.getRotorSpeed()
         --print('DEBUG: Turbine Speed: '..currentSpeed) --Debug
-        if currentSpeed >= 1750 then
+        if currentSpeed >= 1800 then
             --Turbine as reached speed
             print('Turbine reached speed. Engaging coils.')
             turbine.setInductorEngaged(true)
