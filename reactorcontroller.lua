@@ -31,7 +31,7 @@ end
 function debugTurbines()
     local turbineCount,turbines = getTurbines()
     for i=1,turbineCount do
-        local turbineStr = 'bigReactors-Turbine_'..i
+        local turbineStr = turbines[i]
         local turbine = peripheral.wrap(turbineStr)
         print('Turbine Name: '..turbineStr)
         print('Turbine Active: '..turbine.getActive())
