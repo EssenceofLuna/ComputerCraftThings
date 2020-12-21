@@ -122,6 +122,8 @@ function startAllTurbines()
             else
                 print('Debug: Turbine '..i..' not ready. '..turbineSpeed)
             end
+
+            sleep(5) --TODO: Adjust sleep time depending on remaining turbines
         end
     end
 end
