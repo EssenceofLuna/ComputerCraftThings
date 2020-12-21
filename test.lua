@@ -29,7 +29,7 @@ term.clear()
 
 local surf = surface.create(term.getSize())
 
-surf:drawRect(5, 5, 25, 10)
+surf:drawRect(5, 5, 25, 10, 5, 5, 5)
 
 while true do
     event, side, xPos, yPos = os.pullEvent("monitor_touch")
