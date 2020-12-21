@@ -84,6 +84,7 @@ end
 
 function startAllTurbines()
     --Starts all connected turbines
+    --TODO: When a turbine is done, all turbine numbers shift down to fill in. Maybe get turbine number from the string rather than i?
     local turbineCount,turbines = getTurbines()
     while true do
         local turbineCount = tableLength(turbines) --Recount turbines
@@ -154,15 +155,16 @@ function getUserCommand()
         print("Select a command")
         print("1) Start All Turbines")
         print("2) Stop All Turbines")
+        --TODO: Add a command to terminate program
         userInput = read()
 
         --Check user input
         if userInput == "1" then
             startAllTurbines()
-            sleep(5)
+            sleep(3)
         elseif userInput == "2" then
             stopAllTurbines()
-            sleep(5)
+            sleep(3)
         else
             print("Error: Invalid Input. Press any key to continue")
             os.pullEvent("key")
