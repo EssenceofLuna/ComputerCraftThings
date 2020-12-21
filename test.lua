@@ -26,7 +26,7 @@ local surface = dofile('surface')
 
 term.clear()
 
-surf:drawRect(5, 5, 25, 10)
+surface:drawRect(5, 5, 25, 10)
 
 while true do
     event, side, xPos, yPos = os.pullEvent("monitor_touch")
