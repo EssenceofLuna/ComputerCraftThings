@@ -162,5 +162,5 @@ print('DEBUG: turbines: '..table.concat(turbines, ", "))
 -- startTurbine(2)
 -- startTurbine(3)
 
---startAllTurbines()
-stopAllTurbines()
+--stopAllTurbines()
+startAllTurbines()
