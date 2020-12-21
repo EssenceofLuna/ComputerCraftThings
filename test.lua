@@ -36,9 +36,10 @@ while true do
     
     if xPos >= 5 and xPos <= 25 and yPos >= 5 and yPos <= 10 then
         surf:drawString('Button Clicked!', 2, 2, colors.blue, colors.red)
+    else
+        surf:clear(colors.blue)
     end
     
-    surf:clear(colors.blue)
     surf:fillRect(5, 5, 25, 10, colors.red, colors.yellow, "@")
     surf:output()
 end
