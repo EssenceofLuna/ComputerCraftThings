@@ -93,13 +93,14 @@ function startAllTurbines()
             local turbine = peripheral.wrap(turbineStr)
             local turbineSpeed = turbine.getRotorSpeed()
 
+            
             --check if turbine is connected
             if turbine.getConnected() == false then
                 print("Error: Turbine "..i.." not connected. Aborting startup.")
                 return
             end
             --If turbine is connected, continue
-
+            
             --Check if turbine is powered on, and power on if not
             if turbine.getActive() == false then
                 print('Turbine '..i..' powering on...')
@@ -110,6 +111,10 @@ function startAllTurbines()
                 turbine.setInductorEngaged(false)
             end
             --TODO: Control flow rate of turbine
+
+            term.clear()
+            center("[Turbine Startup]") --TODO: Center this
+            print('Turbines Remaining: '..turbineCount)
             
             --DEBUG
             --print('Debug: Checked Turbine '..i..' and got '..turbineSpeed)
@@ -120,10 +125,10 @@ function startAllTurbines()
                 table.remove(turbines, i)
                 break
             else
-                print('Debug: Turbine '..i..' not ready. '..turbineSpeed)
+                --print('Debug: Turbine '..i..' not ready. '..turbineSpeed)
             end
 
-            sleep(5) --TODO: Adjust sleep time depending on remaining turbines
+            sleep(5) --TODO?: Adjust sleep time depending on remaining turbines
         end
 
         if turbineCount <= 0 then

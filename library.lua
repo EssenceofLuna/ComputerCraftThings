@@ -46,3 +46,20 @@ function keyPress() --raid.keyPress(keys.{key})
     local event, p1 = os.pullEvent("key")
     return p1
 end
+
+function center(str,y)
+    if y == nil then
+        y = 1
+    end
+    local length = term.getSize()
+    local x = string.len(str)
+    local even,total
+    if x > length then
+      print("invalid length")
+    else 
+      even = (length - x) % 2
+      total = ((length - x) - even) / 2
+      term.setCursorPos(total,y)
+      term.write(str)
+    end
+end
