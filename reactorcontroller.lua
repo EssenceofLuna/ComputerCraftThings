@@ -29,6 +29,7 @@ function getTurbines()
 end
 
 function debugTurbines()
+    --Function that prints out a bunch of debug info for all connected turbines
     local turbineCount,turbines = getTurbines()
     for i=1,turbineCount do
         local turbineStr = turbines[i]
@@ -38,6 +39,44 @@ function debugTurbines()
         print('Turbine RPM: '..turbine.getRotorSpeed())
         print('Turbine Input Amount: '..turbine.getInputAmount())
         print('Turbine Energy Stored: '..turbine.getEnergyStored())
+    end
+end
+
+--TODO: Startup program that monitors speed and engages coils at 1750 RPM
+function startTurbine(turbineIndex)
+    local turbineCount,turbines = getTurbines()
+    turbineStr = turbines[turbineIndex]
+    turbine = peripheral.wrap(turbineStr)
+    print('Startup for turbine '..turbineIndex..' named '..turbineStr..' initiated.')
+    --check if turbine is connected
+    if turbine.getConnected() == false then
+        print("Error: Turbine not connected. Aborting startup.")
+        return
+    end
+    --If turbine is connected, continue
+
+    --Check if turbine is powered on, and power on if not
+    if turbine.getActive() == false then
+        print('Turbine powering on...')
+        turbine.setActive(true)
+    end
+    if turbine.getInductorEngaged() == true then
+        print('Coils where engaged. Disengaging...')
+        turbine.setInductorEngaged(false)
+    end
+
+    --Loop to check rotor speed and engage coils when ready (at 1750 RPM)
+    while true do
+        local currentSpeed = turbine.getRotorSpeed()
+        if currentSpeed >= 1750 then
+            --Turbine as reached speed
+            print('Turbine reached speed. Engaging coils.')
+            turbine.setInductorEngaged(true)
+            break
+        else
+            print('Turbine spinning up... '..currentSpeed..' RPM')
+            sleep(10000)
+        end
     end
 end
 
