@@ -197,6 +197,9 @@ function getUserCommand()
         term.write("Turbines Connected: "..turbineCount)
         term.setCursorPos(1,7)
         term.write("Turbine Speeds: "..table.concat(turbineSpeeds, " RPM, "))
+        term.write(" RPM") --Finish formatting
+        term.setCursorPos(1,8)
+        term.write("Press any key to update info (Temporary fix)")
 
         --Check user input
         local x = keyPress()
