@@ -34,7 +34,7 @@ function debugTurbines()
         local turbineStr = turbines[i]
         local turbine = peripheral.wrap(turbineStr)
         print('Turbine Name: '..turbineStr)
-        print('Turbine Active: '..turbine.getActive())
+        print('Turbine Active: '..tostring(turbine.getActive()))
         print('Turbine RPM: '..turbine.getRotorSpeed())
         print('Turbine Input Amount: '..turbine.getInputAmount())
         print('Turbine Energy Stored: '..turbine.getEnergyStored())
