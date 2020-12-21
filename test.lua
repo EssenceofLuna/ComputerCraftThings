@@ -1,4 +1,5 @@
 require '/ComputerCraftThings/library'
+os.loadAPI('/button.lua')
 local surface = dofile("surface") --load Surface (Graphics API)
 
 -- term.clear()
@@ -15,4 +16,6 @@ local surface = dofile("surface") --load Surface (Graphics API)
 -- print('Turbine Type: '..peripheral.getType(turbineStr))
 -- print('Turbine Speed: '..turbine.getRotorSpeed())
 
-print('CC Version: '..os.version())
+term.clear()
+
+button.setMonitor('top')
