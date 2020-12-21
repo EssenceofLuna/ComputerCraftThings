@@ -1,5 +1,6 @@
 require '/ComputerCraftThings/library'
-require '/surface'
+local surface = dofile("surface")
+
 
 -- term.clear()
 -- print("System Info")
