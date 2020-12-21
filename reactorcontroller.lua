@@ -85,8 +85,6 @@ end
 function startAllTurbines()
     --Starts all connected turbines
     local turbineCount,turbines = getTurbines()
-    --TODO: Write this
-    local startedTurbines = 0
     while true do
         local turbineCount = tableLength(turbines) --Recount turbines
         for i=1,turbineCount do
@@ -126,7 +124,25 @@ function startAllTurbines()
 
             sleep(5) --TODO: Adjust sleep time depending on remaining turbines
         end
+
+        if turbineCount <= 0 then
+            --Finish loop when all turbines are up
+            break
+        end
     end
+    print("Finished booting turbines.")
+end
+
+function stopAllTurbines()
+    print("Stopping all turbines.")
+    local turbineCount,turbines = getTurbines()
+    for i=1,turbineCount do
+        turbineStr = turbines[i]
+        turbine = peripheral.wrap(turbineStr)
+        turbine.setActive(false)
+        print("Stopped Turbine "..i)
+    end
+    print("All turbines stopped.")
 end
 
 --TODO: Write a function to shut down specific turbine
@@ -146,4 +162,5 @@ print('DEBUG: turbines: '..table.concat(turbines, ", "))
 -- startTurbine(2)
 -- startTurbine(3)
 
-startAllTurbines()
+--startAllTurbines()
+stopAllTurbines()
