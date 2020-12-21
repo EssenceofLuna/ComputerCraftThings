@@ -241,7 +241,7 @@ function getUserCommand()
             local speed = math.floor(turbine.getRotorSpeed())
             local flowRate = turbine.getFluidFlowRate()
             if turbine.getActive() then activeText = 'Active' else activeText = 'Inactive' end
-            if turbine.getInductorEngaged() then engagedText = 'Engaged' else activeText = 'Disengaged' end
+            if turbine.getInductorEngaged() then engagedText = 'Engaged' else engagedText = 'Disengaged' end
 
             --Set to the line, clear it, then write new info in
             term.setCursorPos(1,7+i)
@@ -264,6 +264,7 @@ function getUserCommand()
                 elseif speed < turbineSpeedGoal - 50 then
                     --Turbine too slow. Disengaging coils until up to speed
                     turbine.setInductorEngaged(false)
+                    turbine.setActive(true)
                 end
             end
         end
