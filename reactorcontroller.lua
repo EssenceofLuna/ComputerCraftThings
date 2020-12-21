@@ -257,7 +257,10 @@ function getUserCommand()
 
             --Turbine Speed Regulation
             if autoRegulateTurbineSpeed == true then
-                if speed > turbineSpeedGoal + 50 then
+                if speed == turbineSpeedGoal then
+                    turbine.setActive(true)
+                    turbine.setInductorEngaged(true)
+                elseif speed > turbineSpeedGoal + 50 then
                     --Turbine spinning too fast. Deactivating
                     turbine.setActive(false)
                     turbine.setInductorEngaged(true)
