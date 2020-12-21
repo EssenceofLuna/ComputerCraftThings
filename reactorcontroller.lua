@@ -112,7 +112,7 @@ function startAllTurbines()
             
             --DEBUG
             --print('Debug: Checked Turbine '..i..' and got '..turbineSpeed)
-            if turbineSpeed >= 1800 then
+            if turbineSpeed >= 1790 then
                 --Turbine as reached speed
                 print('Turbine '..i..' reached speed. Engaging coils.')
                 turbine.setInductorEngaged(true)
@@ -150,7 +150,7 @@ function getUserCommand()
     term.clear()
     while true do
         term.clear()
-        --TODO: Add functionality to  start/stop specific turbine
+        --TODO: Add functionality to  start/stop specific turbine. To do this, index all the turbines and list then to let the user pick one
         print("Select a command")
         print("1) Start All Turbines")
         print("2) Stop All Turbines")
@@ -159,8 +159,10 @@ function getUserCommand()
         --Check user input
         if userInput == "1" then
             startAllTurbines()
+            sleep(5)
         elseif userInput == "2" then
             stopAllTurbines()
+            sleep(5)
         else
             print("Error: Invalid Input. Press any key to continue")
             os.pullEvent("key")
