@@ -200,8 +200,8 @@ function getUserCommand()
         term.setCursorPos(1,7)
         term.write("Turbine Speeds: "..table.concat(turbineSpeeds, " RPM, "))
         term.write(" RPM") --Finish formatting
-        term.setCursorPos(1,8)
-        term.write("Press any key to update info (Temporary fix)") --TODO: Update when waiting for key press
+        --term.setCursorPos(1,8)
+        --term.write("Press any key to update info (Temporary fix)") --TODO: Update when waiting for key press
 
 
         --[[TODO: Rewrite info screen to something like this:
@@ -232,12 +232,19 @@ function getUserCommand()
         --     end
         -- end
         
+        --If a key is pressed, execute command
         if keyPress(keys.zero) then
-                    term.clear()
-                    term.setCursorPos(1,1)
-                    term.write("Exiting controller...")
-                    sleep(1)
-                    error('Reactor Controller Closed')
+            term.clear()
+            term.setCursorPos(1,1)
+            term.write("Exiting controller...")
+            sleep(1)
+            error('Reactor Controller Closed')
+        elseif keyPress(keys.one) then
+            startAllTurbines()
+            sleep(3)
+        elseif keyPress(keys.two) then
+            stopAllTurbines()
+            sleep(3)
         end
     end
 end
