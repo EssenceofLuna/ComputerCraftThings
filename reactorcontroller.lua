@@ -42,7 +42,7 @@ function debugTurbines()
     end
 end
 
---TODO: Startup program that monitors speed and engages coils at 1750 RPM
+--TODO: Add functionality for booting multiple turbines at once
 function startTurbine(turbineIndex)
     local turbineCount,turbines = getTurbines()
     turbineStr = turbines[turbineIndex]
@@ -82,6 +82,13 @@ function startTurbine(turbineIndex)
     end
 end
 
+function startAllTurbines()
+    --Starts all connected turbines
+    local turbineCount,turbines = getTurbines()
+    --TODO: Write this
+
+end
+
 --DEBUG
 turbineCount,turbines = getTurbines()
 
@@ -92,4 +99,6 @@ print('DEBUG: turbine count: '..tostring(turbineCount))
 print('DEBUG: turbines: '..table.concat(turbines, ", "))
 --print(tostring(turbines[1]))
 --debugTurbines()
+startTurbine(1)
+startTurbine(2)
 startTurbine(3)
