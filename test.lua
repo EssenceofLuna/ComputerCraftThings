@@ -26,8 +26,8 @@ local surface = dofile("surface")
 -- end
 
 term.clear()
-
-local surf = surface.create(term.getSize(), colors.blue)
+local xSize, ySize = term.getSize()
+local surf = surface.create(xSize, ySize, colors.blue)
 
 surf:fillRect(5, 5, 25, 10, colors.red, colors.yellow, "@")
 
