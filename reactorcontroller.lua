@@ -146,9 +146,10 @@ function stopAllTurbines()
 end
 
 function getUserCommand()
+    --Function to ask the user what to do
     term.clear()
     while true do
-        --Function to ask the user what to do
+        term.clear()
         --TODO: Add functionality to  start/stop specific turbine
         print("Select a command")
         print("1) Start All Turbines")
@@ -161,8 +162,8 @@ function getUserCommand()
         elseif userInput == "2" then
             stopAllTurbines()
         else
-            term.clear()
-            print("Error: Invalid Input")
+            print("Error: Invalid Input. Press any key to continue")
+            os.pullEvent("key")
         end
     end
 end
