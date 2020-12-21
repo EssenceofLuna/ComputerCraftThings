@@ -1,4 +1,4 @@
--- require '/ComputerCraftThings/library' --Removed to make update.lua seperate from all other scripts.
+-- require '/ComputerCraftThings/APIs/library' --Removed to make update.lua seperate from all other scripts.
 
 --Instal Github: 'pastebin run p8PJVxC4'        https://github.com/eric-wieser/computercraft-github
 --Initial install: 'wget run https://raw.githubusercontent.com/Alstro20/ComputerCraftThings/master/update.lua'

@@ -1,4 +1,4 @@
-require '/ComputerCraftThings/library'
+require '/ComputerCraftThings/APIs/library'
 -- local surface = dofile("surface")
 
 

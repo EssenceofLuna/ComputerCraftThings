@@ -1,4 +1,4 @@
-require '/ComputerCraftThings/library'
+require '/ComputerCraftThings/APIs/library'
 
 --TODO: Write pocket computer program to check on reactor stuff
 

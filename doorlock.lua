@@ -1,4 +1,6 @@
-require '/ComputerCraftThings/library'
+require '/ComputerCraftThings/APIs/library'
+
+--Unfinished Project--
 
 function initialSetup()
     --TODO: Get input on where the door is
