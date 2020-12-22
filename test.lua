@@ -80,14 +80,22 @@ local function updateScreen()
     end
 end
 
-local function coroutineTestPrint()
+local function coroutineTestPrint(str)
     print("Coroutine testing first part")
     coroutine.yield()
     print("Second part of coroutine")
+    coroutine.yield()
+    print(str)
 end
 
 local co = coroutine.create(coroutineTestPrint)
-coroutine.resume(co)
-print(coroutine.status(co))
-
+-- print(coroutine.status(co))
+-- coroutine.resume(co)
+-- print(coroutine.status(co))
+-- coroutine.resume(co)
+-- print(coroutine.status(co))
+while coroutine.status(co) ~= 'dead' do
+    coroutine.resume(co)
+    print(coroutine.status(co))
+end
 --parallel.waitForAny(keyPressTest, updateScreen)
