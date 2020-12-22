@@ -53,7 +53,7 @@ Usage: Input a file directory and a string to be added. String will be added at 
 ]]--
 function addToLog(file, string)
     --Get file in append mode
-    local f = io.open(file, "a")
+    local file = io.open(file, "a")
     io.output(file) --Set output as file path to overwrite when finished
     io.write(string)
     io.close(file)

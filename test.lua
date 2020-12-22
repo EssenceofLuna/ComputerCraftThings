@@ -47,4 +47,4 @@ require '/ComputerCraftThings/APIs/library'
 --     surf:output()
 -- end
 
-addToLog('ComputerCraftThings/testLog.lua', 'Test Log '..os.time(os.date("!*t")))
+addToLog('testLog.lua', 'Test Log '..os.time(os.date("!*t")))
