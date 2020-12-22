@@ -108,4 +108,4 @@ os.loadAPI("rom/apis/textutils.lua")
 -- --parallel.waitForAny(keyPressTest, updateScreen)
 
 
-rednet.open(back)
+rednet.open('back')
