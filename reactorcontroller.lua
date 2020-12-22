@@ -66,6 +66,7 @@ end
 
 
 --TODO: Add functionality for booting multiple turbines at once
+--This function not currently in use
 function startTurbine(turbineIndex)
     local turbineCount,turbines = getTurbines()
     turbineStr = turbines[turbineIndex]
@@ -173,17 +174,31 @@ end
 
 
 
-function stopAllTurbines()
-    --print("Stopping all turbines.") --Debug
+function enableAllTurbines()
+    --print("Enabling all turbines.") --Debug
+    turbinesPoweredDown = false
+    local turbineCount,turbines = getTurbines()
+    for i=1,turbineCount do
+        turbineStr = turbines[i]
+        turbine = peripheral.wrap(turbineStr)
+        turbine.setActive(true)
+        --print("Enabling Turbine "..i) --Debug
+    end
+    --print("All turbines enabled.") --Debug
+end
+
+
+function disableAllTurbines()
+    --print("Disabling all turbines.") --Debug
     turbinesPoweredDown = true
     local turbineCount,turbines = getTurbines()
     for i=1,turbineCount do
         turbineStr = turbines[i]
         turbine = peripheral.wrap(turbineStr)
         turbine.setActive(false)
-        --print("Stopped Turbine "..i) --Debug
+        --print("Disabled Turbine "..i) --Debug
     end
-    --print("All turbines stopped.") --Debug
+    --print("All turbines disabled.") --Debug
 end
 
 
@@ -238,7 +253,7 @@ function getUserCommand()
         term.setCursorPos(1,2)
         term.write("0) Exit Program")
         term.setCursorPos(1,3)
-        term.write("1) Start All Turbines")
+        term.write("1) Activate All Turbines")
         term.setCursorPos(1,4)
         term.write("2) Deactivate All Turbines")
         term.setCursorPos(1,4)
@@ -301,11 +316,11 @@ function getUserCommand()
             error('Reactor Controller Closed')
         end
         if keyPress(keys.one) then
-            startAllTurbines()
-            sleep(3)
+            enableAllTurbines()
+            --sleep(3)
         end
         if keyPress(keys.two) then
-            stopAllTurbines()
+            disableAllTurbines()
             --sleep(3)
         end
         if keyPress(keys.three) then
