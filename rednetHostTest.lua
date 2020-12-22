@@ -1,9 +1,17 @@
 require '/ComputerCraftThings/APIs/library'
+
+term.clear()
 rednet.open('back')
 print("Starting Rednet test as Host")
 rednet.broadcast('Host PC Broadcast')
-id,message = rednet.receive()
-print('Message recieved from PC '..id)
-print(message)
+while true do
+    term.clear()
+    print("Waiting for message...")
+    id,message = rednet.receive()
+    if id ~= nil then
+        print('Message recieved from PC '..id)
+        print(message)
+    end
+end
 rednet.close()
 print("Rednet closed")
