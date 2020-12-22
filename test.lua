@@ -49,5 +49,6 @@ os.loadAPI("rom/apis/textutils.lua")
 -- end
 
 term.clear()
+
 addToLog('testLog.lua', 'Test Log', true)
 textutils.pagedPrint(getLog('testLog.lua'))
