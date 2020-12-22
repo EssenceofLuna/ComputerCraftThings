@@ -70,7 +70,7 @@ end
 local function updateScreen()
     local i = 0
     while true do
-        local i = i + 1
+        i = i + 1
         term.setCursorPos(1,1)
         term.clearLine()
         term.write("Updating info "..i)
