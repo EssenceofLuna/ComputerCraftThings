@@ -52,8 +52,8 @@ Output: Nil. TODO: true if success, false if failed to write
 Usage: Input a file directory and a string to be added. String will be added at the bottom of the file on a new line.
 ]]--
 function addToLog(file, string)
-    --Add line break to start of string
-    string = '\n'..string
+    --Add line break to end of string
+    string = string..'\n'
 
     --Get file in append mode
     local file = io.open(file, "a")

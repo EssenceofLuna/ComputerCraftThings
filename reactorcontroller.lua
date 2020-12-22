@@ -8,6 +8,7 @@ require '/ComputerCraftThings/APIs/library'
 avoidTurbineMeltdown = true --Auto avoids turbines from melting down
 autoRegulateTurbineSpeed = true --Auto regulates a turbine's speed
 turbineSpeedGoal = 1800 --Either 900 or 1800, depending on desired RPM. Only matters if autoRegulateTurbineSpeed is true
+logToFile = true --Log interactions with turbines and reactors to a log file --TODO: Implement this.
 
 
 function getTurbines()
