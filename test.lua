@@ -48,7 +48,14 @@ os.loadAPI("rom/apis/textutils.lua")
 --     surf:output()
 -- end
 
+--Testing Logs Functionality
 term.clear()
 
 addToLog('testLog.lua', 'Test Log', true)
 textutils.pagedPrint(getLog('testLog.lua'))
+
+--Testing repeat loop
+repeat
+    print("Looped")
+    local event,key = os.pullEvent("key")
+until key == keys.enter
