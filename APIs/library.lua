@@ -57,8 +57,7 @@ Usage:
 function addToLog(file, string, timestamp)
     if timestamp == nil then timestamp = false end --set timestamp to false if timestamp isn't included.
 
-    --Add line break to end of string
-    string = string..'\n'
+    string = string..'\n' --Add line break to end of string
     if timestamp == true then string = os.date("%d.%m.%Y %H:%M:%S")..string end --Add timestamp to start of string if requested.
 
     --Get file in append mode
