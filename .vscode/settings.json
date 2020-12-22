@@ -16,6 +16,7 @@
         "fs",
         "colors",
         "pink",
-        "keys"
+        "keys",
+        "textutils"
     ]
 }

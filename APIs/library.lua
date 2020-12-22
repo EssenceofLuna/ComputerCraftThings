@@ -48,7 +48,7 @@ end
 --[[
 Purpose: Add a line to a log file on the computer
 Input: string, string
-Output: true if success, false if failed to write
+Output: Nil. TODO: true if success, false if failed to write
 Usage: Input a file directory and a string to be added. String will be added at the bottom of the file on a new line.
 ]]--
 function addToLog(file, string)
@@ -60,4 +60,25 @@ function addToLog(file, string)
     io.output(file) --Set output as file path to overwrite when finished
     io.write(string)
     io.close(file)
+end
+
+
+--[[
+Purpose: Get the contents of a log file
+Input: string
+Output: String containing everything in the log
+Usage: Input the file path to a log, and the contents of the log will be returned.
+Using textutils' pagedPrint() is recommended so the entire log can be read as the user wants.
+]]
+function getLog(file)
+    --Open the file in read mode
+    local file = io.open(file, "r")
+    io.input(file)
+
+    --Save the contents to a string
+    local logContents = io.read()
+
+    --Close the file and return the contents
+    io.close(file)
+    return logContents
 end

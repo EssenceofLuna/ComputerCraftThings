@@ -1,5 +1,6 @@
 require '/ComputerCraftThings/APIs/library'
 -- local surface = dofile("surface")
+os.loadAPI("rom/apis/textutils.lua")
 
 
 -- term.clear()
@@ -48,3 +49,4 @@ require '/ComputerCraftThings/APIs/library'
 -- end
 
 addToLog('testLog.lua', 'Test Log '..os.time(os.date("!*t")))
+textutils.pagedPrint(getLog('testLog.lua'))
