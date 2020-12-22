@@ -109,3 +109,4 @@ os.loadAPI("rom/apis/textutils.lua")
 
 
 rednet.open('back')
+rednet.host('testboy', 'TestPC1')

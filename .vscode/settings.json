@@ -18,6 +18,7 @@
         "pink",
         "keys",
         "textutils",
-        "parallel"
+        "parallel",
+        "rednet"
     ]
 }
