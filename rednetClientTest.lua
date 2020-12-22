@@ -10,6 +10,7 @@ while true do
     if id ~= nil then
         print("Message Recieved! Responding")
         rednet.broadcast('Hello PC '..id..'! You said: '..message)
+        break
     end
 end
 rednet.close()

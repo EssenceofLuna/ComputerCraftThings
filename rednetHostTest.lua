@@ -11,6 +11,7 @@ while true do
     if id ~= nil then
         print('Message recieved from PC '..id)
         print(message)
+        break
     end
 end
 rednet.close()
