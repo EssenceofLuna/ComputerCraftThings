@@ -63,7 +63,10 @@ os.loadAPI("rom/apis/textutils.lua")
 local function keyPressTest()
     while true do
         local event,key = os.pullEvent("char")
-        if key:lower() == "1" then return end
+        if key == keys.one then 
+            print("1 pressed")
+            return
+        end
     end
 end
 
