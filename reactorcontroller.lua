@@ -16,6 +16,9 @@ logToFile = true --Log interactions with turbines and reactors to a log file --T
 allowRednetCommands = true --Allow use of rednet to send commands
 modemSide = 'right' --What side the ender modem is on
 
+--Global Variables--
+turbinesPoweredDown = false --True when user powers down turbines
+reactorPoweredDown = false --True when user powers down reactor --TODO: Write reactor controlling lol
 
 function getTurbines()
     --Returns a count of the turbines and a table of their names
@@ -108,6 +111,7 @@ end
 function startAllTurbines()
     --Starts all connected turbines
     --TODO: When a turbine is done, all turbine numbers shift down to fill in. Maybe get turbine number from the string rather than i?
+    turbinesPoweredDown = false
     local turbineCount,turbines = getTurbines()
     while true do
         local turbineCount = tableLength(turbines) --Recount turbines
@@ -170,7 +174,8 @@ end
 
 
 function stopAllTurbines()
-    print("Stopping all turbines.")
+    --print("Stopping all turbines.") --Debug
+    turbinesPoweredDown = true
     local turbineCount,turbines = getTurbines()
     for i=1,turbineCount do
         turbineStr = turbines[i]
@@ -278,7 +283,8 @@ function getUserCommand()
                     --Turbine spinning too fast. Deactivating and engaging coils
                     turbine.setActive(false)
                     turbine.setInductorEngaged(true)
-                elseif speed < turbineSpeedGoal - 25 then
+                elseif speed < turbineSpeedGoal - 25 and turbinesPoweredDown == false then
+                    --Only runs if turbinesPowereDown is false (default)
                     --Turbine too slow. Activating and disengaging coils
                     turbine.setInductorEngaged(false)
                     turbine.setActive(true)
