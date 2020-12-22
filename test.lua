@@ -48,5 +48,5 @@ os.loadAPI("rom/apis/textutils.lua")
 --     surf:output()
 -- end
 
-addToLog('testLog.lua', 'Test Log '..os.time(os.date("!*t")))
+addToLog('testLog.lua', 'Test Log '..os.time(os.date("%d.%m.%Y %H:%M")))
 textutils.pagedPrint(getLog('testLog.lua'))
