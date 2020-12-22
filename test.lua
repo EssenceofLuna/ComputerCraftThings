@@ -107,4 +107,4 @@ os.loadAPI("rom/apis/textutils.lua")
 -- end
 -- --parallel.waitForAny(keyPressTest, updateScreen)
 
-print(peripheral.getNames())
+print(table.concat(peripheral.getNames()))
