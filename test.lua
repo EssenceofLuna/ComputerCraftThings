@@ -81,10 +81,13 @@ local function updateScreen()
 end
 
 local function coroutineTestPrint()
-    print("Coroutine testing")
+    print("Coroutine testing first part")
+    coroutine.yield()
+    print("Second part of coroutine")
 end
 
 local co = coroutine.create(coroutineTestPrint)
 coroutine.resume(co)
+print(coroutine.status(co))
 
 --parallel.waitForAny(keyPressTest, updateScreen)
