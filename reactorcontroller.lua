@@ -10,6 +10,12 @@ autoRegulateTurbineSpeed = true --Auto regulates a turbine's speed
 turbineSpeedGoal = 1800 --Either 900 or 1800, depending on desired RPM. Only matters if autoRegulateTurbineSpeed is true
 logToFile = true --Log interactions with turbines and reactors to a log file --TODO: Implement this.
 
+--TODO: Implement Rednet support
+--Wait for rednet command using coroutine while running main update thing
+--User input function will need to be rewritten for this
+allowRednetCommands = true --Allow use of rednet to send commands
+modemSide = 'right' --What side the ender modem is on
+
 
 function getTurbines()
     --Returns a count of the turbines and a table of their names

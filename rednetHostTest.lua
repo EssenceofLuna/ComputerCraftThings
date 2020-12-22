@@ -3,7 +3,8 @@ require '/ComputerCraftThings/APIs/library'
 term.clear()
 rednet.open('back')
 print("Starting Rednet test as Host")
-rednet.broadcast('Host PC Broadcast')
+print("Enter a message...")
+rednet.broadcast(io.rerad())
 while true do
     term.clear()
     print("Waiting for message...")
