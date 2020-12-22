@@ -17,6 +17,7 @@
         "colors",
         "pink",
         "keys",
-        "textutils"
+        "textutils",
+        "parallel"
     ]
 }

@@ -60,7 +60,7 @@ os.loadAPI("rom/apis/textutils.lua")
 --     local event,key = os.pullEvent("key")
 -- until key == keys.enter
 
-local function keyPress()
+local function keyPressTest()
     while true do
         local event,key = os.pullEvent("char")
         if char:lower() == "1" then return end
@@ -77,4 +77,4 @@ local function updateScreen()
     end
 end
 
-parallel.waitForAny(keyPress, updateScreen)
+parallel.waitForAny(keyPressTest, updateScreen)
