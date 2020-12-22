@@ -60,7 +60,7 @@ os.loadAPI("rom/apis/textutils.lua")
 --     local event,key = os.pullEvent("key")
 -- until key == keys.enter
 
-local function keyPressTest()
+local function keyPressRoutine()
     while true do
         local event,key = os.pullEvent("key")
         if key == keys.one then 
@@ -70,7 +70,7 @@ local function keyPressTest()
     end
 end
 
-local function updateScreen()
+local function updateScreenRoutine()
     --local i = 0
     while true do
         --i = i + 1
@@ -80,24 +80,32 @@ local function updateScreen()
     end
 end
 
-local function coroutineTestPrint(str)
-    print("Coroutine testing first part")
-    coroutine.yield()
-    print("Second part of coroutine")
-    coroutine.yield()
-    print(str)
-    coroutine.yield()
-    print('You entered: '..str)
+local co1 = coroutine.create(keyPressRoutine)
+local co2 = coroutine.create(updateScreenRoutine)
+
+while true do
+    coroutine.resume(co1)
+    coroutine.resume(co2)
 end
 
-local co = coroutine.create(coroutineTestPrint)
--- print(coroutine.status(co))
--- coroutine.resume(co)
--- print(coroutine.status(co))
--- coroutine.resume(co)
--- print(coroutine.status(co))
-while coroutine.status(co) ~= 'dead' do
-    coroutine.resume(co, 'test bitches')
-    print('Status: '..coroutine.status(co))
-end
---parallel.waitForAny(keyPressTest, updateScreen)
+-- local function coroutineTestPrint(str)
+--     print("Coroutine testing first part")
+--     coroutine.yield()
+--     print("Second part of coroutine")
+--     coroutine.yield()
+--     print(str)
+--     coroutine.yield()
+--     print('You entered: '..str)
+-- end
+
+-- local co = coroutine.create(coroutineTestPrint)
+-- -- print(coroutine.status(co))
+-- -- coroutine.resume(co)
+-- -- print(coroutine.status(co))
+-- -- coroutine.resume(co)
+-- -- print(coroutine.status(co))
+-- while coroutine.status(co) ~= 'dead' do
+--     coroutine.resume(co, 'test bitches')
+--     print('Status: '..coroutine.status(co))
+-- end
+-- --parallel.waitForAny(keyPressTest, updateScreen)
