@@ -50,4 +50,4 @@ os.loadAPI("rom/apis/textutils.lua")
 
 addToLog('testLog.lua', 'Test Log '..os.time(os.date("!*t")))
 sleep(2)
-textutils.pagedPrint(getLog('testLog.lua'))
+textutils.pagedPrint(getLog('testLog.lua'), 5)
