@@ -49,13 +49,32 @@ os.loadAPI("rom/apis/textutils.lua")
 -- end
 
 --Testing Logs Functionality
-term.clear()
+-- term.clear()
 
-addToLog('testLog.lua', 'Test Log', true)
-textutils.pagedPrint(getLog('testLog.lua'))
+-- addToLog('testLog.lua', 'Test Log', true)
+-- textutils.pagedPrint(getLog('testLog.lua'))
 
 --Testing repeat loop
-repeat
-    print("Looped")
-    local event,key = os.pullEvent("key")
-until key == keys.enter
+-- repeat
+--     print("Looped")
+--     local event,key = os.pullEvent("key")
+-- until key == keys.enter
+
+local function keyPress()
+    while true do
+        local event,key = os.pullEvent("char")
+        if char:lower() == "1" then return end
+    end
+end
+
+local function updateScreen()
+    local i = 0
+    while true do
+        local i = i + 1
+        term.setCursorPos(1,1)
+        term.clearLine()
+        term.write("Updating info "..i)
+    end
+end
+
+parallel.waitForAny(keyPress, updateScreen)
