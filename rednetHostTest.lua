@@ -4,7 +4,7 @@ term.clear()
 rednet.open('back')
 print("Starting Rednet test as Host")
 print("Enter a message...")
-rednet.broadcast(io.rerad())
+rednet.broadcast(io.read())
 while true do
     term.clear()
     print("Waiting for message...")
