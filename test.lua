@@ -80,4 +80,11 @@ local function updateScreen()
     end
 end
 
-parallel.waitForAny(keyPressTest, updateScreen)
+local function coroutineTestPrint()
+    print("Coroutine testing")
+end
+
+local co = coroutine.create(coroutineTestPrint)
+coroutine.resume(co)
+
+--parallel.waitForAny(keyPressTest, updateScreen)
