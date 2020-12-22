@@ -86,6 +86,8 @@ local function coroutineTestPrint(str)
     print("Second part of coroutine")
     coroutine.yield()
     print(str)
+    coroutine.yield()
+    print('You entered: '..str)
 end
 
 local co = coroutine.create(coroutineTestPrint)
@@ -96,6 +98,6 @@ local co = coroutine.create(coroutineTestPrint)
 -- print(coroutine.status(co))
 while coroutine.status(co) ~= 'dead' do
     coroutine.resume(co, 'test bitches')
-    print(coroutine.status(co))
+    print('Status: '..coroutine.status(co))
 end
 --parallel.waitForAny(keyPressTest, updateScreen)
