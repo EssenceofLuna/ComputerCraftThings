@@ -95,7 +95,7 @@ local co = coroutine.create(coroutineTestPrint)
 -- coroutine.resume(co)
 -- print(coroutine.status(co))
 while coroutine.status(co) ~= 'dead' do
-    coroutine.resume(co)
+    coroutine.resume(co, 'test bitches')
     print(coroutine.status(co))
 end
 --parallel.waitForAny(keyPressTest, updateScreen)
