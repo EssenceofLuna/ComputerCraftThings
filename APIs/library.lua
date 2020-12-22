@@ -47,13 +47,19 @@ end
 
 --[[
 Purpose: Add a line to a log file on the computer
-Input: string, string
+Input: string, string, bool
 Output: Nil. TODO: true if success, false if failed to write
-Usage: Input a file directory and a string to be added. String will be added at the bottom of the file on a new line.
+Usage:
+    Input a file directory and a string to be added.
+    Input a string to be added at the bottom of the file on a new line.
+    (Optional) Set timestamp to true to add a timestamp at the start of the string.
 ]]--
-function addToLog(file, string)
+function addToLog(file, string, timestamp)
+    if timestamp == nil then timestamp = false end --set timestamp to false if timestamp isn't included.
+
     --Add line break to end of string
     string = string..'\n'
+    if timestamp == true then string = os.date("%d.%m.%Y %H:%M:%S")..string end --Add timestamp to start of string if requested.
 
     --Get file in append mode
     local file = io.open(file, "a")
