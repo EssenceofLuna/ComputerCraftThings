@@ -76,7 +76,7 @@ function getLog(file)
     io.input(file)
 
     --Save the contents to a string
-    local logContents = io.read()
+    local logContents = io.read("*all")
 
     --Close the file and return the contents
     io.close(file)
