@@ -248,10 +248,13 @@ function getUserCommand()
         --TODO: Add functionality to  start/stop specific turbine. To do this, index all the turbines and list then to let the user pick one
 
         --TODO: Convert these term.write and term.setCursorPos to setWrite
-        term.setCursorPos(1,1)
-        centerText("Select a command")
-        term.setCursorPos(1,2)
-        term.write("0) Exit Program")
+        
+        --term.setCursorPos(1,1)
+        --centerText("Select a command")
+        setWrite("Select a command", 1, 1)
+        --term.setCursorPos(1,2)
+        --term.write("0) Exit Program")
+        setWritr("0( Exit Program",1,2)
         term.setCursorPos(1,3)
         term.write("1) Activate All Turbines")
         term.setCursorPos(1,4)
@@ -265,6 +268,8 @@ function getUserCommand()
 
         term.setCursorPos(1,8)
         term.write("Turbines:")
+        
+        --TODO: Add support for reactor info (active and passive)
 
         --Runs once for each connected turbine
         for i=1,turbineCount do
