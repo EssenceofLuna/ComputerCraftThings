@@ -46,3 +46,5 @@ require '/ComputerCraftThings/APIs/library'
 --     surf:fillRect(5, 5, 25, 10, colors.red, colors.yellow, "@")
 --     surf:output()
 -- end
+
+addToLog('ComputerCraftThings/testLog.lua', 'Test Log '..os.time(os.date("!*t")))

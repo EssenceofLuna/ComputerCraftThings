@@ -21,6 +21,7 @@ function split (inputstr, sep)
 end
 
 --Returns the number of elements in a table as an int
+--I think doing #<table> returns the same thing idk maybe this entire function is useless lol
 function tableLength(T)
     local count = 0
     for _ in pairs(T) do count = count + 1 end
@@ -42,4 +43,18 @@ function os.getComputerType()
         table.insert(ret, "computer")
     end
     return table.concat(ret, "_")
+end
+
+--[[
+Purpose: Add a line to a log file on the computer
+Input: string, string
+Output: true if success, false if failed to write
+Usage: Input a file directory and a string to be added. String will be added at the bottom of the file on a new line.
+]]--
+function addToLog(file, string)
+    --Get file in append mode
+    local f = io.open(file, "a")
+    io.output(file) --Set output as file path to overwrite when finished
+    io.write(string)
+    io.close(file)
 end
