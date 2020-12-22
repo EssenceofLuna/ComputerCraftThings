@@ -60,33 +60,30 @@ os.loadAPI("rom/apis/textutils.lua")
 --     local event,key = os.pullEvent("key")
 -- until key == keys.enter
 
-local function keyPressRoutine()
-    while true do
-        local event,key = os.pullEvent("key")
-        if key == keys.one then 
-            print("1 pressed")
-            return
-        end
-    end
-end
+-- local function keyPressRoutine()
+--     while true do
+--         local event,key = os.pullEvent("key")
+        
+--     end
+-- end
 
-local function updateScreenRoutine()
-    --local i = 0
-    while true do
-        --i = i + 1
-        term.setCursorPos(1,1)
-        term.clearLine()
-        term.write("Updating info ")
-    end
-end
+-- local function updateScreenRoutine()
+--     --local i = 0
+--     while true do
+--         --i = i + 1
+--         term.setCursorPos(1,1)
+--         term.clearLine()
+--         term.write("Updating info ")
+--     end
+-- end
 
-local co1 = coroutine.create(keyPressRoutine)
-local co2 = coroutine.create(updateScreenRoutine)
+-- local co1 = coroutine.create(keyPressRoutine)
+-- local co2 = coroutine.create(updateScreenRoutine)
 
-while true do
-    coroutine.resume(co1)
-    coroutine.resume(co2)
-end
+-- while true do
+--     coroutine.resume(co1)
+--     coroutine.resume(co2)
+-- end
 
 -- local function coroutineTestPrint(str)
 --     print("Coroutine testing first part")
@@ -109,3 +106,5 @@ end
 --     print('Status: '..coroutine.status(co))
 -- end
 -- --parallel.waitForAny(keyPressTest, updateScreen)
+
+print(peripheral.getNames())
