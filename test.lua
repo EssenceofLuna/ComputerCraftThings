@@ -18,8 +18,10 @@ require '/ComputerCraftThings/turtleLibrary'
 --     print("Error: Corrdinates not obtained.")
 -- end
 
-print(getBlockName())
-if tableContains(ORES, getBlockName()) then
-    print("Ore found. Breaking") --Debug
-    turtle.dig()
-end
+-- print(getBlockName())
+-- if tableContains(ORES, getBlockName()) then
+--     print("Ore found. Breaking") --Debug
+--     turtle.dig()
+-- end
+
+equipItem('minecraft:crafting_table')

@@ -1,0 +1,16 @@
+{
+    "Lua.diagnostics.globals": [
+        "turtle",
+        "read",
+        "shell",
+        "term",
+        "clear",
+        "sleep",
+        "pocket",
+        "input",
+        "peripheral",
+        "pullEvent",
+        "fs",
+        "gps"
+    ]
+}

@@ -270,7 +270,7 @@ end
 ]]--
 
 --Moves turtle to specific coordinates
-function goto(xTarget, yTarget, zTarget)
+function gotoCoords(xTarget, yTarget, zTarget)
     --TODO: Finish this
     --Need to figure out which way turtle is facing before moving more
     local x, y, z = gps.locate()
@@ -391,5 +391,40 @@ function getBlockName(direction)
         end
     else
         return "No block found"
+    end
+end
+
+--Equip an item to the turtle, defaults to left side
+--Returns true/false if success/failed
+function equipItem(item, side)
+    --Set both to lowercase
+    item = string.lower(item)
+    side = string.lower(side)
+    if side == nil then
+        side = 'left'
+    elseif side ~= nil and side ~= 'left' and side ~=  'right' then
+        --No valid side entered
+        print("Error: Attempted to equip item at side: "..side)
+        return false
+    end
+    --TODO: Add a list of valid items
+
+    local index = getItemIndex(item)
+    if index ~= nil then
+        --Everything worked well. Attempts to equip the item
+        turtle.select(index)
+        if side == 'right' then
+            turtle.equipRight()
+            return true
+        elseif side == 'left' then
+            turtle.equipLeft()
+            return true
+        else
+            print("Unknown error occurred while equipping item: "..item.." at side: "..side)
+            return false
+        end
+    else
+        print("Error: Tried to switch to invalid item: "..item)
+        return false
     end
 end
