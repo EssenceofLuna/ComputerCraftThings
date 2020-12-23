@@ -29,6 +29,7 @@ function getTurbines()
         --turbineStr is the string for the peripheral name
         local turbineStr = 'BigReactors-Turbine_'..turbineIndex
         --print('DEBUG: Checking '..turbineIndex..' named '..turbineStr) --DEBUG
+        --TODO: Convert to turbine.getConnected because it checks for multiblock and not just the computer port
         if peripheral.isPresent(turbineStr) then
             --print('DEBUG: '..turbineStr..' was found. Adding to index..') --DEBUG
             table.insert(turbines, turbineStr)
@@ -43,6 +44,17 @@ function getTurbines()
 
     local turbineCount = tableLength(turbines)
     return turbineCount, turbines
+end
+
+
+
+--Function to find reactor. Note: Only supports one reactor
+function getReactor()
+    local reactor = nil
+
+    for reactorIndex = 1,100 do
+        local reactorStr = ''
+    end
 end
 
 
@@ -230,11 +242,14 @@ function disengageAllTurbines()
 end
 
 
---This function will be called in while loops to manage turbines and displey information
+
+--This function will be called in while loops to manage turbines and display information
+--Function should be called in while loop
 --Offset is how many lines down to print info
---TODO: Split managing turbines and print turbine info into 2  functions
-function manageTurbines(printOffset)
+--Set printInfo to print out turbine info (speed, flow rate, etc.)
+function manageTurbines(printOffset, printInfo)
     if printOffset == nil then printOffset = 0 end
+    if printInfo == nil then printInfo = false end
 
     for i=1,turbineCount do
         local turbineStr = turbines[i]
@@ -245,10 +260,12 @@ function manageTurbines(printOffset)
         if turbine.getActive() then activeText = 'Active' else activeText = 'Inactive' end
         if turbine.getInductorEngaged() then engagedText = 'Engaged' else engagedText = 'Disengaged' end
 
-        --Set to the line, clear it, then write new info in
-        term.setCursorPos(1,printOffset+i)
-        term.clearLine()
-        term.write(i..' '..engagedText..', '..activeText..': '..speed..' RPM, '..flowRate..' mB/t, '..energyProduced..' FE/t')
+        if printInfo == true then
+            --Set to the line, clear it, then write new info in
+            term.setCursorPos(1,printOffset+i)
+            term.clearLine()
+            term.write(i..' '..engagedText..', '..activeText..': '..speed..' RPM, '..flowRate..' mB/t, '..energyProduced..' FE/t')
+        end
 
         if speed > 2000 and turbine.getActive() and turbine.getInductorEngaged() == false then
             --Turbine at risk of melting down. Engaging coils
@@ -312,7 +329,7 @@ function getUserCommand()
         --TODO: Add support for reactor info (active and passive)
 
         --Runs once for each connected turbine
-        manageTurbines(8)
+        manageTurbines(8, true)
         
         --If a key is pressed, execute command
         if keyPress(keys.nine) then
@@ -336,7 +353,7 @@ function getUserCommand()
                 setWrite('3) Engage All Turbines',1,5)
                 setWrite('4) Disengage All Turbines',1,6)
 
-                manageTurbines(8)
+                manageTurbines(8, true)
 
 
                 if keyPress(keys.zero) then

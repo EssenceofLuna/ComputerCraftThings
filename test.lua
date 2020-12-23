@@ -107,6 +107,4 @@ os.loadAPI("rom/apis/textutils.lua")
 -- end
 -- --parallel.waitForAny(keyPressTest, updateScreen)
 
-
-rednet.open('back')
-rednet.host('testboy', 'TestPC1')
+print(string.concat(peripheral.getNames()))
