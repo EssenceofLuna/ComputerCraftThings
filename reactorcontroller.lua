@@ -230,6 +230,54 @@ function disengageAllTurbines()
 end
 
 
+--This function will be called in while loops to manage turbines and displey information
+--Offset is how many lines down to print info
+--TODO: Split managing turbines and print turbine info into 2  functions
+function manageTurbines(printOffset)
+    if printOffset == nil then printOffset = 0 end
+
+    for i=1,turbineCount do
+        local turbineStr = turbines[i]
+        local turbine = peripheral.wrap(turbineStr)
+        local speed = math.floor(turbine.getRotorSpeed())
+        local flowRate = turbine.getFluidFlowRate()
+        local energyProduced = math.floor(turbine.getEnergyProducedLastTick()) --This turbine function returns a float, so math.floor is used to round it
+        if turbine.getActive() then activeText = 'Active' else activeText = 'Inactive' end
+        if turbine.getInductorEngaged() then engagedText = 'Engaged' else engagedText = 'Disengaged' end
+
+        --Set to the line, clear it, then write new info in
+        term.setCursorPos(1,printOffset+i)
+        term.clearLine()
+        term.write(i..' '..engagedText..', '..activeText..': '..speed..' RPM, '..flowRate..' mB/t, '..energyProduced..' FE/t')
+
+        if speed > 2000 and turbine.getActive() and turbine.getInductorEngaged() == false then
+            --Turbine at risk of melting down. Engaging coils
+            turbine.setInductorEngaged(true)
+            term.clear()
+            --centerText('WARNING: Turbine '..i..' Safety Engaged.') --Debug
+        end
+
+        --Turbine Speed Regulation
+        if autoRegulateTurbineSpeed == true then
+            if speed == turbineSpeedGoal then
+                --Turbine is at speed goal. Activating and engaging coils
+                turbine.setActive(true)
+                turbine.setInductorEngaged(true)
+            elseif speed > turbineSpeedGoal + 25 then
+                --Turbine spinning too fast. Deactivating and engaging coils
+                turbine.setActive(false)
+                turbine.setInductorEngaged(true)
+            elseif speed < turbineSpeedGoal - 25 and turbinesPoweredDown == false then
+                --Only runs if turbinesPowereDown is false (default)
+                --Turbine too slow. Activating and disengaging coils
+                turbine.setInductorEngaged(false)
+                turbine.setActive(true)
+            end
+        end
+    end
+end
+
+
 
 function getUserCommand()
     local turbineCount,turbines = getTurbines()
@@ -252,7 +300,7 @@ function getUserCommand()
         --term.setCursorPos(1,1)
         --centerText("[Reactor Controller]")
         setWrite("Select a command",1,1)
-        setWrite("0) Exit Program",1,2)
+        setWrite("9) Exit Program",1,2)
         setWrite("1) Turbine Menu",1,3)
         -- setWrite("1) Activate All Turbines",1,3)
         -- setWrite("2) Deactivate All Turbines",1,4)
@@ -264,48 +312,10 @@ function getUserCommand()
         --TODO: Add support for reactor info (active and passive)
 
         --Runs once for each connected turbine
-        for i=1,turbineCount do
-            local turbineStr = turbines[i]
-            local turbine = peripheral.wrap(turbineStr)
-            local speed = math.floor(turbine.getRotorSpeed())
-            local flowRate = turbine.getFluidFlowRate()
-            local energyProduced = math.floor(turbine.getEnergyProducedLastTick()) --This turbine function returns a float, so math.floor is used to round it
-            if turbine.getActive() then activeText = 'Active' else activeText = 'Inactive' end
-            if turbine.getInductorEngaged() then engagedText = 'Engaged' else engagedText = 'Disengaged' end
-
-            --Set to the line, clear it, then write new info in
-            term.setCursorPos(1,8+i)
-            term.clearLine()
-            term.write(i..' '..engagedText..', '..activeText..': '..speed..' RPM, '..flowRate..' mB/t, '..energyProduced..' FE/t')
-
-            if speed > 2000 and turbine.getActive() and turbine.getInductorEngaged() == false then
-                --Turbine at risk of melting down. Engaging coils
-                turbine.setInductorEngaged(true)
-                term.clear()
-                --centerText('WARNING: Turbine '..i..' Safety Engaged.') --Debug
-            end
-
-            --Turbine Speed Regulation
-            if autoRegulateTurbineSpeed == true then
-                if speed == turbineSpeedGoal then
-                    --Turbine is at speed goal. Activating and engaging coils
-                    turbine.setActive(true)
-                    turbine.setInductorEngaged(true)
-                elseif speed > turbineSpeedGoal + 25 then
-                    --Turbine spinning too fast. Deactivating and engaging coils
-                    turbine.setActive(false)
-                    turbine.setInductorEngaged(true)
-                elseif speed < turbineSpeedGoal - 25 and turbinesPoweredDown == false then
-                    --Only runs if turbinesPowereDown is false (default)
-                    --Turbine too slow. Activating and disengaging coils
-                    turbine.setInductorEngaged(false)
-                    turbine.setActive(true)
-                end
-            end
-        end
+        manageTurbines(8)
         
         --If a key is pressed, execute command
-        if keyPress(keys.zero) then
+        if keyPress(keys.nine) then
             term.clear()
             term.setCursorPos(1,1)
             term.write("Exiting controller...")
@@ -326,8 +336,11 @@ function getUserCommand()
                 setWrite('3) Engage All Turbines',1,5)
                 setWrite('4) Disengage All Turbines',1,6)
 
+                manageTurbines(8)
+
 
                 if keyPress(keys.zero) then
+                    term.clear()
                     break
                 end
                 if keyPress(keys.one) then
