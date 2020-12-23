@@ -250,26 +250,15 @@ function getUserCommand()
         --TODO: Convert these term.write and term.setCursorPos to setWrite
         
         --term.setCursorPos(1,1)
-        --centerText("Select a command")
+        --centerText("[Reactor Controller]")
         setWrite("Select a command",1,1)
-        --term.setCursorPos(1,2)
-        --term.write("0) Exit Program")
-        setWrite("0( Exit Program",1,2)
-        --term.setCursorPos(1,3)
-        --term.write("1) Activate All Turbines")
-        setWrite("1) Activate All Turbines",1,3)
-        --term.setCursorPos(1,4)
-        --term.write("2) Deactivate All Turbines")
-        setWrite("2) Deactivate All Turbines",1,4)
-        --term.setCursorPos(1,5)
-        --term.write("3) Engage All Turbines")
-        setWrite("3) Engage All Turbines",1,5)
-        --term.setCursorPos(1,6)
-        --term.write("4) Disengage All Turbines")
-        setWrite("4) Disengage All Turbines",1,6)
+        setWrite("0) Exit Program",1,2)
+        setWrite("1) Turbine Menu",1,3)
+        -- setWrite("1) Activate All Turbines",1,3)
+        -- setWrite("2) Deactivate All Turbines",1,4)
+        -- setWrite("3) Engage All Turbines",1,5)
+        -- setWrite("4) Disengage All Turbines",1,6)
 
-        --term.setCursorPos(1,8)
-        --term.write("Turbines:")
         setWrite("Turbines:",1,8)
         
         --TODO: Add support for reactor info (active and passive)
@@ -324,20 +313,40 @@ function getUserCommand()
             error('Reactor Controller Closed')
         end
         if keyPress(keys.one) then
-            enableAllTurbines()
-            --sleep(3)
-        end
-        if keyPress(keys.two) then
-            disableAllTurbines()
-            --sleep(3)
-        end
-        if keyPress(keys.three) then
-            engageAllTurbines()
-            --sleep(3)
-        end
-        if keyPress(keys.four) then
-            disengageAllTurbines()
-            --sleep(3)
+            --Turbine Control Menu
+            term.clear()
+            while true do
+                term.setCursorPos(1,1)
+                term.clearLine()
+                centerText('Turbine Menu')
+                
+                setWrite('0) Back',1,2)
+                setWrite('1) Enable All Turbines',1,3)
+                setWrite('2) Disable All Turbines',1,4)
+                setWrite('3) Engage All Turbines',1,5)
+                setWrite('4) Disengage All Turbines',1,6)
+
+
+                if keyPress(keys.zero) then
+                    break
+                end
+                if keyPress(keys.one) then
+                    enableAllTurbines()
+                    --sleep(3)
+                end
+                if keyPress(keys.two) then
+                    disableAllTurbines()
+                    --sleep(3)
+                end
+                if keyPress(keys.three) then
+                    engageAllTurbines()
+                    --sleep(3)
+                end
+                if keyPress(keys.four) then
+                    disengageAllTurbines()
+                    --sleep(3)
+                end
+            end
         end
     end
 end
