@@ -24,4 +24,4 @@ require '/ComputerCraftThings/turtleLibrary'
 --     turtle.dig()
 -- end
 
-equipItem('minecraft:crafting_table')
+equipItem('computercraft:advanced_modem')
