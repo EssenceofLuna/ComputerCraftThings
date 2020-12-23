@@ -397,9 +397,6 @@ end
 --Equip an item to the turtle, defaults to left side
 --Returns true/false if success/failed
 function equipItem(item, side)
-    --Set both to lowercase
-    item = string.lower(item)
-    side = string.lower(side)
     if side == nil then
         side = 'left'
     elseif side ~= nil and side ~= 'left' and side ~=  'right' then
@@ -407,6 +404,9 @@ function equipItem(item, side)
         print("Error: Attempted to equip item at side: "..side)
         return false
     end
+    --Set both to lowercase
+    item = string.lower(item)
+    side = string.lower(side)
     --TODO: Add a list of valid items
 
     local index = getItemIndex(item)
