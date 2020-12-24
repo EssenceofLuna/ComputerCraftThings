@@ -24,6 +24,42 @@ reactorPoweredDown = false --True when user powers down reactor --TODO: Write re
 
 
 --[[
+    Returns table with info about reactor, similar to updateTurbines()
+    Info stored in this table:
+    1 bool: true if actively cooled (for turbines), false if passively cooled (no turbines) (getActivelyCooled)
+    2 string: name of reactor (how CC sees the reactor)
+    3 Peripheral wrap: wrap of the reactor peripheral (how CC interacts with the reactor)
+    4 table: Contains temperatures of fuel (1) and casing (2) (getFuelTemperature and getCasingTemperature)
+    5 int: Energy generated per tick (RF/t), will be 0 is actively cooled (getEnergyProducedLastTick)
+    6 int: Steam produced per tick in mB/t, will be 0 if passively cooled (getHotFluidProducedLastTick)
+    7 int: Fuel consumed per tick in mB/t (getFuelConsumedLastTick)
+]]
+function updateReactor()
+    local reactor = {}
+
+    for reactorIndex = 1,100 do
+        local reactorStr = 'BigReactors-Reactor_'..reactorIndex
+        if peripheral.isPresent(reactorStr) then
+            --Valid reactor found. Building table...
+            local reactorWrap = peripheral.wrap(reactorStr)
+
+            local tempTable = {reactorWrap.getFuelTemperature(), reactorWrap.getCasingTemperature()}
+
+            table.insert(reactor, 1, reactorWrap.getActivelyCooled()) --1
+            table.insert(reactor, 2, reactorStr) --2
+            table.insert(reactor, 3, reactorWrap) --3
+            table.insert(reactor, 4, tempTable) --4
+            table.insert(reactor, 5, reactorWrap.getEnergyProducedLastTick()) --5
+            table.insert(reactor, 6, reactorWrap.getHotFluidProducedLastTick()) --6
+            table.insert(reactor, 7, reactorWrap.getFuelConsumedLastTick()) --7
+
+            return reactor
+        end
+    end
+end
+
+
+--[[
     Function  to get info about all connected turbines
     Returns table containing a table for each turbine
     Info stored in each table is as follows:
@@ -70,69 +106,6 @@ function updateTurbines()
     return turbines
 end
 
---TODO: delete getTurbines once all references are removed
-function getTurbines()
-    --Returns a count of the turbines and a table of their names
-    local turbines = {}
-    
-    for turbineIndex = 1,100 do --TODO: Maybe change to while loop idk
-        --turbineIndex is the int value of the current check, starting at 1
-        --turbineStr is the string for the peripheral name
-        local turbineStr = 'BigReactors-Turbine_'..turbineIndex
-        --print('DEBUG: Checking '..turbineIndex..' named '..turbineStr) --DEBUG
-        --TODO: Convert to turbine.getConnected because it checks for multiblock and not just the computer port
-        if peripheral.isPresent(turbineStr) then
-            --print('DEBUG: '..turbineStr..' was found. Adding to index..') --DEBUG
-            table.insert(turbines, turbineStr)
-        end
-        -- else
-        --     --print('No more turbines found. Exiting at '..turbineIndex) --DEBUG
-        --     --Once a turbine is not found, set the turbineCount and break the loop
-        --     turbineCount = turbineIndex-1
-        --     break
-        -- end
-    end
-
-    local turbineCount = tableLength(turbines)
-    return turbineCount, turbines
-end
-
-
-
---[[
-    Returns table with info about reactor, similar to updateTurbines()
-    Info stored in this table:
-    1 bool: true if actively cooled (for turbines), false if passively cooled (no turbines) (getActivelyCooled)
-    2 string: name of reactor (how CC sees the reactor)
-    3 Peripheral wrap: wrap of the reactor peripheral (how CC interacts with the reactor)
-    4 table: Contains temperatures of fuel (1) and casing (2) (getFuelTemperature and getCasingTemperature)
-    5 int: Energy generated per tick (RF/t), will be 0 is actively cooled (getEnergyProducedLastTick)
-    6 int: Steam produced per tick in mB/t, will be 0 if passively cooled (getHotFluidProducedLastTick)
-    7 int: Fuel consumed per tick in mB/t (getFuelConsumedLastTick)
-]]
-function updateReactor()
-    local reactor = {}
-
-    for reactorIndex = 1,100 do
-        local reactorStr = 'BigReactors-Reactor_'..reactorIndex
-        if peripheral.isPresent(reactorStr) then
-            --Valid reactor found. Building table...
-            local reactorWrap = peripheral.wrap(reactorStr)
-
-            local tempTable = {reactorWrap.getFuelTemperature(), reactorWrap.getCasingTemperature()}
-
-            table.insert(reactor, 1, reactorWrap.getActivelyCooled()) --1
-            table.insert(reactor, 2, reactorStr) --2
-            table.insert(reactor, 3, reactorWrap) --3
-            table.insert(reactor, 4, tempTable) --4
-            table.insert(reactor, 5, reactorWrap.getEnergyProducedLastTick()) --5
-            table.insert(reactor, 6, reactorWrap.getHotFluidProducedLastTick()) --6
-            table.insert(reactor, 7, reactorWrap.getFuelConsumedLastTick()) --7
-
-            return reactor
-        end
-    end
-end
 
 
 
