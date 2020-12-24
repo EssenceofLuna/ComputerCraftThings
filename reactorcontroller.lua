@@ -346,20 +346,22 @@ function manageTurbines(printOffset, printInfo)
         end
 
         --Turbine Speed Regulation
+        --If turbines was manually disabled/disengaged, this will not modify that
+        --TODO: Clean up this code a bit maybe
         if autoRegulateTurbineSpeed == true then
             if speed == turbineSpeedGoal then
                 --Turbine is at speed goal. Activating and engaging coils
-                turbine.setActive(true)
-                turbine.setInductorEngaged(true)
+                if turbines[i][9] ~= true then turbine.setActive(true) end
+                if turbines[i][10] ~= true then turbine.setInductorEngaged(true) end
             elseif speed > turbineSpeedGoal + 25 then
                 --Turbine spinning too fast. Deactivating and engaging coils
-                turbine.setActive(false)
-                turbine.setInductorEngaged(true)
-            elseif speed < turbineSpeedGoal - 25 and turbinesPoweredDown == false then
+                if turbines[i][9] ~= true then turbine.setActive(false) end
+                if turbines[i][10] ~= true then turbine.setInductorEngaged(true) end
+            elseif speed < turbineSpeedGoal - 25 then
                 --Only runs if turbinesPowereDown is false (default)
                 --Turbine too slow. Activating and disengaging coils
-                turbine.setInductorEngaged(false)
-                turbine.setActive(true)
+                if turbines[i][9] ~= true then turbine.setActive(true) end
+                if turbines[i][10 ~= true then ]turbine.setInductorEngaged(false) end
             end
         end
     end
