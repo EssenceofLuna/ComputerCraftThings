@@ -169,7 +169,7 @@ function engageAllTurbines()
         turbineWrap = turbines[i][3]
         turbineWrap.setInductorEngaged(true)
         turbines[i][10] = false --Mark turbine as engaged
-        addToLog('reactorLog', 'Engaged turbine '..turbines[i][1], true) --DebugLog
+        --addToLog('reactorLog', 'Engaged turbine '..turbines[i][1], true) --DebugLog
     end
 end
 
@@ -179,7 +179,7 @@ function disengageAllTurbines()
         turbineWrap = turbines[i][3]
         turbineWrap.setInductorEngaged(false)
         turbines[i][10] = true --Mark turbine as disengaged
-        addToLog('reactorLog', 'Disengaged turbine '..turbines[i][1], true) --DebugLog
+        --addToLog('reactorLog', 'Disengaged turbine '..turbines[i][1], true) --DebugLog
     end
 end
 
@@ -229,18 +229,18 @@ function manageTurbines(printOffset, printInfo)
                 --Turbine is at speed goal. Activating and engaging coils
                 if turbines[i][9] ~= true then turbine.setActive(true) end
                 if turbines[i][10] ~= true then turbine.setInductorEngaged(true) end
-                addToLog('reactorLog', 'Speed goal met on turbine '..turbines[i][1], true) --DebugLog
+                --addToLog('reactorLog', 'Speed goal met on turbine '..turbines[i][1], true) --DebugLog
             elseif speed > turbineSpeedGoal + 25 then
                 --Turbine spinning too fast. Deactivating and engaging coils
                 if turbines[i][9] ~= true then turbine.setActive(false) end
                 if turbines[i][10] ~= true then turbine.setInductorEngaged(true) end
-                addToLog('reactorLog', 'Speed exceded goal on turbine '..turbines[i][1], true) --DebugLog
+                --addToLog('reactorLog', 'Speed exceded goal on turbine '..turbines[i][1], true) --DebugLog
             elseif speed < turbineSpeedGoal - 25 then
                 --Only runs if turbinesPowereDown is false (default)
                 --Turbine too slow. Activating and disengaging coils
                 if turbines[i][9] ~= true then turbine.setActive(true) end
                 if turbines[i][10] ~= true then turbine.setInductorEngaged(false) end
-                addToLog('reactorLog', 'Speed under goal on turbine '..turbines[i][1], true) --DebugLog
+                --addToLog('reactorLog', 'Speed under goal on turbine '..turbines[i][1], true) --DebugLog
             end
         end
     end
