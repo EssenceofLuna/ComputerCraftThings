@@ -20,6 +20,50 @@ modemSide = 'right' --What side the ender modem is on
 turbinesPoweredDown = false --True when user powers down turbines
 reactorPoweredDown = false --True when user powers down reactor --TODO: Write reactor controlling lol
 
+
+--[[
+    Function  to get info about all connected turbines
+    Returns table containing a table for each turbine
+    --Info stored in each table is as follows:
+    --1 int: Turbine ID number (arbitrary but consistent, not necessarily sequential)
+    --2 String: name of turbine (how CC sees the turbine)
+    --3 Peripherl wrap: Wrap of the turbine peripheral (how CC interacts with the turbine)
+    --4 int: turbine rotor speed in RPM (getRotorSpeed)
+    --5 int: Energy generated per tick (RF/t) (getEnergyProducedLastTick)
+    --6 int: steam flow rate in mB/t (getFluidFlowRate)
+    --7 bool: whether turbine is active (using steam, increasing RPM) (getActive)
+    --8 bool: whether  turbine coils are engaged (generating power, lowering RPM) (getInductorEngaged)
+]]
+function updateTurbines()
+    local turbines = {}
+    --Each turbine is a table inside the turbines table
+    for i=1,100 do
+        --Makes a table for each turbine, then adds it to the main turbines table
+        local turbineStr = 'BigReactors-Turbine_'..i
+
+        if peripheral.isPresent(turbineStr) then
+            --turbine is present. Get info, build a table, then add it to turbines table
+            local turbine = {}
+
+            local turbineWrap = peripheral.wrap(turbineStr) --Wrap of the turbine, used to get info and added to the table later
+
+            table.insert(turbine, i) --1
+            table.insert(turbine, turbineStr) --2
+            table.insert(turbine, turbineWrap) --3
+            table.insert(turbine, turbineWrap.getRotorSpeed()) --4
+            table.insert(turbine, math.floor(turbineWrap.getEnergyProducedLastTick())) --5
+            table.insert(turbine, turbineWrap.getFluidFlowRate()) --6
+            table.insert(turbine, turbineWrap.getActive()) --7
+            table.insert(turbine, turbineWrap.getInductorEngaged()) --8
+
+            --turbine table has been build. Adding to main turbines table
+            table.insert(turbines, turbine)
+        end
+    end
+    --Main turbines table built. Returning
+    return turbines
+end
+
 function getTurbines()
     --Returns a count of the turbines and a table of their names
     local turbines = {}
@@ -53,7 +97,10 @@ function getReactor()
     local reactor = nil
 
     for reactorIndex = 1,100 do
-        local reactorStr = ''
+        local reactorStr = 'BigReactors-Reactor_'..reactorIndex
+        if peripheral.isPresent(reactorStr) then
+            return reactorStr
+        end
     end
 end
 
@@ -229,16 +276,24 @@ end
 
 
 
+-- function disengageAllTurbines()
+--     --print("Disengaging all turbines...") --Debug
+--     local turbineCount,turbines = getTurbines()
+--     for i=1,turbineCount do
+--         turbineStr = turbines[i]
+--         turbine = peripheral.wrap(turbineStr)
+--         turbine.setInductorEngaged(false)
+--         --print("DEBUG: Disengaged Turbine "..i) --Debug
+--     end
+--     --print("All turbines disengaged.") --Debug
+-- end
+
 function disengageAllTurbines()
-    --print("Disengaging all turbines...") --Debug
-    local turbineCount,turbines = getTurbines()
-    for i=1,turbineCount do
-        turbineStr = turbines[i]
-        turbine = peripheral.wrap(turbineStr)
-        turbine.setInductorEngaged(false)
-        --print("DEBUG: Disengaged Turbine "..i) --Debug
+    local turbines = updateTurbines()
+    for i=1,#turbines do
+        turbineWrap = turbines[i][3]
+        turbineWrap.setInductorEngaged(false)
     end
-    --print("All turbines disengaged.") --Debug
 end
 
 
