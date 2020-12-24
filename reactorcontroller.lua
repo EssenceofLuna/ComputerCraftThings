@@ -250,37 +250,20 @@ end
 
 function getUserCommand()
     term.clear()
-    -- local turbineCount,turbines = getTurbines() --TODO: delete this line after checking if its necessary
     while true do
-        -- local turbineSpeeds = {}
-        -- for i=1,turbineCount do
-        --   --TODO: delete this for loop after making sure its not needed
-          
-        --     --Put current turbine speeds into table turbineSpeeds which correspond with their locations in turbines
-        --     local turbineStr = turbines[i]
-        --     local turbine = peripheral.wrap(turbineStr)
-        --     local speed = math.floor(turbine.getRotorSpeed())
-        --     table.insert(turbineSpeeds, i, speed)
-        -- end
-
-        --term.clear()
+        os.queueEvent("fakeEvent") --Anti yield
+        os.pullEvent()
         --TODO: Add functionality to  start/stop specific turbine. To do this, index all the turbines and list then to let the user pick one
         
-        --term.setCursorPos(1,1)
-        --centerText("[Reactor Controller]")
         setWrite("Select a command",1,1)
         setWrite("9) Exit Program",1,2)
         setWrite("1) Turbine Menu",1,3)
-        -- setWrite("1) Activate All Turbines",1,3)
-        -- setWrite("2) Deactivate All Turbines",1,4)
-        -- setWrite("3) Engage All Turbines",1,5)
-        -- setWrite("4) Disengage All Turbines",1,6)
 
         setWrite("Turbines:",1,8)
         
         --TODO: Add support for reactor info (active and passive)
 
-        --Runs once for each connected turbine
+        --Manages turbines and prints out their info
         manageTurbines(8, true)
         
         --If a key is pressed, execute command
@@ -295,6 +278,9 @@ function getUserCommand()
             --Turbine Control Menu
             term.clear()
             while true do
+                os.queueEvent("fakeEvent") --Anti yeild
+                os.pullEvent()
+
                 term.setCursorPos(1,1)
                 term.clearLine()
                 centerText('Turbine Menu')
