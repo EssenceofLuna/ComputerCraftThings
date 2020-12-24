@@ -255,6 +255,7 @@ function getUserCommand()
         os.pullEvent()
         --TODO: Add functionality to  start/stop specific turbine. To do this, index all the turbines and list then to let the user pick one
         
+        term.setCursorPos(1,1)
         centerText('Reactor Controller Home')
         setWrite("9) Exit Program",1,2)
         setWrite("1) Turbine Menu",1,3)
