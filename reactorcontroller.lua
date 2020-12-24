@@ -24,17 +24,18 @@ reactorPoweredDown = false --True when user powers down reactor --TODO: Write re
 --[[
     Function  to get info about all connected turbines
     Returns table containing a table for each turbine
-    --Info stored in each table is as follows:
-    --1 int: Turbine ID number (arbitrary but consistent, not necessarily sequential)
-    --2 String: name of turbine (how CC sees the turbine)
-    --3 Peripherl wrap: Wrap of the turbine peripheral (how CC interacts with the turbine)
-    --4 int: turbine rotor speed in RPM (getRotorSpeed)
-    --5 int: Energy generated per tick (RF/t) (getEnergyProducedLastTick)
-    --6 int: steam flow rate in mB/t (getFluidFlowRate)
-    --7 bool: whether turbine is active (using steam, increasing RPM) (getActive)
-    --8 bool: whether  turbine coils are engaged (generating power, lowering RPM) (getInductorEngaged)
-    --9 bool: whether the user has deactivated the turbine manually (defaults to nil, for use later in code)
-    --10 bool: whether the user has disengaged the turbine manually (defaults to nil, for use later in code)
+    Info stored in each table is as follows:
+    1 int: Turbine ID number (arbitrary but consistent, not necessarily sequential)
+    2 String: name of turbine (how CC sees the turbine)
+    3 Peripherl wrap: Wrap of the turbine peripheral (how CC interacts with the turbine)
+    4 int: turbine rotor speed in RPM (getRotorSpeed)
+    5 int: Energy generated per tick (RF/t) (getEnergyProducedLastTick)
+    6 int: steam flow rate in mB/t (getFluidFlowRate)
+    7 bool: whether turbine is active (using steam, increasing RPM) (getActive)
+    8 bool: whether  turbine coils are engaged (generating power, lowering RPM) (getInductorEngaged)
+    TODO: Make 9 and 10 work
+    9 bool: whether the user has deactivated the turbine manually
+    10 bool: whether the user has disengaged the turbine manually
 ]]
 function updateTurbines()
     local turbines = {}
@@ -95,142 +96,39 @@ end
 
 
 
---Function to find reactor. Note: Only supports one reactor
-function getReactor()
-    local reactor = nil
+--[[
+    Returns table with info about reactor, similar to updateTurbines()
+    Info stored in this table:
+    1 bool: true if actively cooled (for turbines), false if passively cooled (no turbines) (getActivelyCooled)
+    2 string: name of reactor (how CC sees the reactor)
+    3 Peripheral wrap: wrap of the reactor peripheral (how CC interacts with the reactor)
+    4 table: Contains temperatures of fuel (1) and casing (2) (getFuelTemperature and getCasingTemperature)
+    5 int: Energy generated per tick (RF/t), will be 0 is actively cooled (getEnergyProducedLastTick)
+    6 int: Steam produced per tick in mB/t, will be 0 if passively cooled (getHotFluidProducedLastTick)
+    7 int: Fuel consumed per tick in mB/t (getFuelConsumedLastTick)
+]]
+function updateReactor()
+    local reactor = {}
 
     for reactorIndex = 1,100 do
         local reactorStr = 'BigReactors-Reactor_'..reactorIndex
         if peripheral.isPresent(reactorStr) then
-            return reactorStr
+            --Valid reactor found. Building table...
+            local reactorWrap = peripheral.wrap(reactorStr)
+
+            local tempTable = {reactorWrap.getFuelTemperature(), reactorWrap.getCasingTemperature()}
+
+            table.insert(reactor, 1, reactorWrap.getActivelyCooled()) --1
+            table.insert(reactor, 2, reactorStr) --2
+            table.insert(reactor, 3, reactorWrap) --3
+            table.insert(reactor, 4, tempTable) --4
+            table.insert(reactor, 5, reactorWrap.getEnergyProducedLastTick()) --5
+            table.insert(reactor, 6, reactorWrap.getHotFluidProducedLastTick()) --6
+            table.insert(reactor, 7, reactorWrap.getFuelConsumedLastTick()) --7
+
+            return reactor
         end
     end
-end
-
-
-
-
-function debugTurbines()
-    --Function that prints out a bunch of debug info for all connected turbines
-    local turbineCount,turbines = getTurbines()
-    for i=1,turbineCount do
-        local turbineStr = turbines[i]
-        local turbine = peripheral.wrap(turbineStr)
-        print('Turbine Name: '..turbineStr)
-        print('Turbine Active: '..tostring(turbine.getActive()))
-        print('Turbine RPM: '..turbine.getRotorSpeed())
-        print('Turbine Input Amount: '..turbine.getInputAmount())
-        print('Turbine Energy Stored: '..turbine.getEnergyStored())
-    end
-end
-
-
-
-
---TODO: Add functionality for booting multiple turbines at once
---This function not currently in use
-function startTurbine(turbineIndex)
-    local turbineCount,turbines = getTurbines()
-    turbineStr = turbines[turbineIndex]
-    turbine = peripheral.wrap(turbineStr)
-    print('Startup for turbine '..turbineIndex..' named '..turbineStr..' initiated.')
-    --check if turbine is connected
-    if turbine.getConnected() == false then
-        print("Error: Turbine not connected. Aborting startup.")
-        return
-    end
-    --If turbine is connected, continue
-
-    --Check if turbine is powered on, and power on if not
-    if turbine.getActive() == false then
-        print('Turbine powering on...')
-        turbine.setActive(true)
-    end
-    if turbine.getInductorEngaged() == true then
-        print('Coils where engaged. Disengaging...')
-        turbine.setInductorEngaged(false)
-    end
-    --TODO: Control flow rate of turbine
-
-    --Loop to check rotor speed and engage coils when ready (at 1750 RPM)
-    while true do
-        local currentSpeed = turbine.getRotorSpeed()
-        --print('DEBUG: Turbine Speed: '..currentSpeed) --Debug
-        if currentSpeed >= 1800 then
-            --Turbine as reached speed
-            print('Turbine reached speed. Engaging coils.')
-            turbine.setInductorEngaged(true)
-            break
-        else
-            print('Turbine spinning up... '..currentSpeed..' RPM')
-            sleep(10)
-        end
-    end
-end
-
-
-
-
-function startAllTurbines()
-    --Starts all connected turbines
-    --TODO: When a turbine is done, all turbine numbers shift down to fill in. Maybe get turbine number from the string rather than i?
-    turbinesPoweredDown = false
-    local turbineCount,turbines = getTurbines()
-    while true do
-        local turbineCount = tableLength(turbines) --Recount turbines
-        for i=1,turbineCount do
-            local turbineStr = turbines[i]
-            local turbine = peripheral.wrap(turbineStr)
-            local turbineSpeed = turbine.getRotorSpeed()
-
-            
-            --check if turbine is connected
-            if turbine.getConnected() == false then
-                print("Error: Turbine "..i.." not connected. Aborting startup.")
-                return
-            end
-            --If turbine is connected, continue
-            
-            --Check if turbine is powered on, and power on if not
-            if turbine.getActive() == false then
-                print('Turbine '..i..' powering on...')
-                turbine.setActive(true)
-            end
-            if turbine.getInductorEngaged() == true then
-                print('Coils where engaged on turbine '..i..'. Disengaging...')
-                turbine.setInductorEngaged(false)
-            end
-            --TODO: Control flow rate of turbine
-
-            --Startup Info Screen--
-            term.clear()
-            term.setCursorPos(1,1)
-            centerText("[Turbine Startup]") --TODO: Center this
-            term.setCursorPos(1, 2)
-            term.write('Turbines Remaining: '..turbineCount)
-            
-            --DEBUG
-            --print('Debug: Checked Turbine '..i..' and got '..turbineSpeed)
-            if turbineSpeed >= 1790 then
-                --Turbine as reached speed
-                --print('Turbine '..i..' reached speed. Engaging coils.') --DEBUG
-                turbine.setInductorEngaged(true)
-                table.remove(turbines, i)
-                break
-            else
-                --print('Debug: Turbine '..i..' not ready. '..turbineSpeed)
-            end
-
-            sleep(5) --TODO?: Adjust sleep time depending on remaining turbines
-        end
-
-        if turbineCount <= 0 then
-            --Finish loop when all turbines are up
-            break
-        end
-    end
-    term.clear()
-    centerText("Finished booting turbines.")
 end
 
 
@@ -238,11 +136,9 @@ end
 
 function enableAllTurbines()
     --print("Enabling all turbines.") --Debug
-    turbinesPoweredDown = false
-    local turbineCount,turbines = getTurbines()
+    local turbines = updateTurbines()
     for i=1,turbineCount do
-        turbineStr = turbines[i]
-        turbine = peripheral.wrap(turbineStr)
+        turbine = turbines[i][3]
         turbine.setActive(true)
         --print("Enabling Turbine "..i) --Debug
     end
@@ -251,12 +147,9 @@ end
 
 
 function disableAllTurbines()
-    --print("Disabling all turbines.") --Debug
-    turbinesPoweredDown = true
-    local turbineCount,turbines = getTurbines()
-    for i=1,turbineCount do
-        turbineStr = turbines[i]
-        turbine = peripheral.wrap(turbineStr)
+    local turbines = updateTurbines()
+    for i=1,#turbines do
+        turbine = turbines[i][3]
         turbine.setActive(false)
         --print("Disabled Turbine "..i) --Debug
     end
@@ -265,31 +158,7 @@ end
 
 
 
--- function engageAllTurbines()
---     --print("Engaging all turbines...") --Debug
---     local turbineCount,turbines = getTurbines()
---     for i=1,turbineCount do
---         turbineStr = turbines[i]
---         turbine = peripheral.wrap(turbineStr)
---         turbine.setInductorEngaged(true)
---         --print("DEBUG: Engaged Turbine "..i) --Debug
---     end
---     --print("All turbines engaged.") --Debug
--- end
 
-
-
--- function disengageAllTurbines()
---     --print("Disengaging all turbines...") --Debug
---     local turbineCount,turbines = getTurbines()
---     for i=1,turbineCount do
---         turbineStr = turbines[i]
---         turbine = peripheral.wrap(turbineStr)
---         turbine.setInductorEngaged(false)
---         --print("DEBUG: Disengaged Turbine "..i) --Debug
---     end
---     --print("All turbines disengaged.") --Debug
--- end
 
 function engageAllTurbines()
     local turbines = updateTurbines()
@@ -348,6 +217,10 @@ function manageTurbines(printOffset, printInfo)
         --Turbine Speed Regulation
         --If turbines was manually disabled/disengaged, this will not modify that
         --TODO: Write code to enable/disable specific turbines which handles checking for manual didengagement
+
+        --TODO, High priority: Currently ignores if user has manually disengaged/deactivated turbine
+        --This is because updateTurbines() doesn't have a way to add that info into it
+        --Need to find a way to pass this to updateTurbines()
         if autoRegulateTurbineSpeed == true then
             if speed == turbineSpeedGoal then
                 --Turbine is at speed goal. Activating and engaging coils
