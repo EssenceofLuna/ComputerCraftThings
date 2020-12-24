@@ -160,12 +160,25 @@ function disableAllTurbines()
     --print("All turbines disabled.") --Debug
 end
 
+--Enables a single turbine
+function enableTurbine(turbineId)
+    local turbines = updateTurbines()
+    turbineWrap = turbines[turbineId][3]
+    turbineWrap.setActive(true)
+end
+
+
+function enableTurbine(turbineId)
+    local turbines = updateTurbines()
+    turbineWrap = turbines[turbineId][3]
+    turbineWrap.setActive(true)
+end
 
 
 
 
 function engageAllTurbines()
-  --TODO: convert to engageTurbine()
+    --TODO: convert to engageTurbine()
     local turbines = updateTurbines()
     for i=1,#turbines do
         turbineWrap = turbines[i][3]
@@ -176,6 +189,7 @@ function engageAllTurbines()
 end
 
 function disengageAllTurbines()
+    --TODO: convert to disengageTurbine()
     local turbines = updateTurbines()
     for i=1,#turbines do
         turbineWrap = turbines[i][3]
@@ -194,7 +208,16 @@ function engageTurbine(turbineId)
     turbineWrap.setInductorEngaged(true)
     
     --single line version of function. needs testing.
-    --uodateTurbines()[turbineId][3].setInductorEngaged(true)
+    --updateTurbines()[turbineId][3].setInductorEngaged(true)
+end
+
+function disengageTurbine(turbineId)
+    local turbines = updateTurbines()
+    turbineWrap = turbines[turbineId][3]
+    turbineWrap.setInductorEngaged(false)
+    
+    --single line version of function. needs testing.
+    --updateTurbines()[turbineId][3].setInductorEngaged(false)
 end
 
 
