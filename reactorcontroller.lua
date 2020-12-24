@@ -57,8 +57,6 @@ function updateTurbines()
             table.insert(turbine, 6, turbineWrap.getFluidFlowRate()) --6
             table.insert(turbine, 7, turbineWrap.getActive()) --7
             table.insert(turbine, 8, turbineWrap.getInductorEngaged()) --8
-            table.insert(turbine, 9, nil) --9
-            table.insert(turbine, 10, nil) --10
 
 
             --turbine table has been build. Adding to main turbines table
@@ -347,7 +345,7 @@ function manageTurbines(printOffset, printInfo)
 
         --Turbine Speed Regulation
         --If turbines was manually disabled/disengaged, this will not modify that
-        --TODO: Clean up this code a bit maybe
+        --TODO: Write code to enable/disable specific turbines which handles checking for manual didengagement
         if autoRegulateTurbineSpeed == true then
             if speed == turbineSpeedGoal then
                 --Turbine is at speed goal. Activating and engaging coils
