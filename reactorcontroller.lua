@@ -33,6 +33,8 @@ reactorPoweredDown = false --True when user powers down reactor --TODO: Write re
     --6 int: steam flow rate in mB/t (getFluidFlowRate)
     --7 bool: whether turbine is active (using steam, increasing RPM) (getActive)
     --8 bool: whether  turbine coils are engaged (generating power, lowering RPM) (getInductorEngaged)
+    --9 bool: whether the user has deactivated the turbine manually (defaults to nil, for use later in code)
+    --10 bool: whether the user has disengaged the turbine manually (defaults to nil, for use later in code)
 ]]
 function updateTurbines()
     local turbines = {}
@@ -47,14 +49,17 @@ function updateTurbines()
 
             local turbineWrap = peripheral.wrap(turbineStr) --Wrap of the turbine, used to get info and added to the table later
 
-            table.insert(turbine, i) --1
-            table.insert(turbine, turbineStr) --2
-            table.insert(turbine, turbineWrap) --3
-            table.insert(turbine, turbineWrap.getRotorSpeed()) --4
-            table.insert(turbine, math.floor(turbineWrap.getEnergyProducedLastTick())) --5
-            table.insert(turbine, turbineWrap.getFluidFlowRate()) --6
-            table.insert(turbine, turbineWrap.getActive()) --7
-            table.insert(turbine, turbineWrap.getInductorEngaged()) --8
+            table.insert(turbine, 1, i) --1
+            table.insert(turbine, 2, turbineStr) --2
+            table.insert(turbine, 3, turbineWrap) --3
+            table.insert(turbine, 4, turbineWrap.getRotorSpeed()) --4
+            table.insert(turbine, 5, math.floor(turbineWrap.getEnergyProducedLastTick())) --5
+            table.insert(turbine, 6, turbineWrap.getFluidFlowRate()) --6
+            table.insert(turbine, 7, turbineWrap.getActive()) --7
+            table.insert(turbine, 8, turbineWrap.getInductorEngaged()) --8
+            table.insert(turbine, 9, nil) --9
+            table.insert(turbine, 10, nil) --10
+
 
             --turbine table has been build. Adding to main turbines table
             table.insert(turbines, turbine)
@@ -262,17 +267,17 @@ end
 
 
 
-function engageAllTurbines()
-    --print("Engaging all turbines...") --Debug
-    local turbineCount,turbines = getTurbines()
-    for i=1,turbineCount do
-        turbineStr = turbines[i]
-        turbine = peripheral.wrap(turbineStr)
-        turbine.setInductorEngaged(true)
-        --print("DEBUG: Engaged Turbine "..i) --Debug
-    end
-    --print("All turbines engaged.") --Debug
-end
+-- function engageAllTurbines()
+--     --print("Engaging all turbines...") --Debug
+--     local turbineCount,turbines = getTurbines()
+--     for i=1,turbineCount do
+--         turbineStr = turbines[i]
+--         turbine = peripheral.wrap(turbineStr)
+--         turbine.setInductorEngaged(true)
+--         --print("DEBUG: Engaged Turbine "..i) --Debug
+--     end
+--     --print("All turbines engaged.") --Debug
+-- end
 
 
 
@@ -288,11 +293,21 @@ end
 --     --print("All turbines disengaged.") --Debug
 -- end
 
+function engageAllTurbines()
+    local turbines = updateTurbines()
+    for i=1,#turbines do
+        turbineWrap = turbines[i][3]
+        turbineWrap.setInductorEngaged(true)
+        turbines[i][10] = false --Mark turbine as engaged
+    end
+end
+
 function disengageAllTurbines()
     local turbines = updateTurbines()
     for i=1,#turbines do
         turbineWrap = turbines[i][3]
         turbineWrap.setInductorEngaged(false)
+        turbines[i][10] = true --Mark turbine as disengaged
     end
 end
 
@@ -306,14 +321,15 @@ function manageTurbines(printOffset, printInfo)
     if printOffset == nil then printOffset = 0 end
     if printInfo == nil then printInfo = false end
 
-    for i=1,turbineCount do
-        local turbineStr = turbines[i]
-        local turbine = peripheral.wrap(turbineStr)
-        local speed = math.floor(turbine.getRotorSpeed())
-        local flowRate = turbine.getFluidFlowRate()
-        local energyProduced = math.floor(turbine.getEnergyProducedLastTick()) --This turbine function returns a float, so math.floor is used to round it
-        if turbine.getActive() then activeText = 'Active' else activeText = 'Inactive' end
-        if turbine.getInductorEngaged() then engagedText = 'Engaged' else engagedText = 'Disengaged' end
+    local turbines = updateTurbines()
+
+    for i=1,#turbines do
+        local turbine = turbines[i][3]
+        local speed = turbines[i][4]
+        local flowRate = turbines[i][6]
+        local energyProduced = turbines[i][5]
+        if turbines[i][7] then activeText = 'Active' else activeText = 'Inactive' end
+        if turbines[i][8] then engagedText = 'Engaged' else engagedText = 'Disengaged' end
 
         if printInfo == true then
             --Set to the line, clear it, then write new info in
@@ -322,7 +338,7 @@ function manageTurbines(printOffset, printInfo)
             term.write(i..' '..engagedText..', '..activeText..': '..speed..' RPM, '..flowRate..' mB/t, '..energyProduced..' FE/t')
         end
 
-        if speed > 2000 and turbine.getActive() and turbine.getInductorEngaged() == false then
+        if speed > 2000 and turbines[i][7] and turbines[i][8] == false then
             --Turbine at risk of melting down. Engaging coils
             turbine.setInductorEngaged(true)
             term.clear()
