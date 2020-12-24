@@ -2,6 +2,8 @@ require '/ComputerCraftThings/APIs/library'
 
 --TODO: Write pocket computer program to check on reactor stuff
 
+--TODI: make the turbines table a global table
+
 --TODO: Write function to edit settings
 --TODO: Allow setting different speeds for different turbines
 --SETTINGS--
@@ -68,6 +70,7 @@ function updateTurbines()
     return turbines
 end
 
+--TODO: delete getTurbines once all references are removed
 function getTurbines()
     --Returns a count of the turbines and a table of their names
     local turbines = {}
@@ -185,7 +188,7 @@ end
 --This function will be called in while loops to manage turbines and display information
 --Function should be called in while loop
 --Offset is how many lines down to print info
---Set printInfo to print out turbine info (speed, flow rate, etc.)
+--Set printInfo to true to print out turbine info (speed, flow rate, etc.)
 function manageTurbines(printOffset, printInfo)
     if printOffset == nil then printOffset = 0 end
     if printInfo == nil then printInfo = false end
@@ -246,11 +249,13 @@ end
 
 
 function getUserCommand()
-    local turbineCount,turbines = getTurbines()
+    local turbineCount,turbines = getTurbines() --TODO: delete this line after checking if its necessary
     term.clear()
     while true do
         local turbineSpeeds = {}
         for i=1,turbineCount do
+          --TODO: delete this for loop after making sure its not needed
+          
             --Put current turbine speeds into table turbineSpeeds which correspond with their locations in turbines
             local turbineStr = turbines[i]
             local turbine = peripheral.wrap(turbineStr)
@@ -260,8 +265,6 @@ function getUserCommand()
 
         --term.clear()
         --TODO: Add functionality to  start/stop specific turbine. To do this, index all the turbines and list then to let the user pick one
-
-        --TODO: Convert these term.write and term.setCursorPos to setWrite
         
         --term.setCursorPos(1,1)
         --centerText("[Reactor Controller]")
@@ -331,22 +334,5 @@ function getUserCommand()
 end
 
 --TODO: Write a function to shut down specific turbine
---TODO: Write a function to shut down all turbines
 
---DEBUG
-turbineCount,turbines = getTurbines()
-
-term.clear()
-print('Turbine Debug Info:')
-
-print('DEBUG: turbine count: '..tostring(turbineCount))
-print('DEBUG: turbines: '..table.concat(turbines, ", "))
---print(tostring(turbines[1]))
---debugTurbines()
--- startTurbine(1)
--- startTurbine(2)
--- startTurbine(3)
-
---stopAllTurbines()
---startAllTurbines()
 getUserCommand()
