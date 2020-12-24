@@ -52,7 +52,7 @@ function updateTurbines()
             table.insert(turbine, 1, i) --1
             table.insert(turbine, 2, turbineStr) --2
             table.insert(turbine, 3, turbineWrap) --3
-            table.insert(turbine, 4, turbineWrap.getRotorSpeed()) --4
+            table.insert(turbine, 4, math.floor(turbineWrap.getRotorSpeed())) --4
             table.insert(turbine, 5, math.floor(turbineWrap.getEnergyProducedLastTick())) --5
             table.insert(turbine, 6, turbineWrap.getFluidFlowRate()) --6
             table.insert(turbine, 7, turbineWrap.getActive()) --7
