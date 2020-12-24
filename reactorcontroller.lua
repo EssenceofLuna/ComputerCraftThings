@@ -140,7 +140,7 @@ end
 function enableAllTurbines()
     --print("Enabling all turbines.") --Debug
     local turbines = updateTurbines()
-    for i=1,turbineCount do
+    for i=1,#turbines do
         turbine = turbines[i][3]
         turbine.setActive(true)
         --print("Enabling Turbine "..i) --Debug
@@ -249,19 +249,19 @@ end
 
 
 function getUserCommand()
-    local turbineCount,turbines = getTurbines() --TODO: delete this line after checking if its necessary
     term.clear()
+    -- local turbineCount,turbines = getTurbines() --TODO: delete this line after checking if its necessary
     while true do
-        local turbineSpeeds = {}
-        for i=1,turbineCount do
-          --TODO: delete this for loop after making sure its not needed
+        -- local turbineSpeeds = {}
+        -- for i=1,turbineCount do
+        --   --TODO: delete this for loop after making sure its not needed
           
-            --Put current turbine speeds into table turbineSpeeds which correspond with their locations in turbines
-            local turbineStr = turbines[i]
-            local turbine = peripheral.wrap(turbineStr)
-            local speed = math.floor(turbine.getRotorSpeed())
-            table.insert(turbineSpeeds, i, speed)
-        end
+        --     --Put current turbine speeds into table turbineSpeeds which correspond with their locations in turbines
+        --     local turbineStr = turbines[i]
+        --     local turbine = peripheral.wrap(turbineStr)
+        --     local speed = math.floor(turbine.getRotorSpeed())
+        --     table.insert(turbineSpeeds, i, speed)
+        -- end
 
         --term.clear()
         --TODO: Add functionality to  start/stop specific turbine. To do this, index all the turbines and list then to let the user pick one
