@@ -361,7 +361,7 @@ function manageTurbines(printOffset, printInfo)
                 --Only runs if turbinesPowereDown is false (default)
                 --Turbine too slow. Activating and disengaging coils
                 if turbines[i][9] ~= true then turbine.setActive(true) end
-                if turbines[i][10 ~= true then ]turbine.setInductorEngaged(false) end
+                if turbines[i][10] ~= true then ]turbine.setInductorEngaged(false) end
             end
         end
     end
