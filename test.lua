@@ -24,4 +24,4 @@ require '/ComputerCraftThings/turtleLibrary'
 --     turtle.dig()
 -- end
 
-equipItem('computercraft:advanced_modem')
+--equipItem('computercraft:advanced_modem')
