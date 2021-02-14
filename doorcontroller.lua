@@ -12,7 +12,7 @@ DOOR_MESSAGE = 'actuate door'
 ALLOWED_COMPUTERS = {''}
 --END SETTINGS
 
-function InitialSetup()
+function initialSetup()
     --Setup rednet and stuff
     rednet.open(REDNET_SIDE)
 end
@@ -32,6 +32,8 @@ function waitForRednet()
     message = rednet.receive()
     return message
 end
+
+initiaiSetup()
 
 while true do
     --DEBUG CODE
