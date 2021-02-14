@@ -14,6 +14,6 @@ end
 function closeDoor()
 end
 
-redstone.setOutput(left, true)
+redstone.setOutput('left', true)
 sleep(5)
-redstone.setOutput(left, false)
+redstone.setOutput('left', false)
