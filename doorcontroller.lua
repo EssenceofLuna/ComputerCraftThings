@@ -37,5 +37,5 @@ initialSetup()
 
 while true do
     --DEBUG CODE
-    print(rednet.receive())
+    print(rednet.receive()[1])
 end
