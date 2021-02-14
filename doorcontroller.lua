@@ -33,7 +33,7 @@ function waitForRednet()
     return message
 end
 
-initiialSetup()
+initialSetup()
 
 while true do
     --DEBUG CODE
