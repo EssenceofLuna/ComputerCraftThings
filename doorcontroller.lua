@@ -14,4 +14,6 @@ end
 function closeDoor()
 end
 
-print(table.toString(redstone.getSides()))
+redstone.setOutput(left, true)
+sleep(5)
+redstone.setOutput(left, false)
