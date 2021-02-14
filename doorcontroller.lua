@@ -26,16 +26,20 @@ function actuateDoor()
     term.clear()
 end
 
-function waitForRednet()
-    term.clear()
-    print("Waiting for rednet...")
-    message = rednet.receive()
-    return message
-end
+-- function waitForRednet()
+--     term.clear()
+--     print("Waiting for rednet...")
+--     message = rednet.receive()
+--     return message
+-- end
 
 initialSetup()
 
 while true do
     --DEBUG CODE
-    print(rednet.receive()[1])
+    --print(rednet.receive())
+    rednetMessage = rednet.receive()
+    messageTable = rednetMessage.gsub(" ", function(c) table.insert(t,c) end)
+    print(rednetMessage)
+    print(messageTable)
 end
