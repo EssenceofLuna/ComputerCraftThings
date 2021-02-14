@@ -7,7 +7,15 @@ OPENING_LENGTH = 3
 REDSTONE_SIDE = 'left'
 --Which side of the computer the rednet thing is on
 REDNET_SIDE = 'top'
+--Secret message to get the door to open. Not very secure but w/e
+DOOR_MESSAGE = 'actuate door'
+ALLOWED_COMPUTERS = {''}
 --END SETTINGS
+
+function InitialSetup()
+    --Setup rednet and stuff
+    rednet.open(REDNET_SIDE)
+end
 
 function actuateDoor()
     print("Actuating door...")
@@ -21,8 +29,11 @@ end
 function waitForRednet()
     term.clear()
     print("Waiting for rednet...")
-
+    message = rednet.receive()
+    return message
 end
 
---TEST CODE
-actuateDoor()
+while true do
+    --DEBUG CODE
+    print(waitForRednet())
+end
