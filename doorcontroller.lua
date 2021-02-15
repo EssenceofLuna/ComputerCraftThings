@@ -39,5 +39,6 @@ while true do
     --DEBUG CODE
     --print(rednet.receive())
     rednetMessage = rednet.receive()
-    print(type(rednetMessage))
+    print("Type: "..type(rednetMessage))
+    print"Message: "..(rednetMessage)
 end
