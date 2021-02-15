@@ -38,7 +38,7 @@ initialSetup()
 while true do
     --DEBUG CODE
     --print(rednet.receive())
-    rednetMessage = rednet.receive('testprotocal')
+    messageID, message = rednet.receive()
     print("Type: "..type(rednetMessage))
     print("Message: "..rednetMessage)
 end
