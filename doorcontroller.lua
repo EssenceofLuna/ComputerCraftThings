@@ -35,10 +35,10 @@ end
 
 initialSetup()
 
-while true do
+while true dodf
     --DEBUG CODE
     --print(rednet.receive())
-    t={]
+    t={}
     rednetMessage = rednet.receive()
     rednetMessage.gsub(" ", function(c) table.insert(t,c) end)
     print(rednetMessage)
