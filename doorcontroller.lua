@@ -38,8 +38,8 @@ initialSetup()
 while true do
     --DEBUG CODE
     --print(rednet.receive())
-    messageID, message, messageDistance = rednet.receive()
+    messageID, message = rednet.receive()
     print("ID: "..messageID)
     print("Message: "..message)
-    print("Distance: "..messageDistance)
+    --print("Distance: "..messageDistance)
 end
