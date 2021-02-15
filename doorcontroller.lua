@@ -38,8 +38,9 @@ initialSetup()
 while true do
     --DEBUG CODE
     --print(rednet.receive())
+    t={]
     rednetMessage = rednet.receive()
-    messageTable = rednetMessage.gsub(" ", function(c) table.insert(t,c) end)
+    rednetMessage.gsub(" ", function(c) table.insert(t,c) end)
     print(rednetMessage)
-    print(messageTable)
+    print(t)
 end
