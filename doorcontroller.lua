@@ -1,3 +1,5 @@
+require '/ComputerCraftThings/APIs/library'
+
 --SETTINGS
 --Amount of time in seconds to pulse redstone.
 PULSE_LENGTH = 0.1
@@ -9,7 +11,10 @@ REDSTONE_SIDE = 'left'
 REDNET_SIDE = 'top'
 --Secret message to get the door to open. Not very secure but w/e
 DOOR_MESSAGE = 'actuate door'
-ALLOWED_COMPUTERS = {''}
+--Table of CC IDs that are allowed to be used
+ALLOWED_IDS = {'6'}
+--(Unused) Set to true to allow any rednet signal
+ALLOW_ANY_ID = false
 --END SETTINGS
 
 function initialSetup()
@@ -41,5 +46,10 @@ while true do
     messageID, message = rednet.receive('vaultdoor')
     print("ID: "..messageID)
     print("Message: "..message)
+    if has_value(ALLOWED_IDS, messageID) == true then
+        if message == "actuatedoor" then
+            actuateDoor()
+        end
+    end
     --print("Distance: "..messageDistance)
 end

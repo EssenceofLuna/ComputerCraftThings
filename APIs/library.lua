@@ -45,6 +45,16 @@ function os.getComputerType()
     return table.concat(ret, "_")
 end
 
+local function has_value (tab, val)
+    for index, value in ipairs(tab) do
+        if value == val then
+            return true
+        end
+    end
+
+    return false
+end
+
 --[[
 Purpose: Add a line to a log file on the computer
 Input: string, string, bool
