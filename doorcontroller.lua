@@ -35,7 +35,7 @@ end
 
 initialSetup()
 
-while true dodf
+while true do
     --DEBUG CODE
     --print(rednet.receive())
     t={}
