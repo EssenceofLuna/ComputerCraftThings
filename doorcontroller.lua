@@ -9,8 +9,8 @@ OPENING_LENGTH = 3
 REDSTONE_SIDE = 'left'
 --Which side of the computer the rednet thing is on
 REDNET_SIDE = 'top'
---Secret message to get the door to open. Not very secure but w/e
-DOOR_MESSAGE = 'actuate door'
+--(Unused) What protocal to use in rednet
+REDNET_PROTOCOL = 'vaultdoor'
 --Table of CC IDs that are allowed to be used
 ALLOWED_IDS = {'6'}
 --(Unused) Set to true to allow any rednet signal
