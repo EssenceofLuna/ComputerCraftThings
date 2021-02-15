@@ -41,4 +41,5 @@ while true do
     rednetMessage = rednet.receive()
     print("Type: "..type(rednetMessage))
     print("Message: "..(rednetMessage))
+    print(rednet.receive())
 end
