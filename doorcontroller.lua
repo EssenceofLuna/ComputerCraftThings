@@ -40,6 +40,5 @@ while true do
     --print(rednet.receive())
     rednetMessage = rednet.receive()
     print("Type: "..type(rednetMessage))
-    print("Message: "..(rednetMessage))
-    print(rednet.receive())
+    print("Message: "..rednetMessage[2])
 end
