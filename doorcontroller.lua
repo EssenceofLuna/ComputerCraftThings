@@ -38,7 +38,7 @@ initialSetup()
 while true do
     --DEBUG CODE
     --print(rednet.receive())
-    messageID, message = rednet.receive()
+    messageID, message = rednet.receive('vaultdoor')
     print("ID: "..messageID)
     print("Message: "..message)
     --print("Distance: "..messageDistance)
