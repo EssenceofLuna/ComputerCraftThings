@@ -145,6 +145,13 @@ ORES = {
     "thaumcraft:ore_cinnabar",
     "thaumcraft:ore_quartz"
 }
+
+--TODO: Add ender chests from Ender Storage
+
+ENDERCHESTS = {
+    "kibe:entangled_chest", --Entangled Chest from Kibe
+}
+
 --TODO: Verify that EnderIO doesn't have any ores
 
 --TODO: Make a table of items to be used as building blocks like cobblestone
