@@ -15,4 +15,6 @@ while true do
         if turtle.detect() == "minecraft:chest" then
             getItemIndex("minecraft:cobblestone") 
             turtle.drop()
+        end
     end
+end
