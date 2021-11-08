@@ -14,7 +14,7 @@ TIME_PER_SEGMENT = 1
 display = peripheral.wrap(MONITOR_SIDE)
 
 --The list of 12 possible colors
-possibleColors = {colors.gray, colors.purple, colors.purple, colors.purple, colors.blue, colors.blue, colors.green, colors.green, colors.yellow, colors.yellow, colors.orange, colors.orange, colors.red}
+possibleColors = {colors.gray, colors.purple, colors.purple, colors.blue, colors.blue, colors.green, colors.green, colors.yellow, colors.yellow, colors.orange, colors.orange, colors.red}
 --possibleColors = {1,2,4,8,16,32,64,128,256,512,1024,2048}
 
 --Find player detector
@@ -65,7 +65,7 @@ end
 
 function killButton()
     term.clear()
-    print("THE hgyt`BUTTON HAS CEASED. THANKS FOR PLAYING.")
+    print("The button has died.")
     os.exit()
 end
 
@@ -98,9 +98,14 @@ function increaseValue()
 end
 
 function drawBar()
-    for i=1,buttonValue do
-        term.setTextColor(possibleColors[i])
-        term.write("A")
+    for i=1,12 do
+        if (i <= buttonValue) then
+            term.setTextColor(possibleColors[i])
+            term.write("A")
+        else
+            term.setTextColor(colors.white)
+            term.write("A")
+        end
     end
 end
 
