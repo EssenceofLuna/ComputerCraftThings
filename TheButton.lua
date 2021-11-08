@@ -59,7 +59,8 @@ for loopCount=1,12 do
 
     term.write("DEBUG: Current color: ")
     term.setTextColor(colors.purple)
-    term.write(currentColor)
+    print(currentColor)
+    term.setTextColor(colors.white)
 
     os.sleep(1)
 end
