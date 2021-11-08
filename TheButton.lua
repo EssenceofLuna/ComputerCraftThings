@@ -35,13 +35,13 @@ What are you doing in here?
 --The side the computer expects a redstone signal for the button
 --"left" "right" "front" "back" "top" or "bottom" for valid sides
 BUTTON_SIDE = "right"
-MONITOR_SIDE = "top"
+MONITOR_SIDE = "front"
 
 --Whether or not to display a timer
-DISPLAY_TIMER = true
+DISPLAY_TIMER = false --broken
 --Amount of time (in ticks) for each segment of the timer
 --Multiply by 12 to get time until the button dies
-TIME_PER_SEGMENT = 60
+TIME_PER_SEGMENT = 14400
 
 display = peripheral.wrap(MONITOR_SIDE)
 
