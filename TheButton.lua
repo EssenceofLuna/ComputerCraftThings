@@ -13,9 +13,50 @@ TIME_PER_SEGMENT = 1
 
 display = peripheral.wrap(MONITOR_SIDE)
 
-loopCount = 0
+--The list of 12 possible colors
+possibleColors = {colors.gray, colors.purple, colors.purple, colors.purple, colors.blue, colors.blue, colors.green, colors.green, colors.yellow, colors.yellow, colors.orange, colors.orange, colors.red}
 
-for loopCount=1,12 do
+--Initial Values
+loopCount = 0
+buttonValue = 0
+currentColor = possibleColors[1]
+
+function waitForButton()
+    while true do
+        loopCount = loopCount + 1
+    
+        term.clear()
+        term.write("Current color: ")
+        term.setTextColor(currentColor)
+        print(string.sub(currentColor, 8, -1))
+    
+        if (loopCount >= TIME_PER_SEGMENT) then
+            increaseValue()
+        end
+    end
+end
+
+function killButton()
+    print("PLACEHOLDER: TODO: KILL BUTTON HERE")
+end
+
+function resetButton()
+    buttonValue = 0
+    currentColor = colors.gray
+end
+
+function increaseValue()
+    buttonValue = buttonValue +1
+    if (buttonValue >=13) then
+        killButton()
+    else
+        currentColor = possibleColors[buttonValue]
+    end
+end
+
+waitForButton()
+
+--[[for loopCount=1,12 do
     print("Start loop: "..loopCount.."/".."12")
 
     --TODO: Convert the following into a table or something
@@ -63,8 +104,8 @@ for loopCount=1,12 do
     term.setTextColor(colors.white)
 
     if (DISPLAY_TIMER == true) then
-        print("Time remaining: "..(11-loopCount)*TIME_PER_SEGMENT.." seconds")
+        print("Time remaining: "..(12-loopCount)*TIME_PER_SEGMENT.." seconds")
     end
 
     os.sleep(TIME_PER_SEGMENT)
-end
+end--]]
