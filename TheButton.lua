@@ -9,13 +9,12 @@ MONITOR_SIDE = "top"
 DISPLAY_TIMER = true
 --Amount of time (in seconds) for each segment of the timer
 --Multiply by 10 to get time until the button dies
-TIMER_PER_SEGMENT = 60
+TIME_PER_SEGMENT = 60
 
 display = peripheral.wrap(MONITOR_SIDE)
 
 loopCount = 0
 
-while true do
-    loopCount = loopCount + 1
-    print(loopCount)
+for loopCount=1,TIME_PER_SEGMENT do
+    print(loopCount + "/" + TIME_PER_SEGMENT)
 end
