@@ -19,7 +19,7 @@ possibleColors = {colors.gray, colors.purple, colors.purple, colors.purple, colo
 
 --Find player detector
 detector = peripheral.find("playerDetector")
-if detector == nil then error("playerDetector not found") end
+--if detector == nil then error("playerDetector not found") end
 
 --Initial Values
 loopCount = 0
@@ -33,13 +33,14 @@ function waitForButton()
     while true do
         loopCount = loopCount + 1
     
-        term.redirect(display)
+        --term.redirect(display)
         term.setCursorPos(1,5)
         term.setTextColor(colors.white)
         term.clear()
 
         term.setTextColor(currentColor)
         print("Will you press the button?")
+        drawBar()
         
         if (lastPresser ~= nil) then
             term.setTextColor(colors.white)
@@ -64,14 +65,14 @@ end
 
 function killButton()
     term.clear()
-    print("BUTTON HAS CEASED. THANKS FOR PLAYING.")
+    print("THE hgyt`BUTTON HAS CEASED. THANKS FOR PLAYING.")
     os.exit()
 end
 
 function resetButton()
     --TODO: Add a fancy animation here
 
-    term.redirect(display)
+    --term.redirect(display)
     term.setCursorPos(8,5)
     term.clear()
     term.setTextColor(currentColor)
@@ -93,6 +94,13 @@ function increaseValue()
         killButton()
     else
         currentColor = possibleColors[buttonValue]
+    end
+end
+
+function drawBar()
+    for i=1,buttonValue do
+        term.setTextColor(possibleColors[i])
+        term.write("A")
     end
 end
 
