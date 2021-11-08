@@ -15,7 +15,7 @@ display = peripheral.wrap(MONITOR_SIDE)
 
 --The list of 12 possible colors
 possibleColors = {colors.gray, colors.purple, colors.purple, colors.purple, colors.blue, colors.blue, colors.green, colors.green, colors.yellow, colors.yellow, colors.orange, colors.orange, colors.red}
-possibleColors = {1,2,4,8,16,32,64,128,256,512,1024,2048}
+--possibleColors = {1,2,4,8,16,32,64,128,256,512,1024,2048}
 
 --Initial Values
 loopCount = 0
@@ -54,7 +54,7 @@ end
 
 function resetButton()
     --TODO: Add a fancy animation here
-    
+
     term.redirect(display)
     term.setCursorPos(8,5)
     term.clear()
