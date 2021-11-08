@@ -41,7 +41,7 @@ MONITOR_SIDE = "top"
 DISPLAY_TIMER = true
 --Amount of time (in ticks) for each segment of the timer
 --Multiply by 12 to get time until the button dies
-TIME_PER_SEGMENT = 2
+TIME_PER_SEGMENT = 5
 
 display = peripheral.wrap(MONITOR_SIDE)
 
@@ -58,7 +58,7 @@ loopCount = 0
 buttonValue = 0
 currentColor = possibleColors[1]
 
-lastPresser = nil
+lastPresser = "nil"
 lastPresserColor = currentColor
 
 --Set up TheButtonBackup without writing anything to it
@@ -66,10 +66,16 @@ local h = fs.open("TheButtonBackup", "a")
 h.close()
 
 function waitForButton()
+    loadState()
     while true do
         saveState()
         loadState()
         loopCount = loopCount + 1
+
+        if (loopCount >= TIME_PER_SEGMENT) then
+            increaseValue()
+            loopCount = 0
+        end
     
         --term.redirect(display)
         term.setCursorPos(1,5)
@@ -80,7 +86,7 @@ function waitForButton()
         print("Will you press the button?")
         drawBar()
         
-        if (lastPresser ~= nil) then
+        if (lastPresser ~= "nil") then
             term.setTextColor(colors.white)
             print("\n")
             print("Last pressed by: ")
@@ -94,10 +100,6 @@ function waitForButton()
 
         os.sleep(1)
     
-        if (loopCount >= TIME_PER_SEGMENT) then
-            increaseValue()
-            loopCount = 0
-        end
     end
 end
 
@@ -159,13 +161,18 @@ function saveState()
     
     local h = fs.open("TheButtonBackup", "w")
 
-    h.write(storedValues)
+    h.write(textutils.serialise(storedValues))
     h.close()
+
+    --DEBUG
+    --[[print("DEBUG: Table read out (writing)")
+    print(textutils.serialize(storedValues))
+    os.sleep(2)--]]
 end
 
 function loadState()
     local h = fs.open("TheButtonBackup", "r")
-    readValues = h.read()
+    readValues = textutils.unserialise(h.readAll())
 
     --Write values to the global variables
     if(readValues ~= nil) then 
@@ -175,6 +182,12 @@ function loadState()
         lastPresser = readValues[4]
         lastPresserColor = readValues[5]
     end
+    h.close()
+
+    --DEBUG
+    --[[print("DEBUG: Table read out (reading)")
+    print(textutils.serialize(readValues))
+    os.sleep(2)--]]
 end
 
 waitForButton()
