@@ -61,12 +61,15 @@ currentColor = possibleColors[1]
 lastPresser = nil
 lastPresserColor = currentColor
 
---Set up TheButtonBackup without writing anything to id
+--Set up TheButtonBackup without writing anything to it
 local h = fs.open("TheButtonBackup", "a")
 h.close()
 
 function waitForButton()
+    loadState()
+    
     while true do
+        saveState()
         loadState()
         loopCount = loopCount + 1
     
@@ -91,7 +94,6 @@ function waitForButton()
             resetButton()
         end
 
-        saveState()
         os.sleep(1)
     
         if (loopCount >= TIME_PER_SEGMENT) then
