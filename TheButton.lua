@@ -53,6 +53,8 @@ function killButton()
 end
 
 function resetButton()
+    --TODO: Add a fancy animation here
+    
     term.redirect(display)
     term.setCursorPos(8,5)
     term.clear()
@@ -61,6 +63,8 @@ function resetButton()
 
     buttonValue = 0
     currentColor = colors.gray
+
+    os.sleep(3)
 end
 
 function increaseValue()
