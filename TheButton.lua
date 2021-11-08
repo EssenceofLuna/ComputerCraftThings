@@ -9,7 +9,7 @@ MONITOR_SIDE = "top"
 DISPLAY_TIMER = true
 --Amount of time (in seconds) for each segment of the timer
 --Multiply by 12 to get time until the button dies
-TIME_PER_SEGMENT = 60
+TIME_PER_SEGMENT = 1
 
 display = peripheral.wrap(MONITOR_SIDE)
 
@@ -62,5 +62,9 @@ for loopCount=1,12 do
     print(currentColor)
     term.setTextColor(colors.white)
 
-    os.sleep(1)
+    if (DISPLAY_TIMER == true) then
+        print("Time remaining: "..(12-loopCount)*TIME_PER_SEGMENT.." seconds")
+    end
+
+    os.sleep(TIME_PER_SEGMENT)
 end
