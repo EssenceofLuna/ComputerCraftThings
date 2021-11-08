@@ -17,6 +17,10 @@ display = peripheral.wrap(MONITOR_SIDE)
 possibleColors = {colors.gray, colors.purple, colors.purple, colors.purple, colors.blue, colors.blue, colors.green, colors.green, colors.yellow, colors.yellow, colors.orange, colors.orange, colors.red}
 --possibleColors = {1,2,4,8,16,32,64,128,256,512,1024,2048}
 
+--Find player detector
+detector = peripheral.find("playerDetector")
+if detector == nil then error("playerDetector not found") end
+
 --Initial Values
 loopCount = 0
 buttonValue = 0
@@ -72,7 +76,8 @@ function resetButton()
     term.write("BUTTON PRESSED!!")
 
     lastPresserColor = currentColor
-    lastPresser = getPlayersInRange(5)[1]
+    lastPresser = detector.getPlayersInRange(5)[1]
+    
     buttonValue = 0
     currentColor = possibleColors[1]
 
