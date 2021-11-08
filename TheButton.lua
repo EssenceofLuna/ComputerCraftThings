@@ -34,7 +34,7 @@ function waitForButton()
         loopCount = loopCount + 1
     
         term.redirect(display)
-        term.setCursorPos(8,5)
+        term.setCursorPos(1,5)
         term.setTextColor(colors.white)
         term.clear()
 
@@ -70,14 +70,14 @@ function resetButton()
     --TODO: Add a fancy animation here
 
     term.redirect(display)
-    term.setCursorPos(8,5)
+    term.setCursorPos(8,7)
     term.clear()
     term.setTextColor(currentColor)
     term.write("BUTTON PRESSED!!")
 
     lastPresserColor = currentColor
     lastPresser = detector.getPlayersInRange(5)[1]
-    
+
     buttonValue = 0
     currentColor = possibleColors[1]
 
