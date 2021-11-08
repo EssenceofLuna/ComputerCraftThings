@@ -22,6 +22,9 @@ loopCount = 0
 buttonValue = 0
 currentColor = possibleColors[1]
 
+lastPresser = nil
+lastPresserColor = currentColor
+
 function waitForButton()
     while true do
         loopCount = loopCount + 1
@@ -30,9 +33,16 @@ function waitForButton()
         term.setCursorPos(8,5)
         term.setTextColor(colors.white)
         term.clear()
-        term.write("Current color: ")
+
         term.setTextColor(currentColor)
-        print(currentColor)
+        print("Will you press the button?")
+        
+        if (lastPresser ~= nil) then
+            term.setTextColor(colors.white)
+            print("Last pressed by: ")
+            term.setTextColor(lastPresserColor)
+            print(lastPresser)
+        end
 
         if (rs.getInput(BUTTON_SIDE)) then
             resetButton()
@@ -61,8 +71,11 @@ function resetButton()
     term.setTextColor(currentColor)
     term.write("BUTTON PRESSED!!")
 
+    lastPresserColor = currentColor
+    lastPresser = getPlayersInRange(5)[1]
     buttonValue = 0
-    currentColor = colors.gray
+    currentColor = possibleColors[1]
+
 
     os.sleep(3)
 end
