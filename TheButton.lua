@@ -30,7 +30,7 @@ function waitForButton()
         term.setTextColor(currentColor)
         print(string.sub(currentColor, 8, -1))
     
-        if (loopCount >= TIME_PER_SEGMENT) then
+        if (loopCount >= TIME_PER_SEGMENT*20) then
             increaseValue()
         end
     end
