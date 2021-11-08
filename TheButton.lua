@@ -1,5 +1,37 @@
---SETTINGS
+--[[
 
+
+
+
+
+    
+    
+    
+    
+    
+    
+What are you doing in here?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--]]
+
+
+
+--SETTINGS
 --The side the computer expects a redstone signal for the button
 --"left" "right" "front" "back" "top" or "bottom" for valid sides
 BUTTON_SIDE = "right"
@@ -9,7 +41,7 @@ MONITOR_SIDE = "top"
 DISPLAY_TIMER = true
 --Amount of time (in ticks) for each segment of the timer
 --Multiply by 12 to get time until the button dies
-TIME_PER_SEGMENT = 1
+TIME_PER_SEGMENT = 5
 
 display = peripheral.wrap(MONITOR_SIDE)
 
@@ -33,7 +65,7 @@ function waitForButton()
     while true do
         loopCount = loopCount + 1
     
-        --term.redirect(display)
+        term.redirect(display)
         term.setCursorPos(1,5)
         term.setTextColor(colors.white)
         term.clear()
@@ -44,7 +76,7 @@ function waitForButton()
         
         if (lastPresser ~= nil) then
             term.setTextColor(colors.white)
-            print("")
+            print("\n")
             print("Last pressed by: ")
             term.setTextColor(lastPresserColor)
             print(lastPresser)
@@ -72,7 +104,7 @@ end
 function resetButton()
     --TODO: Add a fancy animation here
 
-    --term.redirect(display)
+    term.redirect(display)
     term.setCursorPos(8,5)
     term.clear()
     term.setTextColor(currentColor)
