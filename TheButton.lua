@@ -29,6 +29,9 @@ function waitForButton()
         term.write("Current color: ")
         term.setTextColor(currentColor)
         print(string.sub(currentColor, 8, -1))
+        term.setTextColor(colors.gray)
+
+        os.sleep(1)
     
         if (loopCount >= TIME_PER_SEGMENT) then
             increaseValue()
