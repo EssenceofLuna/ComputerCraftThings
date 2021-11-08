@@ -41,7 +41,7 @@ MONITOR_SIDE = "top"
 DISPLAY_TIMER = true
 --Amount of time (in ticks) for each segment of the timer
 --Multiply by 12 to get time until the button dies
-TIME_PER_SEGMENT = 5
+TIME_PER_SEGMENT = 2
 
 display = peripheral.wrap(MONITOR_SIDE)
 
@@ -63,9 +63,10 @@ lastPresserColor = currentColor
 
 function waitForButton()
     while true do
+        loadState()
         loopCount = loopCount + 1
     
-        term.redirect(display)
+        --term.redirect(display)
         term.setCursorPos(1,5)
         term.setTextColor(colors.white)
         term.clear()
@@ -85,6 +86,8 @@ function waitForButton()
         if (rs.getInput(BUTTON_SIDE)) then
             resetButton()
         end
+
+        saveState()
         os.sleep(1)
     
         if (loopCount >= TIME_PER_SEGMENT) then
@@ -96,15 +99,19 @@ end
 
 
 function killButton()
+    shell.run("delete TheButton.lua")
+    shell.run("delete ComputerCraftThings/TheButton.lua")
     term.clear()
     print("The button has died.")
+    print("\n")
+    print("\n")
     os.exit()
 end
 
 function resetButton()
     --TODO: Add a fancy animation here
 
-    term.redirect(display)
+    --term.redirect(display)
     term.setCursorPos(8,5)
     term.clear()
     term.setTextColor(currentColor)
@@ -139,6 +146,29 @@ function drawBar()
             term.write("A")
         end
     end
+end
+
+function saveState()
+    --Things to be saved/loaded:loopCount, buttonValue, currentColor, lastPresser, lastPresserColor
+    
+    storedValues = {loopCount, buttonValue, currentColor, lastPresser, lastPresserColor}
+    
+    local h = fs.open("TheButtonBackup", "w")
+
+    h.write(storedValues)
+    h.close()
+end
+
+function loadState()
+    local h = fs.open("TheButtonBackup", "r")
+    readValues = h.read()
+
+    --Write values to the global variables
+    loopCount = readValues[1]
+    buttonValue = readValues[2]
+    currentColor = readValues[3]
+    lastPresser = readValues[4]
+    lastPresserColor = readValues[5]
 end
 
 waitForButton()
