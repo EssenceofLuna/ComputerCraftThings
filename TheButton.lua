@@ -26,6 +26,7 @@ function waitForButton()
     while true do
         loopCount = loopCount + 1
     
+        term.redirect(display)
         term.clear()
         term.write("Current color: ")
         term.setTextColor(currentColor)
