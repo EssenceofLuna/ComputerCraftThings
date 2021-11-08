@@ -41,7 +41,7 @@ MONITOR_SIDE = "top"
 DISPLAY_TIMER = true
 --Amount of time (in ticks) for each segment of the timer
 --Multiply by 12 to get time until the button dies
-TIME_PER_SEGMENT = 5
+TIME_PER_SEGMENT = 60
 
 display = peripheral.wrap(MONITOR_SIDE)
 
@@ -77,7 +77,7 @@ function waitForButton()
             loopCount = 0
         end
     
-        --term.redirect(display)
+        term.redirect(display)
         term.setCursorPos(1,5)
         term.setTextColor(colors.white)
         term.clear()
@@ -117,7 +117,7 @@ end
 function resetButton()
     --TODO: Add a fancy animation here
 
-    --term.redirect(display)
+    term.redirect(display)
     term.setCursorPos(8,5)
     term.clear()
     term.setTextColor(currentColor)
