@@ -17,5 +17,5 @@ loopCount = 0
 
 for loopCount=1,TIME_PER_SEGMENT do
     print(loopCount.."/"..TIME_PER_SEGMENT)
-    sleep(1)
+    os.sleep(1)
 end
