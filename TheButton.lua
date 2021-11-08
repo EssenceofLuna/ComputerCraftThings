@@ -16,5 +16,5 @@ display = peripheral.wrap(MONITOR_SIDE)
 loopCount = 0
 
 for loopCount=1,TIME_PER_SEGMENT do
-    print(loopCount + "/" + TIME_PER_SEGMENT)
+    print(loopCount.."/"..TIME_PER_SEGMENT)
 end
