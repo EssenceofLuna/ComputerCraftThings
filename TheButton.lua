@@ -61,6 +61,10 @@ currentColor = possibleColors[1]
 lastPresser = nil
 lastPresserColor = currentColor
 
+--Set up TheButtonBackup without writing anything to id
+local h = fs.open("TheButtonBackup", "a")
+h.close()
+
 function waitForButton()
     while true do
         loadState()
