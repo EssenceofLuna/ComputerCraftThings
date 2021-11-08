@@ -63,7 +63,7 @@ for loopCount=1,12 do
     term.setTextColor(colors.white)
 
     if (DISPLAY_TIMER == true) then
-        print("Time remaining: "..(12-loopCount)*TIME_PER_SEGMENT.." seconds")
+        print("Time remaining: "..(11-loopCount)*TIME_PER_SEGMENT.." seconds")
     end
 
     os.sleep(TIME_PER_SEGMENT)
