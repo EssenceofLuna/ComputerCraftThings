@@ -7,9 +7,9 @@ MONITOR_SIDE = "top"
 
 --Whether or not to display a timer
 DISPLAY_TIMER = true
---Amount of time (in seconds) for each segment of the timer
+--Amount of time (in ticks) for each segment of the timer
 --Multiply by 12 to get time until the button dies
-TIME_PER_SEGMENT = 1
+TIME_PER_SEGMENT = 1000
 
 display = peripheral.wrap(MONITOR_SIDE)
 
@@ -30,7 +30,7 @@ function waitForButton()
         term.setTextColor(currentColor)
         print(string.sub(currentColor, 8, -1))
     
-        if (loopCount >= TIME_PER_SEGMENT*20) then
+        if (loopCount >= TIME_PER_SEGMENT) then
             increaseValue()
         end
     end
