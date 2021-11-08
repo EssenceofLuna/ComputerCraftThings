@@ -27,25 +27,17 @@ function waitForButton()
         loopCount = loopCount + 1
     
         term.redirect(display)
-        term.setCursorPos(10,5)
+        term.setCursorPos(8,5)
+        term.setTextColor(colors.white)
         term.clear()
         term.write("Current color: ")
         term.setTextColor(currentColor)
         print(currentColor)
-        term.setTextColor(colors.white)
-
 
         if (rs.getInput(BUTTON_SIDE)) then
             resetButton()
         end
         os.sleep(1)
-        --[[for i=1,100 do
-            if rs.getInput(BUTTON_SIDE) then
-                resetButton()
-            else
-                sleep(.01)
-            end
-        end--]]
     
         if (loopCount >= TIME_PER_SEGMENT) then
             increaseValue()
@@ -61,6 +53,12 @@ function killButton()
 end
 
 function resetButton()
+    term.redirect(display)
+    term.setCursorPos(8,5)
+    term.clear()
+    term.setTextColor(currentColor)
+    term.write("BUTTON PRESSED!!")
+
     buttonValue = 0
     currentColor = colors.gray
 end
