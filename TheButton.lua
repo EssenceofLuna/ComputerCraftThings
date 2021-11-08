@@ -64,10 +64,8 @@ lastPresserColor = currentColor
 --Set up TheButtonBackup without writing anything to it
 local h = fs.open("TheButtonBackup", "a")
 h.close()
-saveState()
-function waitForButton()
-    loadState()
 
+function waitForButton()
     while true do
         saveState()
         loadState()
