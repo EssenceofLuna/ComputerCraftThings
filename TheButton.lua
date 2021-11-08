@@ -124,7 +124,7 @@ function resetButton()
     term.write("BUTTON PRESSED!!")
 
     lastPresserColor = currentColor
-    lastPresser = detector.getPlayersInRange(5)[1]
+    lastPresser = detector.getPlayersInRange(10)[1]
 
     buttonValue = 0
     currentColor = possibleColors[1]
