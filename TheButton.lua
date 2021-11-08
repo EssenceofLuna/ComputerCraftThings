@@ -9,7 +9,7 @@ MONITOR_SIDE = "top"
 DISPLAY_TIMER = true
 --Amount of time (in ticks) for each segment of the timer
 --Multiply by 12 to get time until the button dies
-TIME_PER_SEGMENT = 2
+TIME_PER_SEGMENT = 1
 
 display = peripheral.wrap(MONITOR_SIDE)
 
@@ -43,6 +43,7 @@ function waitForButton()
         
         if (lastPresser ~= nil) then
             term.setTextColor(colors.white)
+            print("")
             print("Last pressed by: ")
             term.setTextColor(lastPresserColor)
             print(lastPresser)
@@ -62,7 +63,8 @@ end
 
 
 function killButton()
-    print("BUTTON HAS CEASED")
+    term.clear()
+    print("BUTTON HAS CEASED. THANKS FOR PLAYING.")
     os.exit()
 end
 
@@ -70,7 +72,7 @@ function resetButton()
     --TODO: Add a fancy animation here
 
     term.redirect(display)
-    term.setCursorPos(8,7)
+    term.setCursorPos(8,5)
     term.clear()
     term.setTextColor(currentColor)
     term.write("BUTTON PRESSED!!")
