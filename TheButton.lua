@@ -13,3 +13,9 @@ TIMER_PER_SEGMENT = 60
 
 display = peripheral.wrap(MONITOR_SIDE)
 
+loopCount = 0
+
+while true do
+    loopCount = loopCount + 1
+    print(loopCount)
+end
