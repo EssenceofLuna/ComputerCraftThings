@@ -32,14 +32,18 @@ function waitForButton()
         print(currentColor)
         term.setTextColor(colors.white)
 
-        --os.sleep(1)
-        for i=1,100 do
+
+        if (rs.getInput(BUTTON_SIDE)) then
+            resetButton()
+        end
+        os.sleep(1)
+        --[[for i=1,100 do
             if rs.getInput(BUTTON_SIDE) then
                 resetButton()
             else
                 sleep(.01)
             end
-        end
+        end--]]
     
         if (loopCount >= TIME_PER_SEGMENT) then
             increaseValue()
