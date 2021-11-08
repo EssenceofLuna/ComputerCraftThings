@@ -27,6 +27,7 @@ function waitForButton()
         loopCount = loopCount + 1
     
         term.redirect(display)
+        term.setCursorPos(10,5)
         term.clear()
         term.write("Current color: ")
         term.setTextColor(currentColor)
