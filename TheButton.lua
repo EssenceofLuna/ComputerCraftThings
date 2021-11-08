@@ -9,12 +9,13 @@ MONITOR_SIDE = "top"
 DISPLAY_TIMER = true
 --Amount of time (in ticks) for each segment of the timer
 --Multiply by 12 to get time until the button dies
-TIME_PER_SEGMENT = 1000
+TIME_PER_SEGMENT = 2
 
 display = peripheral.wrap(MONITOR_SIDE)
 
 --The list of 12 possible colors
 possibleColors = {colors.gray, colors.purple, colors.purple, colors.purple, colors.blue, colors.blue, colors.green, colors.green, colors.yellow, colors.yellow, colors.orange, colors.orange, colors.red}
+possibleColors = {1,2,4,8,16,32,64,128,256,512,1024,2048}
 
 --Initial Values
 loopCount = 0
@@ -28,20 +29,29 @@ function waitForButton()
         term.clear()
         term.write("Current color: ")
         term.setTextColor(currentColor)
-        print(string.sub(currentColor, 8, -1))
-        term.setTextColor(colors.gray)
+        print(currentColor)
+        term.setTextColor(colors.white)
 
-        os.sleep(1)
+        --os.sleep(1)
+        for i=1,100 do
+            if rs.getInput(BUTTON_SIDE) then
+                resetButton()
+            else
+                sleep(.01)
+            end
+        end
     
         if (loopCount >= TIME_PER_SEGMENT) then
             increaseValue()
+            loopCount = 0
         end
     end
 end
 
 
 function killButton()
-    print("PLACEHOLDER: TODO: KILL BUTTON HERE")
+    print("BUTTON HAS CEASED")
+    os.exit()
 end
 
 function resetButton()
