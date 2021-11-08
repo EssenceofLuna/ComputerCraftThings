@@ -168,11 +168,13 @@ function loadState()
     readValues = h.read()
 
     --Write values to the global variables
-    loopCount = readValues[1]
-    buttonValue = readValues[2]
-    currentColor = readValues[3]
-    lastPresser = readValues[4]
-    lastPresserColor = readValues[5]
+    if(readValues ~= nil) then 
+        loopCount = readValues[1]
+        buttonValue = readValues[2]
+        currentColor = readValues[3]
+        lastPresser = readValues[4]
+        lastPresserColor = readValues[5]
+    end
 end
 
 waitForButton()
