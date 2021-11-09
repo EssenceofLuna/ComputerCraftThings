@@ -30,6 +30,7 @@ What are you doing in here?
 --]]
 
 
+
 --TODO for V2:
 -- Only count up if a player is within a configurable range (to avoid chunkloading)
 -- Make progras auto detect monitor
@@ -133,10 +134,12 @@ function killButton()
     shell.run("delete TheButton.lua")
     shell.run("delete ComputerCraftThings/TheButton.lua")
     term.clear()
-    print("The button has died.")
+
+    term.clear()
+    term.setTextColor(colors.red)
     print("\n")
     print("\n")
-    os.exit()
+    error("The button has died.")
 end
 
 function resetButton()
@@ -217,7 +220,7 @@ function addToScoreList(user, time, stage)
 end
 
 function checkForPlayers(range)
-    --Returns true if a player is within range
+    --Returns true if a player is within range (meters)
     --UNTESTED!!!
     if (detector.getPlayersInRange(range) ~= nil) then
         return true;
