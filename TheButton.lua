@@ -38,6 +38,7 @@ What are you doing in here?
 -- Make a better energy bar, rather than using 12 A's
 -- Implement the currently unused DISPLAY_TIMER setting A.K.A. add a way to display timer.
 -- Add a function to track and save when a button is pressed
+-- Replace deleting file with shell.getRunningProgram
 
 
 
@@ -131,8 +132,10 @@ end
 
 
 function killButton()
-    shell.run("delete TheButton.lua")
-    shell.run("delete ComputerCraftThings/TheButton.lua")
+    local currentFile = shell.getRunningProgram()
+    shell.run("delete "..currentFile) --NEEDS TESTING!!!
+    --shell.run("delete TheButton.lua")
+    --shell.run("delete ComputerCraftThings/TheButton.lua")
     term.clear()
 
     term.clear()
