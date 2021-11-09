@@ -37,7 +37,7 @@ What are you doing in here?
 -- Implement animation when button is pressed
 -- Make a better energy bar, rather than using 12 A's
 -- Implement the currently unused DISPLAY_TIMER setting A.K.A. add a way to display timer.
--- Add a function to track and save when a button is pressed
+-- Add a function to track and save when a button is pressed (function done, just needs implementation)
 -- Replace deleting file with shell.getRunningProgram
 
 
@@ -54,7 +54,7 @@ BUTTON_SIDE = "right"
 DISPLAY_TIMER = false --broken
 --Amount of time (in seconds) for each segment of the timer
 --Multiply by 12 to get time until the button dies
-TIME_PER_SEGMENT = 14400
+TIME_PER_SEGMENT = 2
 
 
 
@@ -133,10 +133,7 @@ end
 
 function killButton()
     local currentFile = shell.getRunningProgram()
-    shell.run("delete "..currentFile) --NEEDS TESTING!!!
-    --shell.run("delete TheButton.lua")
-    --shell.run("delete ComputerCraftThings/TheButton.lua")
-    term.clear()
+    shell.run("delete "..currentFile)
 
     term.clear()
     term.setTextColor(colors.red)
@@ -146,14 +143,13 @@ function killButton()
 end
 
 function resetButton()
-    --TODO: Add a fancy animation here
-
     if display_on_monitory == true then term.redirect(display) end
     term.setCursorPos(8,5)
     term.clear()
     term.setTextColor(currentColor)
 
     --animation
+    --NEEDS TESTING!!!
     term.write("BUTTON PRESSED!!")
     sleep(0.5)
     term.clear()
