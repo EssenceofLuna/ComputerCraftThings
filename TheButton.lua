@@ -30,6 +30,13 @@ What are you doing in here?
 --]]
 
 
+--TODO for V2:
+-- Only count up if a player is within a configurable range (to avoid chunkloading)
+-- Make progras auto detect monitor
+-- Implement animation when button is pressed
+-- Make a better energy bar, rather than using 12 A's
+-- Implement the currently unused DISPLAY_TIMER setting A.K.A. add a way to display timer.
+
 
 --SETTINGS
 --The side the computer expects a redstone signal for the button
