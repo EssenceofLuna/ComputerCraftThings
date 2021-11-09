@@ -149,8 +149,20 @@ function resetButton()
     term.setCursorPos(8,5)
     term.clear()
     term.setTextColor(currentColor)
-    term.write("BUTTON PRESSED!!")
 
+    --animation
+    term.write("BUTTON PRESSED!!")
+    sleep(0.5)
+    term.clear()
+    sleep(0.5)
+    term.write("BUTTON PRESSED!!")
+    sleep(0.5)
+    term.clear()
+    sleep(0.5)
+    term.write("BUTTON PRESSED!!")
+    sleep(0.5)
+    term.clear()
+    
     lastPresserColor = currentColor
     lastPresser = detector.getPlayersInRange(10)[1]
 
@@ -158,7 +170,7 @@ function resetButton()
     currentColor = possibleColors[1]
 
 
-    os.sleep(3)
+    os.sleep(1)
 end
 
 function increaseValue()
