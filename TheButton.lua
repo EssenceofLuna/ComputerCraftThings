@@ -188,7 +188,7 @@ function loadState()
     h.close()
 end
 
-function AddToScoreList(user, time, stage)
+function addToScoreList(user, time, stage)
     --Save when a user pressed the button and what color/stage it was
     --UNTESTED!!!
     --Expected problems: Typos, writing occurs on last line of previous entry
