@@ -52,9 +52,14 @@ BUTTON_SIDE = "right"
 
 --Whether or not to display a timer
 DISPLAY_TIMER = false --broken
+
 --Amount of time (in seconds) for each segment of the timer
 --Multiply by 12 to get time until the button dies
 TIME_PER_SEGMENT = 3
+
+--Whether or not the PC should show who last pressed the button
+--NEEDS TESTING!!!
+SHOW_LAST_PRESSER = true
 
 
 
@@ -74,13 +79,12 @@ end
 
 --The list of 12 possible colors
 possibleColors = {colors.gray, colors.purple, colors.purple, colors.blue, colors.blue, colors.green, colors.green, colors.yellow, colors.yellow, colors.orange, colors.orange, colors.red}
---possibleColors = {1,2,4,8,16,32,64,128,256,512,1024,2048}
 
 --Find player detector
 detector = peripheral.find("playerDetector")
 --if detector == nil then error("playerDetector not found") end
 
---Initial Values
+--Initial Values (overwritten if TheButtonBackup exists)
 loopCount = 0
 buttonValue = 0
 currentColor = possibleColors[1]
@@ -98,7 +102,12 @@ function waitForButton()
     while true do
         saveState()
         loadState()
-        loopCount = loopCount + 1
+
+        if(checkForPlayers(160 )~= nil) then
+            --Only progress if a player is within range (10 chunks)
+            --NEEDS TESTING!!!
+            loopCount = loopCount + 1
+        end
 
         if (loopCount >= TIME_PER_SEGMENT) then
             increaseValue()
@@ -114,7 +123,7 @@ function waitForButton()
         --print("Will you press the button?")
         drawBar()
         
-        if (lastPresser ~= "nil") then
+        if (lastPresser ~= "nil" and SHOW_LAST_PRESSER) then
             term.setTextColor(colors.white)
             print("\n")
             print("Last pressed by: ")
@@ -145,7 +154,8 @@ function killButton()
 end
 
 function resetButton()
-    if display_on_monitory == true then term.redirect(display) end
+    local pressedTime = textutils.formatTime(os.time(), true)
+    --if display_on_monitory == true then term.redirect(display) end --Not sure if neede
     term.setCursorPos(8,5)
     term.clear()
     term.setTextColor(currentColor)
@@ -166,6 +176,8 @@ function resetButton()
     
     lastPresserColor = currentColor
     lastPresser = detector.getPlayersInRange(10)[1]
+
+    addToScoreList(lastPresser, pressedTime, currentColor) --NEEDS TESTING!!!
 
     buttonValue = 0
     currentColor = possibleColors[1]
