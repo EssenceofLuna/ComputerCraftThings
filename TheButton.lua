@@ -54,7 +54,7 @@ BUTTON_SIDE = "right"
 DISPLAY_TIMER = false --broken
 --Amount of time (in seconds) for each segment of the timer
 --Multiply by 12 to get time until the button dies
-TIME_PER_SEGMENT = 2
+TIME_PER_SEGMENT = 3
 
 
 
@@ -92,6 +92,7 @@ lastPresserColor = currentColor
 local h = fs.open("TheButtonBackup", "a")
 h.close()
 
+--Main looping function
 function waitForButton()
     loadState()
     while true do
@@ -110,7 +111,7 @@ function waitForButton()
         term.clear()
 
         term.setTextColor(currentColor)
-        print("Will you press the button?")
+        --print("Will you press the button?")
         drawBar()
         
         if (lastPresser ~= "nil") then
@@ -134,6 +135,7 @@ end
 function killButton()
     local currentFile = shell.getRunningProgram()
     shell.run("delete "..currentFile)
+    shell.run("delete TheButtonBackup")
 
     term.clear()
     term.setTextColor(colors.red)
@@ -185,10 +187,10 @@ function drawBar()
     for i=1,12 do
         if (i <= buttonValue) then
             term.setTextColor(possibleColors[i])
-            term.write("A")
+            term.write("[*]")
         else
             term.setTextColor(colors.white)
-            term.write("A")
+            term.write("[ ]")
         end
     end
 end
