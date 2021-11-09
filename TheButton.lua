@@ -39,17 +39,36 @@ What are you doing in here?
 -- Add a function to track and save when a button is pressed
 
 
+
 --SETTINGS
+
+
+
 --The side the computer expects a redstone signal for the button
 --"left" "right" "front" "back" "top" or "bottom" for valid sides
 BUTTON_SIDE = "right"
 MONITOR_SIDE = "front"
+
+--If true, will search for a monitor to display on. If false, will just display on PC
+DISPLAY_ON_MONITOR = true
 
 --Whether or not to display a timer
 DISPLAY_TIMER = false --broken
 --Amount of time (in seconds) for each segment of the timer
 --Multiply by 12 to get time until the button dies
 TIME_PER_SEGMENT = 14400
+
+
+
+--INITIAL SETUP
+
+
+
+--Find and wrap monitor if enabled
+if (DISPLAY_ON_MONITOR) then
+    display = peripheral.find("monitor")
+    if display == nil then error("Error: Monitor enabled but not found") end
+end
 
 display = peripheral.wrap(MONITOR_SIDE)
 
@@ -85,7 +104,7 @@ function waitForButton()
             loopCount = 0
         end
     
-        term.redirect(display)
+        if DISPLAY_ON_MONITOR == true then term.redirect(display) end
         term.setCursorPos(1,5)
         term.setTextColor(colors.white)
         term.clear()
@@ -125,7 +144,7 @@ end
 function resetButton()
     --TODO: Add a fancy animation here
 
-    term.redirect(display)
+    if DISPLAY_ON_MONITOR == true then term.redirect(display) end
     term.setCursorPos(8,5)
     term.clear()
     term.setTextColor(currentColor)
