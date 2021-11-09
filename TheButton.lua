@@ -47,10 +47,6 @@ What are you doing in here?
 --The side the computer expects a redstone signal for the button
 --"left" "right" "front" "back" "top" or "bottom" for valid sides
 BUTTON_SIDE = "right"
-MONITOR_SIDE = "front"
-
---If true, will search for a monitor to display on. If false, will just display on PC
-DISPLAY_ON_MONITOR = true
 
 --Whether or not to display a timer
 DISPLAY_TIMER = false --broken
@@ -64,13 +60,15 @@ TIME_PER_SEGMENT = 14400
 
 
 
---Find and wrap monitor if enabled
-if (DISPLAY_ON_MONITOR) then
-    display = peripheral.find("monitor")
-    if display == nil then error("Error: Monitor enabled but not found") end
+--Check for a monitor as set to use it if found
+display = peripheral.find("monitor")
+if display == nil then
+    --No monitor found
+    display_on_monitor = false
+else
+    display_on_monitor = true
 end
 
-display = peripheral.wrap(MONITOR_SIDE)
 
 --The list of 12 possible colors
 possibleColors = {colors.gray, colors.purple, colors.purple, colors.blue, colors.blue, colors.green, colors.green, colors.yellow, colors.yellow, colors.orange, colors.orange, colors.red}
@@ -104,7 +102,7 @@ function waitForButton()
             loopCount = 0
         end
     
-        if DISPLAY_ON_MONITOR == true then term.redirect(display) end
+        if display_on_monitor == true then term.redirect(display) end
         term.setCursorPos(1,5)
         term.setTextColor(colors.white)
         term.clear()
@@ -144,7 +142,7 @@ end
 function resetButton()
     --TODO: Add a fancy animation here
 
-    if DISPLAY_ON_MONITOR == true then term.redirect(display) end
+    if display_on_monitory == true then term.redirect(display) end
     term.setCursorPos(8,5)
     term.clear()
     term.setTextColor(currentColor)
