@@ -171,11 +171,6 @@ function saveState()
 
     h.write(textutils.serialise(storedValues))
     h.close()
-
-    --DEBUG
-    --[[print("DEBUG: Table read out (writing)")
-    print(textutils.serialize(storedValues))
-    os.sleep(2)--]]
 end
 
 function loadState()
@@ -191,11 +186,6 @@ function loadState()
         lastPresserColor = readValues[5]
     end
     h.close()
-
-    --DEBUG
-    --[[print("DEBUG: Table read out (reading)")
-    print(textutils.serialize(readValues))
-    os.sleep(2)--]]
 end
 
 function AddToScoreList(user, time, stage)
@@ -207,6 +197,16 @@ function AddToScoreList(user, time, stage)
     local h = fs.open("TheButtonScores", "a") --Open to edit without overwriting old file
     h.write(textutils.serialise(savedData))
     h.close()
+end
+
+function checkForPlayers(range)
+    --Returns true if a player is within range
+    --UNTESTED!!!
+    if (detector.getPlayersInRange(range) ~= nil) then
+        return true;
+    else
+        return false;
+    end
 end
 
 waitForButton()
