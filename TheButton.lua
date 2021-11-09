@@ -36,6 +36,7 @@ What are you doing in here?
 -- Implement animation when button is pressed
 -- Make a better energy bar, rather than using 12 A's
 -- Implement the currently unused DISPLAY_TIMER setting A.K.A. add a way to display timer.
+-- Add a function to track and save when a button is pressed
 
 
 --SETTINGS
@@ -46,7 +47,7 @@ MONITOR_SIDE = "front"
 
 --Whether or not to display a timer
 DISPLAY_TIMER = false --broken
---Amount of time (in ticks) for each segment of the timer
+--Amount of time (in seconds) for each segment of the timer
 --Multiply by 12 to get time until the button dies
 TIME_PER_SEGMENT = 14400
 
@@ -195,6 +196,17 @@ function loadState()
     --[[print("DEBUG: Table read out (reading)")
     print(textutils.serialize(readValues))
     os.sleep(2)--]]
+end
+
+function AddToScoreList(user, time, stage)
+    --Save when a user pressed the button and what color/stage it was
+    --UNTESTED!!!
+    --Expected problems: Typos, writing occurs on last line of previous entry
+    savedData = {user,time,stage}
+
+    local h = fs.open("TheButtonScores", "a") --Open to edit without overwriting old file
+    h.write(textutils.serialise(savedData))
+    h.close()
 end
 
 waitForButton()
