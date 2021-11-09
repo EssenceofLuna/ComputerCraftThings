@@ -32,13 +32,11 @@ What are you doing in here?
 
 
 --TODO for V2:
--- Only count up if a player is within a configurable range (to avoid chunkloading)
--- Make progras auto detect monitor
--- Implement animation when button is pressed
--- Make a better energy bar, rather than using 12 A's
 -- Implement the currently unused DISPLAY_TIMER setting A.K.A. add a way to display timer.
 -- Add a function to track and save when a button is pressed (function done, just needs implementation)
 -- Replace deleting file with shell.getRunningProgram
+-- Store code, backups, scores, etc. off-site (on another computer) to avoid peaking
+-- Add a setting to toggle above
 
 
 
@@ -60,6 +58,10 @@ TIME_PER_SEGMENT = 3
 --Whether or not the PC should show who last pressed the button
 --NEEDS TESTING!!!
 SHOW_LAST_PRESSER = true
+
+--Whether or not to draw timer
+--Unfinished
+SHOW_TIMER = true
 
 
 
@@ -122,13 +124,19 @@ function waitForButton()
         term.setTextColor(currentColor)
         --print("Will you press the button?")
         drawBar()
-        
-        if (lastPresser ~= "nil" and SHOW_LAST_PRESSER) then
+
+
+        --Optional drawn things
+        if (SHOW_LAST_PRESSER and lastPresser ~= "nil") then
             term.setTextColor(colors.white)
             print("\n")
             print("Last pressed by: ")
             term.setTextColor(lastPresserColor)
             print(lastPresser)
+        end
+
+        if(SHOW_TIMER) then
+            --TODO: Make this
         end
 
         if (rs.getInput(BUTTON_SIDE)) then
