@@ -173,7 +173,7 @@ function resetButton()
     --animation
     --NEEDS TESTING!!!
     term.setCursorPos(8,5)
-    pagedPrint("BUTTON PRESSED!!")
+    textutils.pagedPrint("BUTTON PRESSED!!")
     
 
     term.setCursorPos(8,5)
