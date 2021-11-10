@@ -49,7 +49,7 @@ What are you doing in here?
 BUTTON_SIDE = "right"
 
 --Whether or not to display a timer
-DISPLAY_TIMER = false --broken
+DISPLAY_TIMER = false --Not implemented
 
 --Amount of time (in seconds) for each segment of the timer
 --Multiply by 12 to get time until the button dies
@@ -58,6 +58,9 @@ TIME_PER_SEGMENT = 3
 --Whether or not the PC should show who last pressed the button
 --NEEDS TESTING!!!
 SHOW_LAST_PRESSER = true
+
+--Whether or not to save when the button is pressed to a file
+SAVE_SCORES = true
 
 --Whether or not to draw timer
 --Unfinished
@@ -192,13 +195,13 @@ function resetButton()
     lastPresserColor = currentColor
     lastPresser = detector.getPlayersInRange(10)[1]
 
-    addToScoreList(lastPresser, pressedTime, currentColor) --NEEDS TESTING!!!
+    if SAVE_SCORES then addToScoreList(lastPresser, pressedTime, buttonValue) end --NEEDS TESTING!!!
 
     buttonValue = 0
     currentColor = possibleColors[1]
 
 
-    os.sleep(2)
+    os.sleep(1)
 end
 
 function increaseValue()
