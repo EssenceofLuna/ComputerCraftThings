@@ -184,23 +184,23 @@ function resetButton()
     
     --animation
     term.setCursorPos(8,5)
-    textutils.slowWrite("BUTTON PRESSED!!", 10)
+    textutils.slowWrite("BUTTON PRESSED!!", 14)
     
 
     term.setCursorPos(8,5)
     term.write("BUTTON PRESSED!!")
-    sleep(0.6)
+    sleep(0.7)
     term.clear()
-    sleep(0.4)
+    sleep(0.3)
     term.setCursorPos(8,5)
     term.write("BUTTON PRESSED!!")
-    sleep(0.6)
+    sleep(0.7)
     term.clear()
-    sleep(0.4)
+    sleep(0.3)
     term.setCursorPos(8,5)
     term.write("BUTTON PRESSED!!")
 
-    os.sleep(1)
+    os.sleep(2)
 end
 
 function increaseValue()
