@@ -173,7 +173,7 @@ function resetButton()
     --animation
     --NEEDS TESTING!!!
     term.setCursorPos(8,5)
-    textutils.slowWrite("BUTTON PRESSED!!", 3)
+    textutils.slowWrite("BUTTON PRESSED!!", 8)
     
 
     term.setCursorPos(8,5)
