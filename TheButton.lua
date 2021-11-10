@@ -173,8 +173,16 @@ function resetButton()
     term.clear()
     term.setTextColor(currentColor)
     
+    
+    lastPresserColor = currentColor
+    lastPresser = detector.getPlayersInRange(10)[1]
+    
+    if SAVE_SCORES then addToScoreList(lastPresser, buttonValue) end --NEEDS TESTING!!!
+    
+    buttonValue = 0
+    currentColor = possibleColors[1]
+    
     --animation
-    --NEEDS TESTING!!!
     term.setCursorPos(8,5)
     textutils.slowWrite("BUTTON PRESSED!!", 8)
     
@@ -191,15 +199,6 @@ function resetButton()
     sleep(0.4)
     term.setCursorPos(8,5)
     term.write("BUTTON PRESSED!!")
-    
-    lastPresserColor = currentColor
-    lastPresser = detector.getPlayersInRange(10)[1]
-
-    if SAVE_SCORES then addToScoreList(lastPresser, buttonValue) end --NEEDS TESTING!!!
-
-    buttonValue = 0
-    currentColor = possibleColors[1]
-
 
     os.sleep(1)
 end
