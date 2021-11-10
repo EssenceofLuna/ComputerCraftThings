@@ -210,10 +210,10 @@ function drawBar()
     for i=1,12 do
         if (i <= buttonValue) then
             term.setTextColor(possibleColors[i])
-            term.write("[*]")
+            term.write("[]")
         else
             term.setTextColor(colors.white)
-            term.write("[ ]")
+            term.write("[]")
         end
     end
 end
