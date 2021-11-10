@@ -167,23 +167,23 @@ end
 function resetButton()
     local pressedTime = textutils.formatTime(os.time(), true)
     --if display_on_monitory == true then term.redirect(display) end --Not sure if neede
-    term.setCursorPos(8,5)
     term.clear()
     term.setTextColor(currentColor)
-
+    
     --animation
     --NEEDS TESTING!!!
+    term.setCursorPos(8,5)
     term.write("BUTTON PRESSED!!")
-    sleep(0.5)
+    sleep(0.6)
     term.clear()
-    sleep(0.5)
+    sleep(0.4)
+    term.setCursorPos(8,5)
     term.write("BUTTON PRESSED!!")
-    sleep(0.5)
+    sleep(0.6)
     term.clear()
-    sleep(0.5)
+    sleep(0.4)
+    term.setCursorPos(8,5)
     term.write("BUTTON PRESSED!!")
-    sleep(0.5)
-    term.clear()
     
     lastPresserColor = currentColor
     lastPresser = detector.getPlayersInRange(10)[1]
@@ -194,7 +194,7 @@ function resetButton()
     currentColor = possibleColors[1]
 
 
-    os.sleep(1)
+    os.sleep(2)
 end
 
 function increaseValue()
