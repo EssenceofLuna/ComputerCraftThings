@@ -168,7 +168,7 @@ function killButton()
 end
 
 function resetButton()
-    local pressedTime = textutils.formatTime(os.time(), true)
+    --local pressedTime = textutils.formatTime(os.time(), true)
     --if display_on_monitory == true then term.redirect(display) end --Not sure if neede
     term.clear()
     term.setTextColor(currentColor)
@@ -195,7 +195,7 @@ function resetButton()
     lastPresserColor = currentColor
     lastPresser = detector.getPlayersInRange(10)[1]
 
-    if SAVE_SCORES then addToScoreList(lastPresser, pressedTime, buttonValue) end --NEEDS TESTING!!!
+    if SAVE_SCORES then addToScoreList(lastPresser, buttonValue) end --NEEDS TESTING!!!
 
     buttonValue = 0
     currentColor = possibleColors[1]
@@ -251,11 +251,11 @@ function loadState()
     h.close()
 end
 
-function addToScoreList(user, time, stage)
+function addToScoreList(user, stage)
     --Save when a user pressed the button and what color/stage it was
     --UNTESTED!!!
     --Expected problems: Typos, writing occurs on last line of previous entry
-    savedData = {user,time,stage}
+    savedData = {"User: "..user,"Date - Time: "..textutils.formatTime(os.time(), true).." - "..os.date("%Y/%m/%d - %H:%M"),"Stage: "..stage}
 
     local h = fs.open("TheButtonScores", "a") --Open to edit without overwriting old file
     h.write(textutils.serialise(savedData))
