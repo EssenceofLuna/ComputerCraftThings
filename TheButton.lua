@@ -184,7 +184,7 @@ function resetButton()
     
     --animation
     term.setCursorPos(8,5)
-    textutils.slowWrite("BUTTON PRESSED!!", 8)
+    textutils.slowWrite("BUTTON PRESSED!!", 10)
     
 
     term.setCursorPos(8,5)
@@ -254,7 +254,7 @@ function addToScoreList(user, stage)
     --Save when a user pressed the button and what color/stage it was
     --UNTESTED!!!
     --Expected problems: Typos, writing occurs on last line of previous entry
-    savedData = {"User: "..user,"Time: "..os.date("%Y/%m/%d - %H:%M"),"Stage: "..stage}
+    savedData = {"User: "..user,"Time: "..os.date("%Y/%m/%d - %H:%M:%S"),"Stage: "..stage}
 
     local h = fs.open("TheButtonScores", "a") --Open to edit without overwriting old file
     h.write(textutils.serialise(savedData))
