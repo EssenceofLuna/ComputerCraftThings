@@ -63,6 +63,9 @@ SHOW_LAST_PRESSER = true
 --Unfinished
 SHOW_TIMER = true
 
+--Whether or not to delete self when the button dies (for debugging)
+DELETE_SELF = false
+
 
 
 --INITIAL SETUP
@@ -151,7 +154,7 @@ end
 
 function killButton()
     local currentFile = shell.getRunningProgram()
-    shell.run("delete "..currentFile)
+    if DELETE_SELF then shell.run("delete "..currentFile) end
     shell.run("delete TheButtonBackup")
 
     term.clear()
