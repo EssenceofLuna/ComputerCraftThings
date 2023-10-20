@@ -4,7 +4,7 @@ Things I have programmed in ComputerCraft, including branches for turtles and (s
 
 # Install Instructions
 
-The update script relies heavily on [Github by Eric Wieser](https://github.com/eric-wieser/computercraft-github). This is automatically installed in the update process, so simply run ```wget run https://raw.githubusercontent.com/Alstro20/ComputerCraftThings/master/update.lua``` on any in-game computer.
+The update script relies heavily on [Github by Eric Wieser](https://github.com/eric-wieser/computercraft-github). This is automatically installed in the update process, so simply run ```wget run https://raw.githubusercontent.com/EssenceofLuna/ComputerCraftThings/master/update.lua``` on any in-game computer.
 
 This may pop up a few prompts, especially in first time installation.
 
@@ -16,7 +16,7 @@ To update, simply run `update.lua` at any time.
 
 This repo is still very early in development. If you would like to contribute, feel free. If you find an issue or recommendation, feel free to post an issue, but please check to see if it's been posted yet. And if you want to contribute directly, feel free to make a pull request.
 
-When creating an issue post, please follow [this template](https://github.com/Alstro20/ComputerCraftThings/wiki/Issues-Template) when making a post.
+When creating an issue post, please follow [this template](https://github.com/EssenceofLuna/ComputerCraftThings/wiki/Issues-Template) when making a post.
 
 # FAQ
 
