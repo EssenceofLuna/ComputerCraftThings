@@ -1,7 +1,7 @@
 -- require '/ComputerCraftThings/APIs/library' --Removed to make update.lua seperate from all other scripts.
 
 --Instal Github: 'pastebin run p8PJVxC4'        https://github.com/eric-wieser/computercraft-github
---Initial install: 'wget run https://raw.githubusercontent.com/Alstro20/ComputerCraftThings/master/update.lua'
+--Initial install: 'wget run https://raw.githubusercontent.com/EssenceofLuna/ComputerCraftThings/master/update.lua'
 
 
 --Returns the type of computer as a string
@@ -23,21 +23,21 @@ end
 
 --Functions to update different computer types
 function updateComputer()
-    --https://github.com/Alstro20/ComputerCraftThings/tree/master
-    shell.run("github clone Alstro20/ComputerCraftThings")
+    --https://github.com/EssenceofLuna/ComputerCraftThings/tree/master
+    shell.run("github clone EssenceofLuna/ComputerCraftThings")
     term.clear()
     print("Computer Updated!")
 end
 
 function updateTurtle()
-    --https://github.com/Alstro20/ComputerCraftThings/tree/turtles
-    shell.run("github clone Alstro20/ComputerCraftThings -b turtles")
+    --https://github.com/EssenceofLuna/ComputerCraftThings/tree/turtles
+    shell.run("github clone EssenceofLuna/ComputerCraftThings -b turtles")
     term.clear()
     print("Turtle Updated!")
 end
 
 function updatePDA()
-    shell.run("github clone Alstro20/ComputerCraftThings")
+    shell.run("github clone EssenceofLuna/ComputerCraftThings")
     term.clear()
     
     --TODO: Create a branch for PDA's
