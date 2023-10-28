@@ -1,5 +1,7 @@
 require '/ComputerCraftThings/APIs/library'
 
+--TODO: update to BiggerReactors. Currently broken :(
+
 --TODO: Write pocket computer program to check on reactor stuff
 
 --TODI: make the turbines table a global table
@@ -44,7 +46,7 @@ function updateTurbines()
     --Each turbine is a table inside the turbines table
     for i=1,100 do
         --Makes a table for each turbine, then adds it to the main turbines table
-        local turbineStr = 'BiggerReactors_Turbine_'..i
+        local turbineStr = 'BigReactors-Turbine_'..i
 
         if peripheral.isPresent(turbineStr) then
             --turbine is present. Get info, build a table, then add it to turbines table
@@ -79,7 +81,7 @@ function getTurbines()
     for turbineIndex = 1,100 do --TODO: Maybe change to while loop idk
         --turbineIndex is the int value of the current check, starting at 1
         --turbineStr is the string for the peripheral name
-        local turbineStr = 'BiggerReactors_Turbine_'..turbineIndex
+        local turbineStr = 'BigReactors-Turbine_'..turbineIndex
         --print('DEBUG: Checking '..turbineIndex..' named '..turbineStr) --DEBUG
         --TODO: Convert to turbine.getConnected because it checks for multiblock and not just the computer port
         if peripheral.isPresent(turbineStr) then
@@ -115,7 +117,7 @@ function updateReactor()
     local reactor = {}
 
     for reactorIndex = 1,100 do
-        local reactorStr = 'BiggerReactors_Reactor_'..reactorIndex
+        local reactorStr = 'BigReactors-Reactor_'..reactorIndex
         if peripheral.isPresent(reactorStr) then
             --Valid reactor found. Building table...
             local reactorWrap = peripheral.wrap(reactorStr)
