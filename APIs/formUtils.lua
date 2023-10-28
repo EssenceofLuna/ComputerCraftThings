@@ -5,14 +5,12 @@ Internal Functions:
 throwError("string")
 
 Functions:
-keyPress(keys.x)
 centerText("string")
 centerX()
 centerY()
 setWrite("string",{x,y})
 setColors(colors.x,colors.x)
 ]]--
-
 
 --[[
 Purpose: Internal Function For Errors
@@ -30,24 +28,6 @@ local function throwError(str)
 	term.setTextColor(colors.white)
 	term.setBackgroundColor(colors.black)
 	return
-end
-
---[[
-Purpose: To detect a key press
-Input: keys.var
-Output: boolean
-Usage: use in a while loop. break on success. use multiple in a while for diffrent inputs.
-]]--
-function keyPress(val) 
-  local timer = os.startTimer(0.05)
-  local event, p1 = os.pullEvent()
-  if event == "key" then
-	if p1 == val then
-		return true
-	end
-  elseif event == "timer" then
-	return false
-  end
 end
 
 --[[
